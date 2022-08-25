@@ -1,20 +1,20 @@
 -- Naruto --
 
-INSERT INTO pomodoros (id, user_id, start_at, ended_at, password) VALUES (1, 1,'naruto@gmail.com', 08:00:00, 08:25:00);
-INSERT INTO pomodoros (id, user_id, start_at, ended_at, password) VALUES (2, 1,'naruto@gmail.com', 08:30:00, 08:55:00);
-INSERT INTO pomodoros (id, user_id, start_at, ended_at, password) VALUES (3, 1,'naruto@gmail.com', 09:00:00, 09:25:00);
-INSERT INTO pomodoros (id, user_id, start_at, ended_at, password) VALUES (4, 1,'naruto@gmail.com', 09:30:00, 09:55:00);
+INSERT INTO pomodoros (user_id, start_at, ended_at) VALUES (1, '08:00:00', '08:25:00');
+INSERT INTO pomodoros (user_id, start_at, ended_at) VALUES (1, '08:30:00', '08:55:00');
+INSERT INTO pomodoros (user_id, start_at, ended_at) VALUES (1, '09:00:00', '09:25:00');
+INSERT INTO pomodoros (user_id, start_at, ended_at) VALUES (1, '09:30:00', '09:55:00');
 
 --Sasuke --
 
-INSERT INTO pomodoros (id, user_id, start_at, ended_at, password) VALUES (5, 2,'sasuke@gmail.com', 11:00:00, 11:25:00);
-INSERT INTO pomodoros (id, user_id, start_at, ended_at, password) VALUES (6, 2,'sasuke@gmail.com', 11:30:00, 11:55:00);
-INSERT INTO pomodoros (id, user_id, start_at, ended_at, password) VALUES (7, 2,'sasuke@gmail.com', 12:00:00, 12:25:00);
-INSERT INTO pomodoros (id, user_id, start_at, ended_at, password) VALUES (8, 2,'sasuke@gmail.com', 12:30:00, 12:55:00);
+INSERT INTO pomodoros (user_id, start_at, ended_at) VALUES (2, '11:00:00', '11:25:00');
+INSERT INTO pomodoros (user_id, start_at, ended_at) VALUES (2, '11:30:00', '11:55:00');
+INSERT INTO pomodoros (user_id, start_at, ended_at) VALUES (2, '12:00:00', '12:25:00');
+INSERT INTO pomodoros (user_id, start_at, ended_at) VALUES (2, '12:30:00', '12:55:00');
 
 --Sakura --
 
-INSERT INTO pomodoros (id, user_id, start_at, ended_at, password) VALUES (9,  3,'sakura@gmail.com', 14:00:00, 14:25:00);
-INSERT INTO pomodoros (id, user_id, start_at, ended_at, password) VALUES (10, 3,'sakura@gmail.com', 14:30:00, 14:55:00);
-INSERT INTO pomodoros (id, user_id, start_at, ended_at, password) VALUES (11, 3,'sakura@gmail.com', 15:00:00, 15:25:00);
-INSERT INTO pomodoros (id, user_id, start_at, ended_at, password) VALUES (12, 3,'sakura@gmail.com', 15:30:00, 15:55:00);
+INSERT INTO pomodoros (user_id, start_at, ended_at) VALUES (3, '14:00:00', '14:25:00');
+INSERT INTO pomodoros (user_id, start_at, ended_at) VALUES (3, '14:30:00', '14:55:00');
+INSERT INTO pomodoros (user_id, start_at, ended_at) VALUES (3, '15:00:00', '15:25:00');
+INSERT INTO pomodoros (user_id, start_at, ended_at) VALUES (3, '15:30:00', '15:55:00');

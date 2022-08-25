@@ -1,5 +1,5 @@
 -- schema/02_create_pomodoros.sql
-DROP TABLE IF EXISTS urls CASCADE;
+DROP TABLE IF EXISTS pomodoros CASCADE;
 -- CREATE POMODOROS
 CREATE TABLE pomodoros (
   id SERIAL PRIMARY KEY,

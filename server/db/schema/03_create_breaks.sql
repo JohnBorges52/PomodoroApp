@@ -1,5 +1,5 @@
 -- schema/03_create_breaks.sql
-DROP TABLE IF EXISTS urls CASCADE;
+DROP TABLE IF EXISTS breaks CASCADE;
 -- CREATE BREAKS
 CREATE TABLE breaks (
   id SERIAL PRIMARY KEY,
