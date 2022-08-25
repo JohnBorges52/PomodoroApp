@@ -1,17 +1,19 @@
+import '../styles/top-nav-bar.scss'
+
 
 export const TopNavBar = () => {
 
   return (
     <div className="top--nav">
       <ul>
-        <div>
-          <li>
+        <div className='div--logo'>
+          <li><a hredf="#">
           LOGO
-          </li>
+          </a> </li>
         </div>
-        <div>
-        <li>LOGIN</li>
-        <li>REGISTER</li>
+        <div className='div--right'>
+        <li><a hredf="#">LOGIN</a></li>
+        <li><a hredf="#">REGISTER</a></li>
         </div>
       </ul>
     </div>
