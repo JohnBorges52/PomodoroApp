@@ -2,21 +2,31 @@ import { useState } from 'react'
 import { ShowPomodoro } from './ShowPomodoro'
 import { ShowBreak } from './ShowBreak'
 import { useCountdown } from '../hooks/useCountdown'
+import { useEffect } from 'react'
 
 
 
 
-export const Timer = ({targetDate}) => {
-  const [minutes, seconds] = useCountdown(targetDate);
+export const Timer = (props) => {
   
-  const calcTime = () => {
-    const tweentyFiveMinutes = 60 * 25 * 1000
-    const now = new Date().getTime();
-    const difference = now + tweentyFiveMinutes;
-    console.log('timer has been clicked')
+  const tweentyFiveMinutes = 60 * 25 * 1000
+  const now = new Date().getTime();
 
-      return difference
-  }
+  const minutes = Math.floor((tweentyFiveMinutes % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((tweentyFiveMinutes % (1000 * 60)) / 1000);
+
+  const [ready, setReady] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setReady(tweentyFiveMinutes - now);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [tweentyFiveMinutes]);
+
+
+
 
   // if (minutes + seconds <= 0) {
   //   return <ShowBreak />
@@ -26,7 +36,8 @@ export const Timer = ({targetDate}) => {
       <ShowPomodoro 
         minutes={minutes}
         seconds={seconds}
-        targetDate={()=>{calcTime()}}
+        startTime={console.log("ha")}
+        
         
       />
     );

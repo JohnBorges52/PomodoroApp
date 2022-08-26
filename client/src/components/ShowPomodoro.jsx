@@ -3,19 +3,20 @@ import '../styles/timer.scss'
 import DateTimeDisplay from './DateTimeDisplay'
 
 
-export const ShowPomodoro = ({minutes,seconds, changeTime}) => {
+export const ShowPomodoro = (props) => {
+
 
   
   return (
     <div className='timer--container' >
       <div className='div--timer'>
-      <DateTimeDisplay value={minutes} />
+      <p>{props.minutes} </p>
       <p>:</p>
-      <DateTimeDisplay value={seconds} />
+      <p>{props.seconds} </p>
       </div>
       <div className='div--timer--btns'>
         <button 
-        onClick={() => changeTime}
+        onClick={() => props.startTime}
         >
           START
         </button>
