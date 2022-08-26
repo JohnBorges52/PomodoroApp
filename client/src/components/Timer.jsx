@@ -7,21 +7,28 @@ import { useCountdown } from '../hooks/useCountdown'
 
 
 export const Timer = ({targetDate}) => {
-
-  const [isBreak, setIsBreak] = useState(false)
-  const [isPomodoro, setIsPomodoro] = useState(false)
-
   const [minutes, seconds] = useCountdown(targetDate);
+  
+  const calcTime = () => {
+    const tweentyFiveMinutes = 60 * 25 * 1000
+    const now = new Date().getTime();
+    const difference = now + tweentyFiveMinutes;
+    console.log('timer has been clicked')
 
-  if (minutes + seconds <= 0) {
-    return <ShowBreak />
+      return difference
+  }
 
-  } else {
+  // if (minutes + seconds <= 0) {
+  //   return <ShowBreak />
+
+  // } else {
     return (
       <ShowPomodoro 
         minutes={minutes}
         seconds={seconds}
+        targetDate={()=>{calcTime()}}
+        
       />
     );
-  }
+  // }
 }

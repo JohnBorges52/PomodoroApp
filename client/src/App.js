@@ -5,20 +5,26 @@ import './styles/style.scss'
 import { TopNavBar } from './components/TopNavBar';
 import { BottomNavBar } from './components/BottomNavBar';
 import { Timer } from './components/Timer';
+import { useState } from 'react';
 
 
 function App() {
 
-  const fiveseconds = 60 * 5 * 1000
-  const now = new Date().getTime();
+  const [time, setTime] = useState(0)
 
-  const difference = now + fiveseconds;
 
   return (
     <div className="App">
       <TopNavBar />
       <div className='main--container'>
-        <Timer targetDate={difference} />
+
+        <Timer
+          changeTime={time => setTime(time)}
+
+
+
+
+        />
 
       </div>
       <BottomNavBar />
