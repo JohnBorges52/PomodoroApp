@@ -10,6 +10,7 @@ export const ShowPomodoro = (props) => {
   
   return (
     <div className='timer--container' >
+      <span>POMODORO</span>
       <div className='div--timer'>
       <p>{props.minutes} </p>
       <p>:</p>

@@ -1,20 +1,15 @@
 import { useState } from 'react'
 import { ShowPomodoro } from './ShowPomodoro'
 import { ShowBreak } from './ShowBreak'
-import { useCountdown } from '../hooks/useCountdown'
-import { useEffect } from 'react'
-
-
-
 
 export const Timer = () => {
 
-  const [minute, setMinute] = useState(1)
   const [second, setSecond] = useState(11)
+  const [minute, setMinute] = useState(1)
   const [start, setStart] = useState(false)
-  const [isBreak, setIsBreak] = useState(false)
+  const [type, setType] = useState("pomodoro")
 
-    if(start === true ){
+    if(start === true ) {
 
       const interval = setTimeout(()=>{
         
@@ -26,8 +21,7 @@ export const Timer = () => {
           setSecond(11)
         }
         
-      },500)
-      
+      }, 200)
       
       if (minute === 0 && second === 0 ) {
         console.log('ACABOU TUDO')
@@ -35,23 +29,29 @@ export const Timer = () => {
         setMinute(1)
         setSecond(11)
         setStart(false)
-        setIsBreak(true)
+        setType('break')
+        console.log(type)
       }
+   
     }
-    
     return (
       <>
-
-      {!isBreak ? 
+      {type === "pomodoro" ? 
       <ShowPomodoro 
       minutes={minute}
       seconds={second}
-      onClick={() => (setStart(true), setIsBreak(false)) } 
+      onClick={() => (setStart(true), console.log(type)) } 
       />
       :
-      <ShowBreak />
-    }
+      <ShowBreak 
+      minutes={minute}
+      seconds={second}
+      onClick={()=>{setType("pomodoro")}}
+ 
+      />}
       </>
+
       );
        
-    }
+    
+  }
