@@ -7,24 +7,36 @@ import { useEffect } from 'react'
 
 
 
-export const Timer = (props) => {
-  
-  const tweentyFiveMinutes = 60 * 25 * 1000
-  const now = new Date().getTime();
+export const Timer = () => {
 
-  const minutes = Math.floor((tweentyFiveMinutes % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((tweentyFiveMinutes % (1000 * 60)) / 1000);
 
-  const [ready, setReady] = useState(0)
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setReady(tweentyFiveMinutes - now);
-    }, 1000);
+  const [minute, setMinute] = useState(1)
+  const [second, setSecond] = useState(11)
 
-    return () => clearInterval(interval);
-  }, [tweentyFiveMinutes]);
 
+  useEffect(()=>{
+
+    const interval= setTimeout(()=>{
+      
+      if (second > 0 )  {
+        setSecond(second - 1)
+      }
+      if (second === 0 ) {
+        setMinute(minute - 1)
+        setSecond(11)
+      }
+      
+    },500)
+
+
+    if (minute === 0 && second === 0 ) {
+      console.log('ACABOU TUDO')
+      clearTimeout(interval)
+    }
+
+
+  },[{minute, second}])
 
 
 
@@ -34,9 +46,9 @@ export const Timer = (props) => {
   // } else {
     return (
       <ShowPomodoro 
-        minutes={minutes}
-        seconds={seconds}
-        startTime={console.log("ha")}
+        minutes={minute}
+        seconds={second}
+        onClick={()=>{console.log('hey')}}
         
         
       />

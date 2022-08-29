@@ -19,9 +19,6 @@ function App() {
       <div className='main--container'>
 
         <Timer
-          changeTime={time => setTime(time)}
-
-
 
 
         />
