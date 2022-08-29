@@ -9,46 +9,49 @@ import { useEffect } from 'react'
 
 export const Timer = () => {
 
-  
-  
-
   const [minute, setMinute] = useState(1)
   const [second, setSecond] = useState(11)
   const [start, setStart] = useState(false)
+  const [isBreak, setIsBreak] = useState(false)
 
-      if(start ===true ){
+    if(start === true ){
 
-        const interval = setTimeout(()=>{
-          
-          if (second > 0 )  {
-            setSecond(second - 1)
-          }
-          if (second === 0 ) {
-            setMinute(minute - 1)
-            setSecond(11)
-          }
-          
-        },500)
+      const interval = setTimeout(()=>{
         
-        
-        if (minute === 0 && second === 0 ) {
-          console.log('ACABOU TUDO')
-          clearTimeout(interval)
-          setMinute(1)
-          setSecond(11)
-          setStart(false)
+        if (second > 0 )  {
+          setSecond(second - 1)
         }
+        if (second === 0 ) {
+          setMinute(minute - 1)
+          setSecond(11)
+        }
+        
+      },500)
+      
+      
+      if (minute === 0 && second === 0 ) {
+        console.log('ACABOU TUDO')
+        clearTimeout(interval)
+        setMinute(1)
+        setSecond(11)
+        setStart(false)
+        setIsBreak(true)
       }
-     
-    
+    }
     
     return (
+      <>
+
+      {!isBreak ? 
       <ShowPomodoro 
       minutes={minute}
       seconds={second}
-      onClick={() => (setStart(true))} 
+      onClick={() => (setStart(true), setIsBreak(false)) } 
       />
+      :
+      <ShowBreak />
+    }
+      </>
       );
-   
-      
+       
     }
