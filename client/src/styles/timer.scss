@@ -29,4 +29,59 @@
     }
   }
 
+  .selector-bar{
+    
+    width:350px;
+    height: 40px;
+    position: relative;
+    margin: 0 auto 3rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+    align-items: center;
+    
+  }
+
+  #input-slide{
+    -webkit-appearance: none;
+    width: 80%;
+    cursor:pointer;
+    height: 15px;
+    background-color: #ffffff;
+    border-radius: 30px;
+  
+  }
+  
+
+  #input-slide::-webkit-slider-runnable-track{
+    width: 25px;
+    height: 25px;
+    color: #13bba4;
+    margin-top: -1px;
+  }
+
+  #input-slide::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #351d1d;
+    border-radius: 50px ; 
+    cursor: pointer;
+ 
+  }
+  
+
+  .input-value{
+    background: red;
+    height: 20px;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 4px;
+    
+  }
+
+
+ 
+
 }

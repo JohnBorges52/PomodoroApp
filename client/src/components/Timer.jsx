@@ -4,10 +4,19 @@ import { ShowBreak } from './ShowBreak'
 
 export const Timer = () => {
 
-  const [second, setSecond] = useState(11)
-  const [minute, setMinute] = useState(1)
+  const [time, setTime] = useState(25)
+  const [second, setSecond] = useState(0)
+  const [minute, setMinute] = useState(time)
   const [start, setStart] = useState(false)
   const [type, setType] = useState("pomodoro")
+
+
+  const handleChange = (e) => {
+    setTime(e)
+  }
+
+
+
 
     if(start === true ) {
 
@@ -18,16 +27,17 @@ export const Timer = () => {
         }
         if (second === 0 ) {
           setMinute(minute - 1)
-          setSecond(11)
+          setSecond(59)
         }
         
-      }, 200)
+      }, 20)
       
       if (minute === 0 && second === 0 ) {
         console.log('ACABOU TUDO')
         clearTimeout(interval)
-        setMinute(1)
-        setSecond(11)
+        setTime(25)
+        setMinute(time)
+        setSecond(0)
         setStart(false)
         setType('break')
         console.log(type)
@@ -40,7 +50,11 @@ export const Timer = () => {
       <ShowPomodoro 
       minutes={minute}
       seconds={second}
-      onClick={() => (setStart(true), console.log(type)) } 
+      onClick={() => (setStart(true), console.log(type))}
+      value={time} 
+      onChange={(e) => {
+        handleChange(e.target.value)}}
+        time={time}
       />
       :
       <ShowBreak 

@@ -1,13 +1,10 @@
 import { useState } from 'react'
-import { useCountdown } from '../hooks/useCountdown'
 import '../styles/timer.scss'
-import DateTimeDisplay from './DateTimeDisplay'
 
 
 export const ShowPomodoro = (props) => {
 
-    
-  
+   
   return (
     <div className='timer--container' >
       <span>POMODORO</span>
@@ -21,6 +18,28 @@ export const ShowPomodoro = (props) => {
           START
         </button>
         <button>STOP</button>
+       
+       <br />
+        <div className="selector-bar">
+            <input 
+              id="input-slide" 
+              type="range" 
+              min="20"
+              max="50" 
+              step="5"
+              value={props.time}
+              onChange={props.onChange}
+                
+                
+              
+            />
+             <span className="input-value">
+              {props.time}
+            </span>
+          
+
+          </div>
+       
       </div>
     </div>
 
