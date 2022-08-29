@@ -27,7 +27,7 @@ export const ShowPomodoro = (props) => {
               min="20"
               max="50" 
               step="5"
-              value={props.time}
+              value={props.minute}
               onChange={props.onChange}
                 
                 
