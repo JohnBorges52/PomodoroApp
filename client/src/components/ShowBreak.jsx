@@ -31,7 +31,6 @@ export const ShowBreak = (props) => {
     <>
     
       <span className="span-type">Enjoy your break!!</span>
-      
       <div className='div--timer'>
       <span>{minute} </span>
       <span>:</span>

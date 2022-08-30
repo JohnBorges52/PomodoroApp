@@ -22,7 +22,7 @@ export const ShowPomodoro = (props) => {
         <button className='primary' onClick={props.onClick}>
           START
         </button>
-        <button className='secondary'>STOP</button>
+        <button className='secondary' onClick={props.onClose}>STOP</button>
       </div>
         </div>
 

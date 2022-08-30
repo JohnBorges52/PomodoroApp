@@ -3,6 +3,8 @@ import { ShowPomodoro } from './ShowPomodoro'
 import { ShowBreak } from './ShowBreak'
 import { Slide } from './Slide'
 import '../styles/timer.scss'
+import { Popup } from './Popup'
+import classNames from 'classnames'
 
 
 export const Timer = () => {
@@ -11,6 +13,8 @@ export const Timer = () => {
   const [minute, setMinute] = useState(25)
   const [start, setStart] = useState(false)
   const [type, setType] = useState("pomodoro")
+  const [isHappening, setIsHappening] = useState(false)
+  const [confirmation, setConfirmation] = useState(false)
 
   const handleChange = (e) => {
     setMinute(e)
@@ -40,36 +44,55 @@ export const Timer = () => {
         setType('break')
         console.log(type)
       }
-   
+
     }
+
+
+    const variableClass = classNames("timer--container", {
+     "opacity-bg": confirmation
+    })
+
     return (
-      <div className='timer--container' >
-      {type === "pomodoro" ? 
-      
       <>
+      {confirmation && <Popup
+      title={"Do you really wanna stop?"}
+      message={"Your progress will not be counted if you don't stay at least for 90% of the time."}
+      onCancel={()=>setConfirmation(false)}
+      />} 
+      <div className={variableClass}>
+        <>
+        {type === "pomodoro" ? 
+        
+        <>
 
-      <ShowPomodoro 
-      minutes={minute}
-      seconds={second}
-      onClick={() => (setStart(true), console.log(type))} 
-      />
-      <Slide 
-      value={minute} 
-      onChange={(e) => {
-        handleChange(e.target.value)}}
-        time={minute}
-      /> 
-
-      </>  
-      :
-      <ShowBreak 
-      minutes={minute}
-      seconds={second}
-      onClick={()=>{setType("pomodoro")}}
-      
-      />}
-    </div>
-      
-
+        <ShowPomodoro 
+        minutes={minute}
+        seconds={second}
+        onClick={() => (setStart(true), setIsHappening(true))} 
+        onClose={()=> (setConfirmation(true))}
+        />
+        {!isHappening &&
+        <Slide 
+        value={minute} 
+        onChange={(e) => {
+          handleChange(e.target.value)}}
+          time={minute}
+          /> 
+        }
+        </>  
+        :
+        <ShowBreak 
+        minutes={minute}
+        seconds={second}
+        onClick={()=>{setType("pomodoro")}}
+        
+        />}
+        
+        </>
+        
+        
+       
+      </div>
+      </>
       );
-  }
+    }

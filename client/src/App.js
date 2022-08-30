@@ -1,16 +1,17 @@
 import './App.css';
 import './styles/style.scss'
+import './styles/popup.scss'
+import classNames from "classnames";
 
 // COMPONENTS // 
 import { TopNavBar } from './components/TopNavBar';
 import { BottomNavBar } from './components/BottomNavBar';
 import { Timer } from './components/Timer';
-import { useState } from 'react';
+
 
 
 function App() {
 
-  const [time, setTime] = useState(0)
 
 
   return (
