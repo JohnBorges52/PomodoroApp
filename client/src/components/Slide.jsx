@@ -10,6 +10,7 @@ export const Slide = (props) => {
       type="range" 
       min="20"
       max="50" 
+      defaultValue={"25"}
       step="5"
       value={props.minute}
       onChange={props.onChange}        

@@ -7,7 +7,6 @@ import '../styles/timer.scss'
 
 export const Timer = () => {
 
-  // const [time, setTime] = useState(25)
   const [second, setSecond] = useState(0)
   const [minute, setMinute] = useState(25)
   const [start, setStart] = useState(false)
@@ -48,7 +47,7 @@ export const Timer = () => {
       {type === "pomodoro" ? 
       
       <>
-      
+
       <ShowPomodoro 
       minutes={minute}
       seconds={second}
