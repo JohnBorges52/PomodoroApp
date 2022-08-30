@@ -5,8 +5,8 @@ export const BottomNavBar = () => {
   return (
     <div className='bottom--nav'>
       <ul>
-        <li><a hredf="#">New Pomodoro</a></li>
-        <li><a hredf="#">Settings</a></li>
+        <li><a hredf="#"> ABOUT</a></li>
+        <li><a hredf="#">ABOUT</a></li>
       </ul>
     </div>
   )

@@ -5,15 +5,14 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 20%;
+  height: 50%;
   align-items: center;
-  width: 90%;
+  width: 100%;
 
   .div--timer{
-    width:150px;
+    width:250px;
     color: white;
     display: flex;
-    flex-direction: row;
     border: 1px solid white;
     justify-content: center;
 
@@ -21,12 +20,26 @@
 
   }
  
+ 
   .div--timer--btns{
     margin-top: 10px;
+    display: flex;
+    flex-direction: column;
     
-    button{
-      margin-right: 5px;
+    
+   
+    .div-btns{
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      width: 50%;
+      margin: 0 auto;
+      
     }
+    button{
+      margin-right: 10px;
+    }
+  
   }
 
   .selector-bar{

@@ -14,10 +14,12 @@ export const ShowPomodoro = (props) => {
       <p>{props.seconds} </p>
       </div>
       <div className='div--timer--btns'>
+        <div className='div-btns'>
         <button onClick={props.onClick}>
           START
         </button>
         <button>STOP</button>
+        </div>
        
        <br />
         <div className="selector-bar">
