@@ -7,21 +7,23 @@ export const ShowPomodoro = (props) => {
    
   return (
     <div className='timer--container' >
-      <span>POMODORO</span>
+      <span className='span-type'>FOCUS</span>    {/* mudar de acordo com o tempo*/}
       <div className='div--timer'>
-      <p>{props.minutes} </p>
-      <p>:</p>
-      <p>{props.seconds} </p>
+      <span>{props.minutes} </span>
+      <span>:</span>
+      <span>{props.seconds} </span>
+      </div>
+      <div className='div-pomodoro-gif'>
+
       </div>
       <div className='div--timer--btns'>
         <div className='div-btns'>
-        <button onClick={props.onClick}>
+        <button className='primary' onClick={props.onClick}>
           START
         </button>
-        <button>STOP</button>
+        <button className='secondary'>STOP</button>
+      </div>
         </div>
-       
-       <br />
         <div className="selector-bar">
             <input 
               id="input-slide" 
@@ -39,7 +41,6 @@ export const ShowPomodoro = (props) => {
 
           </div>
        
-      </div>
     </div>
 
   )

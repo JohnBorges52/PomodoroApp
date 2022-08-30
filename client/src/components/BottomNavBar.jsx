@@ -6,7 +6,6 @@ export const BottomNavBar = () => {
     <div className='bottom--nav'>
       <ul>
         <li><a hredf="#"> ABOUT</a></li>
-        <li><a hredf="#">ABOUT</a></li>
       </ul>
     </div>
   )

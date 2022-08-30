@@ -1,7 +1,7 @@
 
 .top--nav {
   width: 100%;
-
+  border-bottom: 1px solid rgb(190, 190, 190);
 
   ul{
     margin: 0;
@@ -11,9 +11,10 @@
     justify-content: space-between;
     align-items: center;
     padding: 0;
+   
   }
   .div--logo{
-    width: 100px;
+    width: 150px;
     height: 100%;
     text-align: center;
     display: flex;
@@ -21,21 +22,23 @@
     justify-content: center;
     font-family: 'Caveat', cursive;
     font-weight: 400;
-    text-shadow: .5px .5px rgb(201, 201, 201);
-    font-size: 1.4em;
+    text-shadow: .5px .5px rgb(102, 102, 102);
+    font-size: 1.5em;
     margin-left: 8px;
+    color: rgb(243, 49, 49);
   }
 
   .div--right{
     display: flex;
     flex-direction: row;
-    margin-right: 8px;
+    margin-right: 25px;
     
     li{
     padding: 0 5px;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
-    font-size: 1em;
+    font-weight: 400;
+    font-size: 1.1em;
+    color: rgb(143, 143, 143);
 
     }
   }

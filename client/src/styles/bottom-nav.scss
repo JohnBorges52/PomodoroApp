@@ -1,11 +1,14 @@
 .bottom--nav{
-  width: 100vw;
- 
+  width: 100%;
   bottom: 0;
+  position:  fixed;
   z-index: 1;
+  border-top: 1px solid grey;
+ 
  
 
   ul{
+ 
     margin: 0;
     display: flex;
     flex-direction: row;

@@ -29,15 +29,17 @@ export const ShowBreak = (props) => {
   
   return (
     <div className='timer--container' >
-      <span>Enjoy your break</span>
+      <span className="span-type">Enjoy your break!!</span>
+      
       <div className='div--timer'>
-      <p>{minute} </p>
-      <p>:</p>
-      <p>{second} </p>
+      <span>{minute} </span>
+      <span>:</span>
+      <span>{second} </span>
       </div>
+      <div className="div-break-gif" > </div>
       <div className='div--timer--btns'>
-        <button onClick={props.onClick}>
-          Another one
+        <button className="primary" onClick={props.onClick}>
+          ONE MORE
         </button>
 
       </div>

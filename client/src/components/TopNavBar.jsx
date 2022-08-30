@@ -13,7 +13,7 @@ export const TopNavBar = () => {
         </div>
         <div className='div--right'>
         <li><a hredf="#">LOGIN</a></li>
-        <li><a hredf="#">REGISTER</a></li>
+ 
         </div>
       </ul>
     </div>
