@@ -10,13 +10,9 @@ export const Timer = () => {
   const [start, setStart] = useState(false)
   const [type, setType] = useState("pomodoro")
 
-
   const handleChange = (e) => {
     setMinute(e)
   }
-
-
-
 
     if(start === true ) {
 
@@ -66,6 +62,4 @@ export const Timer = () => {
       </>
 
       );
-       
-    
   }

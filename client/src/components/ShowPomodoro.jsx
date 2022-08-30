@@ -28,10 +28,7 @@ export const ShowPomodoro = (props) => {
               max="50" 
               step="5"
               value={props.minute}
-              onChange={props.onChange}
-                
-                
-              
+              onChange={props.onChange}        
             />
              <span className="input-value">
               {props.time}

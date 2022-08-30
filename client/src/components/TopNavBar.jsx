@@ -8,7 +8,7 @@ export const TopNavBar = () => {
       <ul>
         <div className='div--logo'>
           <li><a hredf="#">
-          LOGO
+          POMODORO
           </a> </li>
         </div>
         <div className='div--right'>
