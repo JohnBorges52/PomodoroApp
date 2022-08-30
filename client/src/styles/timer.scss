@@ -18,7 +18,6 @@
     width:250px;
     color: rgb(50, 59, 43);
     display: flex;
-    
     justify-content: center;
     font-family: 'Montserrat', sans-serif;
     font-size: 3em;
@@ -72,20 +71,22 @@
     margin: 10px 0;
     background-image: url('../assets/3cd27426c45d481f5e653f700b17ff4ce038f750_hq.gif');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: auto;
     background-position: center;
 
   }
-.div-break-gif{
-    width: 100%;
-    height: 60%;
-    margin: 10px 0;
-    background-image: url('../assets/412c6c1e6945e7c5a0abbd6f78b0b69a.gif');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: top;
+  .div-break-gif{
+      width: 100%;
+      height: 60%;
+      margin: 10px 0;
+      background-image: url('../assets/412c6c1e6945e7c5a0abbd6f78b0b69a.gif');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: top;
+      margin-bottom: 20px;
+      margin-top: 20px;
 
-}
+  }
 
 
   .selector-bar{

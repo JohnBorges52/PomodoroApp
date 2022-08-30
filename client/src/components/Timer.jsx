@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { ShowPomodoro } from './ShowPomodoro'
 import { ShowBreak } from './ShowBreak'
+import { Slide } from './Slide'
+import '../styles/timer.scss'
+
 
 export const Timer = () => {
 
@@ -41,25 +44,33 @@ export const Timer = () => {
    
     }
     return (
-      <>
+      <div className='timer--container' >
       {type === "pomodoro" ? 
+      
+      <>
+      
       <ShowPomodoro 
       minutes={minute}
       seconds={second}
-      onClick={() => (setStart(true), console.log(type))}
+      onClick={() => (setStart(true), console.log(type))} 
+      />
+      <Slide 
       value={minute} 
       onChange={(e) => {
         handleChange(e.target.value)}}
         time={minute}
-      />
+      /> 
+
+      </>  
       :
       <ShowBreak 
       minutes={minute}
       seconds={second}
       onClick={()=>{setType("pomodoro")}}
- 
+      
       />}
-      </>
+    </div>
+      
 
       );
   }

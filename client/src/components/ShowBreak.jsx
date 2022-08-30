@@ -28,7 +28,8 @@ export const ShowBreak = (props) => {
   }, [{second, minute}])
   
   return (
-    <div className='timer--container' >
+    <>
+    
       <span className="span-type">Enjoy your break!!</span>
       
       <div className='div--timer'>
@@ -43,7 +44,8 @@ export const ShowBreak = (props) => {
         </button>
 
       </div>
-    </div>
+    
+    </>
 
 
   )
