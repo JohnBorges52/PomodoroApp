@@ -1,11 +1,18 @@
 import { useEffect } from "react"
 import { useState } from "react"
 import { Gif } from "./Gif"
+import sound_two from "../assets/sound-3.mp3"
 
 export const ShowBreak = (props) => {
 
   const [second, setSecond] = useState(0)
   const [minute, setMinute] = useState(1)  
+
+  const playFunc = (music) => {
+    new Audio(music).play()
+  }
+
+
   useEffect(()=> {
 
     const interval = setTimeout(() => {
@@ -18,12 +25,13 @@ export const ShowBreak = (props) => {
         setMinute(minute - 1)
         setSecond(59)
       }
-    }, 300)
+    }, 65)
 
     
     if (minute === 0 && second === 0) {
       console.log("ACABOU BREAK")
       clearTimeout(interval)
+      playFunc(sound_two)
     }
     
   }, [{second, minute}])

@@ -6,7 +6,8 @@ import '../styles/timer.scss'
 import { Popup } from './Popup'
 import classNames from 'classnames'
 import { useEffect } from 'react'
-import { Gif } from './Gif'
+import sound_one from "../assets/sound-2.mp3";
+
 
 
 export const Timer = () => {
@@ -17,6 +18,12 @@ export const Timer = () => {
   const [type, setType] = useState("startPage")
   const [isHappening, setIsHappening] = useState(false)
   const [confirmation, setConfirmation] = useState(false)
+  
+  
+
+  const playFunc = (music) => {
+    new Audio(music).play()
+  }
 
   const handleChange = (e) => {
     setMinute(e)
@@ -34,25 +41,24 @@ export const Timer = () => {
           setSecond(59)
         }
         
-      }, 5)
+      }, 1)
       
       if (minute === 0 && second === 0 ) {
         console.log('ACABOU TUDO')
         clearTimeout(interval)
-        
+        playFunc(sound_one)
         setMinute(25)
         setSecond(0)
         setStart(false)
         setType('break')
-      
       }
-
     }
-
 
     const variableClass = classNames("timer--container", {
      "opacity-bg": confirmation
     })
+
+    
 
     return (
       <>
