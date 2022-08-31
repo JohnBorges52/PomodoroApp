@@ -10,8 +10,10 @@
   .span-type{
     color: rgb(212, 31, 31);
     font-size: 1.2em;
-    margin: 9px 0;
+    margin: 0 0;
+    padding-top: 2px;
     font-family: 'Montserrat', sans-serif;
+    text-align: center;
   }
 
   .div--timer{
@@ -98,6 +100,18 @@
       margin-bottom: 20px;
       margin-top: 20px;
   }
+  .div-stoped-gif{
+    width: 100%;
+      height: 60%;
+      margin: 10px 0;
+      background-image: url('../assets/my-hero-academia-izuku-midoriya.gif');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: top;
+      margin-bottom: 20px;
+      margin-top: 20px;
+  }
+
 
 
   .selector-bar{

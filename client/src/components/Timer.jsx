@@ -7,6 +7,7 @@ import { Popup } from './Popup'
 import classNames from 'classnames'
 import { useEffect } from 'react'
 import sound_one from "../assets/sound-2.mp3";
+import { ShowStoped } from './ShowStoped'
 
 
 
@@ -65,11 +66,12 @@ export const Timer = () => {
 
     return (
       <>
-      {confirmation && <Popup
+      {confirmation && 
+      <Popup
       title={"Do you really wanna stop?"}
       message={"Your progress will not be counted if you don't stay at least for 90% of the time."}
       onCancel={()=> (setConfirmation(false), setStart(true))}
-      onConfirm={()=> ( setConfirmation(false), setType("startPage"),setIsHappening(false), setStart(false), setMinute(25), setSecond(0) )}
+      onConfirm={()=> ( setConfirmation(false), setType("stoped"),setIsHappening(false), setStart(false), setMinute(25), setSecond(0) )}
       />} 
       <div className={variableClass}>
         <>
@@ -126,6 +128,17 @@ export const Timer = () => {
         class={'div-break-gif'}
         
         />
+      }
+
+      {type === "stoped" && 
+      <ShowStoped 
+      onClick={()=> (setType("startPage"), setIsHappening(false))} 
+      
+      title={'ITS OK!'}
+      message={'Next Time you got this!'}
+      class={'div-stoped-gif'}
+      />
+
       }
         
         </>
