@@ -35,15 +35,19 @@ export const ShowBreak = (props) => {
     }
     
   }, [{second, minute}])
+
+  const formatTime = (time) => {
+    return String(time).padStart(2, '0')
+  }
   
   return (
     <>
     
       <span className="span-type">YOU DESERVE A BREAK!</span>
       <div className='div--timer'>
-      <span>{minute} </span>
+      <span>{formatTime(minute)} </span>
       <span>:</span>
-      <span>{second} </span>
+      <span>{formatTime(second)} </span>
       </div>
       <Gif 
       class={"div-break-gif"}
