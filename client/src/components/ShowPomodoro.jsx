@@ -8,13 +8,13 @@ export const ShowPomodoro = (props) => {
    
   return (
       <>
-      <span className='span-type'>FOCUS</span>    {/* mudar de acordo com o tempo*/}
+      <span className='span-type'>{props.message}</span>    {/* mudar de acordo com o tempo*/}
       <div className='div--timer'>
       <span>{props.minutes} </span>
       <span>:</span>
       <span>{props.seconds} </span>
       </div>
-      <div className='div-pomodoro-gif'>
+      <div className={props.class}>
 
       </div>
       <div className='div--timer--btns'>

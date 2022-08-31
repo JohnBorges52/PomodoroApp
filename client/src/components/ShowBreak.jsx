@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { useState } from "react"
+import { Gif } from "./Gif"
 
 export const ShowBreak = (props) => {
 
@@ -30,13 +31,16 @@ export const ShowBreak = (props) => {
   return (
     <>
     
-      <span className="span-type">Enjoy your break!!</span>
+      <span className="span-type">YOU DESERVE A BREAK!</span>
       <div className='div--timer'>
       <span>{minute} </span>
       <span>:</span>
       <span>{second} </span>
       </div>
-      <div className="div-break-gif" > </div>
+      <Gif 
+      class={"div-break-gif"}
+       
+       />
       <div className='div--timer--btns'>
         <button className="primary" onClick={props.onClick}>
           ONE MORE

@@ -17,6 +17,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top:20px;
+  height:90%
 }
 
 .confirmation-title{
@@ -51,4 +53,16 @@
   font-weight: 600;
   cursor: pointer;
 
+}
+
+.popup-confirmation-btn{
+  width: 70px;
+  color: rgb(121, 121, 121);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  border: 1px solid rgb(228, 228, 228);
+  border-radius: 6px;
+  background-color: white;
+  margin: 0 auto;
+  padding: 5px;
 }
