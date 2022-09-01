@@ -87,7 +87,7 @@ export const Timer = () => {
         minutes={minute}
         seconds={second}
         onClick={() => (setStart(true), setIsHappening(true), setType("pomodoro"))} 
-        onClose={()=> (setConfirmation(true), setStart(false))}
+        onClose={()=> (alert('You did not start!'))}
         message={"LET'S FOCUS!"}
         class={'div-start-gif'}
         timeStyle={variableStyle}
