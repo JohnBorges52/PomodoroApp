@@ -2,12 +2,14 @@ import './App.css';
 import './styles/style.scss'
 import './styles/popup.scss'
 import classNames from "classnames";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 
 // COMPONENTS // 
 import { TopNavBar } from './components/TopNavBar';
 import { BottomNavBar } from './components/BottomNavBar';
 import { Timer } from './components/Timer';
-
+import { Login } from './components/Login';
 
 
 function App() {
@@ -15,18 +17,30 @@ function App() {
 
 
   return (
-    <div className="App">
-      <TopNavBar />
-      <div className='main--container'>
+    <>
+      <Router>
 
-        <Timer
+        <div className="App">
+          <TopNavBar />
+          <div className='main--container'>
+            <Routes>
+              <Route path="/" element={<Timer />} />
+              <Route path="/login" element={<Login />} />
+
+            </Routes>
+          </div>
+          <BottomNavBar />
+        </div>
+        {/* ROUTES */}
 
 
-        />
 
-      </div>
-      <BottomNavBar />
-    </div>
+
+
+
+      </Router>
+    </>
+
   );
 }
 

@@ -71,6 +71,8 @@ export const Timer = () => {
 
     return (
       <>
+
+      
       {confirmation && 
       <Popup
       title={"Do you really wanna stop?"}
@@ -153,5 +155,6 @@ export const Timer = () => {
        
       </div>
       </>
+      
       );
     }
