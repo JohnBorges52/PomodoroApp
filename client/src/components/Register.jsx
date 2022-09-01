@@ -12,8 +12,18 @@ export const Register = (props) => {
 
 
 
-  const submitNewUser= (username, email, psw, event) => {
-     // add here validations after  
+  const validadeEmail=(email) => {
+    axios.get('/users/alreadyExist')
+
+
+  }
+
+
+  const submitNewUser=(username, email, psw, event) => {
+    
+      
+
+    
       console.log(username, email, psw)
      axios.post('/users/new', {
       username, email, psw
@@ -22,9 +32,7 @@ export const Register = (props) => {
     
     event.preventDefault();    
     
-    
-       
-  
+
   }
 
 
