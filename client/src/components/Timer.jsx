@@ -42,7 +42,7 @@ export const Timer = () => {
           setSecond(59)
         }
         
-      }, 1)
+      }, 10)
       
       if (minute === 0 && second === 0 ) {
         console.log('ACABOU TUDO')
@@ -57,6 +57,11 @@ export const Timer = () => {
 
     const variableClass = classNames("timer--container", {
      "opacity-bg": confirmation
+    })
+
+    const variableStyle = classNames('time-style', {
+      "time-style-orange": minute <= 5 && minute >= 1,
+      "time-style-red": minute < 1
     })
 
  
@@ -85,6 +90,7 @@ export const Timer = () => {
         onClose={()=> (setConfirmation(true), setStart(false))}
         message={"LET'S FOCUS!"}
         class={'div-start-gif'}
+        timeStyle={variableStyle}
         />
 
         {!isHappening &&
@@ -107,6 +113,7 @@ export const Timer = () => {
         onClose={()=> (setConfirmation(true), setStart(false))}
         class={'div-pomodoro-gif'}
         message={"ITS GOING TO END IN"}
+        timeStyle={variableStyle}
         />
      
         {!isHappening &&
@@ -133,7 +140,6 @@ export const Timer = () => {
       {type === "stoped" && 
       <ShowStoped 
       onClick={()=> (setType("startPage"), setIsHappening(false))} 
-      
       title={'ITS OK!'}
       message={'Next Time you got this!'}
       class={'div-stoped-gif'}

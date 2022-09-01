@@ -26,6 +26,15 @@
     
 
   }
+  .time-style{
+    color: rgb(0, 0, 0);
+  }
+  .time-style-orange{
+    color: rgb(255, 115, 0);
+  }
+  .time-style-red{
+    color: rgb(255, 0, 0);
+  }
  
  
   .div--timer--btns{
@@ -57,10 +66,12 @@
     .primary{
       background-color: rgb(101, 190, 49);
       border: 1px solid rgb(101, 190, 49);
+      color: white;
     }
     .secondary {
       background-color: rgb(231, 47, 47);
       border: 1px solid rgb(231, 47, 47);
+      color: white;
       
     }
     
