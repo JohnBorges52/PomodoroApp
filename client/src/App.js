@@ -10,6 +10,7 @@ import { TopNavBar } from './components/TopNavBar';
 import { BottomNavBar } from './components/BottomNavBar';
 import { Timer } from './components/Timer';
 import { Login } from './components/Login';
+import { Register } from './components/Register';
 
 
 function App() {
@@ -26,6 +27,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Timer />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+
 
             </Routes>
           </div>
