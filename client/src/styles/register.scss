@@ -6,15 +6,20 @@
   justify-content: center;
   margin: 0 auto;
   width: 100%;
+.register-form-inputs{
+  display: flex;
+  flex-direction: column;
+}
 
   .register-message{
 
     width: 80%;
     display: flex;
     margin: 0 auto;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
     display: flex;
     align-items: center;
+    
   }
 
   span{
@@ -40,7 +45,7 @@
     font-weight: 500;
     font-size: 1em;
     margin-bottom: 5px;
-    margin-top: 20px;
+    margin-top: 0px;
   }
 
   input {

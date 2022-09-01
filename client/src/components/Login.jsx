@@ -23,9 +23,9 @@ export const Login = () => {
      
 
       <form className="login-form-inputs" action="" method="">
-        <label className="login-form-label" htmlFor="">Username</label>
+        <label className="login-form-label" >Username</label>
         <input type="email" placeholder="john@gmail.com" name="email" required />
-        <label htmlFor="">Password</label>
+        <label>Password</label>
         <input type="password" placeholder="Enter your Password" name="password" required />
         
         
@@ -34,7 +34,7 @@ export const Login = () => {
         <button> LOGIN </button>
         <button className="danger"> CANCEL </button>
         </div>
-        <a href="/register"> or create an account</a>
+        <a href="/users/register"> or create an account</a>
       
       </form>
    
