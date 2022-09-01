@@ -30,7 +30,7 @@
  
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 75%;
     margin: 0 auto;  
   }
 
@@ -51,11 +51,17 @@
     border-radius: 7px;
 
   }
-  button{
 
-    margin: 25px auto 0;
-    
-    width: 50%;
+  .login-form-btns{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+  }
+  button{
+    margin-top: 25px;
+    margin-left: 5px;
+    width: 40%;
     height: 25px;
     background-color: rgb(14, 197, 14);
     border: 1px solid rgb(116, 116, 116);
@@ -64,8 +70,19 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 0.8em;
-  
-  
+  }
+  .danger{
+     background-color: rgb(241, 49, 49) ;
+  }
+  a{
+    margin-top:5px;
+    margin-bottom: 0;
+    color: rgb(154, 154, 250);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.8em;
+    text-align: end;
+    text-decoration: none;
   }
 
 }

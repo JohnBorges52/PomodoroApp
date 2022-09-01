@@ -17,8 +17,12 @@ export const Login = () => {
         <input type="email" placeholder="john@gmail.com" name="email" required />
         <label htmlFor="">Password</label>
         <input type="password" placeholder="Enter your Password" name="password" required />
+        <div className="login-form-btns">
 
         <button> LOGIN </button>
+        <button className="danger"> CANCEL </button>
+        </div>
+        <a href="#"> or create an account</a>
       
       </form>
 

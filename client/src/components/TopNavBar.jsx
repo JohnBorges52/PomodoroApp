@@ -7,12 +7,12 @@ export const TopNavBar = () => {
     <div className="top--nav">
       <ul>
         <div className='div--logo'>
-          <li><a hredf="#">
+          <li><a href="/">
           POMODORO
           </a> </li>
         </div>
         <div className='div--right'>
-        <li><a hredf="#">LOGIN</a></li>
+        <li><a href="/login">LOGIN</a></li>
  
         </div>
       </ul>
