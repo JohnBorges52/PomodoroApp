@@ -7,9 +7,9 @@ export const Login = () => {
   return (
 
     <>
-    <div className="test2">
+    <div className="div-gif-container">
       
-    <div className="test-div">
+    <div className="div-gif">
       </div>
     </div>
     <div className="login-form">

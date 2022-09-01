@@ -15,7 +15,11 @@ export const Register = () => {
       <form className="register-form-inputs" action="" method="">
         <label className="register-form-label" htmlFor="">Username</label>
         <input type="email" placeholder="john@gmail.com" name="email" required />
-        <label htmlFor="">Password</label>
+        <div className="label-and-gif-container">
+
+        <label className="psw-label" htmlFor="">Password</label>
+        <div className="gif-container"></div>
+        </div>
         <input type="password" placeholder="Enter your Password" name="password" required />
         <input type="password" placeholder="Confirm your Password" name="password" required />
         
@@ -26,7 +30,7 @@ export const Register = () => {
         <button> LOGIN </button>
         <button className="danger"> CANCEL </button>
         </div>
-        <a href=""> already have an account ?</a>
+        <a href="/login"> already have an account ?</a>
       
       </form>
 

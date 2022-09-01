@@ -1,9 +1,7 @@
 .login-form{
 
-  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   margin: 0 auto;
   width: 100%;
 
@@ -86,17 +84,17 @@
   }
 
 }
- .test2{
+ .div-gif-container{
   width: 100%;
   display: flex;
   justify-content: end;
   position: relative;
  }
-.test-div{
+.div-gif {
   width: 30%;
   height: 120px;
   background-image: url('../assets/1621344026_300155_gif-url.gif');
   background-size: contain;
   background-repeat: no-repeat;
-  position: absolute;
+  
 }

@@ -1,5 +1,5 @@
 .register-form{
-  border: 1px solid red;
+
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -86,5 +86,30 @@
     text-align: end;
     text-decoration: none;
   }
+
+.label-and-gif-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  
+ 
+  margin-top: 20px;
+  
+  .psw-label{
+    margin: 0;
+  }
+
+}
+.gif-container {
+  width: 20%;
+  height:40px;
+  background-image: url('../assets/99dbac9235ee5529c016f116c4128696.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+  
+
+}
 
 }
