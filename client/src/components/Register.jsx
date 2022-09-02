@@ -57,8 +57,16 @@ export const Register = (props) => {
   const postEmail=() => {
         axios.post('/users/new', {
           username, email, psw
-        }).then(res => console.log(res))
-      }     
+        }).then(res => console.log(res), console.log('reactPASSWORD', psw))
+  }   
+  
+  
+  const testpsw = () => {
+    axios.get('/users/test', {
+      email
+    })
+    .then(res =>  console.log(res.data))
+  }
     
 
   return (
@@ -94,7 +102,7 @@ export const Register = (props) => {
         <div className="login-form-btns">
 
         <button onClick={(event) => (onSubmit(event))}> LOGIN </button>
-        <button className="danger"> CANCEL </button>
+        <button className="danger" onClick={() => testpsw()}> CANCEL </button>
         </div>
         <a href="/login"> already have an account ?</a>
       
