@@ -114,7 +114,14 @@
   background-repeat: no-repeat;
   background-size: contain;
   
-
+}
+.error-message{
+  color:red;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 0.7em;
+  text-align: right;
+  margin-right: 5px;
 }
 
 }

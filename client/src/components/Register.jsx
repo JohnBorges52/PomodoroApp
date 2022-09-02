@@ -12,12 +12,12 @@ export const Register = (props) => {
   const [emailExist, setEmailExist] = useState(false)
   const [usernameExist, setUsernameExist] = useState(false)
 
-  const validEmail=(e)=> {
+  const onSubmit=(e)=> {
     e.preventDefault(); 
     axios.get('/users/alreadyExist', { params: {email, username}})
     .then(res => {
       console.log(res.data)
-      if(emailValidation(res.data) === true && usernameValidation(res.data) === true ) {
+      if(usernameValidation(res.data) === true && emailValidation(res.data) === true) {
         postEmail(res.data)
       } else{
         console.log("NAO POOSTOU")
@@ -34,6 +34,7 @@ export const Register = (props) => {
     if(emailList.length === 0){
       return true
     } else {
+      setEmailExist(true)
       return false
     }
   }
@@ -46,6 +47,7 @@ export const Register = (props) => {
     if(usernameList.length === 0){
       return true
     } else {
+      setUsernameExist(true)
       return false
       }
   }
@@ -59,13 +61,6 @@ export const Register = (props) => {
       }     
     
 
-      
- 
-        
-    
-  
-  
-
   return (
 
     <div className="register-form">
@@ -77,10 +72,14 @@ export const Register = (props) => {
       <div className="register-form-inputs">
 
         <label className="register-form-label">Username</label>
-        <input onChange={(e) => setUsername(e.target.value)  } value={username} type="text" placeholder="john45" name="username" required />
+        <input onChange={(e) => (setUsername(e.target.value),setUsernameExist(false))  } value={username} type="text" placeholder="john45" name="username" required />
+
+        {usernameExist && <span className="error-message">Username alredy exists!</span> }
         
         <label className="register-form-label">Email</label>
-        <input onChange={(e) => setEmail(e.target.value)} value={email} type="email" placeholder="john@gmail.com" name="email" required />
+        <input onChange={(e) => (setEmail(e.target.value), setEmailExist(false))} value={email} type="email" placeholder="john@gmail.com" name="email" required />
+
+        {emailExist && <span className="error-message">Email alredy exists!</span> }
         
         <div className="label-and-gif-container">
         <label className="psw-label">Password</label>
@@ -94,8 +93,8 @@ export const Register = (props) => {
         
         <div className="login-form-btns">
 
-        <button onClick={(event)=> validEmail(event)}> LOGIN </button>
-        <button onClick={(e)=>{validEmail(e)}} className="danger"> CANCEL </button>
+        <button onClick={(event) => (onSubmit(event))}> LOGIN </button>
+        <button className="danger"> CANCEL </button>
         </div>
         <a href="/login"> already have an account ?</a>
       
