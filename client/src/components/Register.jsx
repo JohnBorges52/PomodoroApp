@@ -61,13 +61,7 @@ export const Register = (props) => {
   }   
   
   
-  const testpsw = () => {
-    axios.get('/users/test', {
-      email
-    })
-    .then(res =>  console.log(res.data))
-  }
-    
+ 
 
   return (
 
@@ -102,7 +96,7 @@ export const Register = (props) => {
         <div className="login-form-btns">
 
         <button onClick={(event) => (onSubmit(event))}> LOGIN </button>
-        <button className="danger" onClick={() => testpsw()}> CANCEL </button>
+        <button className="danger" > CANCEL </button>
         </div>
         <a href="/login"> already have an account ?</a>
       

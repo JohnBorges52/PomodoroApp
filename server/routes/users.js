@@ -12,6 +12,19 @@ module.exports = (db) => {
   });
 
 
+  router.get("/alreadyExist", (req, res) => {
+    const command = `SELECT * FROM users WHERE email = $1 OR username = $2`;
+    db.query(command, [
+      req.query.email,
+      req.query.username
+
+    ])
+      .then(data => {
+        res.json(data.rows)
+      })
+      ;
+  })
+
   router.post("/new", async (req, res) => {
 
     try {
@@ -26,43 +39,16 @@ module.exports = (db) => {
       ])
         .then((data) => {
           res.status(200).json(data);
-          console.log("hashsePASSWORD:", hashedPassword)
         })
 
     } catch {
       res.status(500).send()
     };
 
-
-
   });
 
-  router.get("/test", (req, res) => {
-    const command = `SELECT * FROM users WHERE email = $1`
-    db.query(command, [
-      req.body.email
-    ]).then(data => {
-      res.json(data.rows)
-    })
-
-  })
 
 
-  router.get("/alreadyExist", (req, res) => {
-    const command = `SELECT * FROM users WHERE email = $1 OR username = $2`;
-    db.query(command, [
-      req.query.email,
-      req.query.username
-
-    ])
-      .then(data => {
-        res.json(data.rows)
-      })
-    // .catch((err) => {
-    //   res.status(500).json({ error: err.message });
-    // });
-
-  })
 
 
   router.get("/success", (req, res) => {
