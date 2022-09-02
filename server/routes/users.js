@@ -13,7 +13,7 @@ module.exports = (db) => {
 
   router.post("/new", (req, res) => {
 
-    const command = `INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING *`;
+    const command = `INSERT INTO users (username, email, password) VALUES ($1, $2, $3)`;
 
     db.query(command, [
       req.body.username,
@@ -23,21 +23,22 @@ module.exports = (db) => {
       .then((data) => {
         res.status(200).json(data);
       })
-      .catch((err) => {
-        res.status(500).json({ error: err.message });
-      });
+    // .catch((err) => {
+    //   console.error(err.response.data)
+    // });
   });
 
   router.get("/alreadyExist", (req, res) => {
-    const command = `SELECT * FROM users WHERE email = $1 OR username = $2`;
+    const command = `SELECT * FROM users WHERE email = $1`;
     db.query(command, [
-      req.body.username,
-      req.body.email
+      req.query.email
     ])
-      .then(res.send("exists"))
-      .catch((err) => {
-        res.status(500).json({ error: err.message });
-      });
+      .then(data => {
+        res.json(data.rows)
+      })
+    // .catch((err) => {
+    //   res.status(500).json({ error: err.message });
+    // });
 
   })
 

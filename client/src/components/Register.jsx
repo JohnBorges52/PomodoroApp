@@ -10,37 +10,51 @@ export const Register = (props) => {
   const [psw, setPsw] = useState("")
   const [pswConfirmation, setPswConfirmation] = useState("")
 
-
-
-  const validadeEmail=(email) => {
-    axios.get('/users/alreadyExist')
-
-
+  const validEmail=(e)=> {
+    e.preventDefault(); 
+    axios.get('/users/alreadyExist', { params: {email}})
+    .then(res => {
+     checkEmail(res.data)
+      
+    })
   }
 
 
-  const submitNewUser=(username, email, psw, event) => {
+  const checkEmail=(data) => {
+    let result = [] 
+      data.map(item => {
+        result.push(item.email)
+      })
+    if (result.includes(email)) {
+        console.log("EMAIL ALREDY EXIST")
+    }
+       else {
+        axios.post('/users/new', {
+
+          username, email, psw
+        }
+        )
+        .then(res => console.log(res))
+      } 
     
       
-
+      
     
-      console.log(username, email, psw)
-     axios.post('/users/new', {
-      username, email, psw
-     })
-     .then(res => console.log('response', res))
+    //  else {
+    //   axios.post('users/new', 
+    //   username, email, psw 
+    //   ).then(res=>{
+    //     console.log(res)
+    //   })
+    // }
+   } 
+
+      
+ 
+        
     
-    event.preventDefault();    
-    
-
-  }
-
-
-
-
-
-
-
+  
+  
 
   return (
 
@@ -70,8 +84,8 @@ export const Register = (props) => {
         
         <div className="login-form-btns">
 
-        <button onClick={(event)=> submitNewUser(username, email, psw, event)}> LOGIN </button>
-        <button className="danger"> CANCEL </button>
+        <button onClick={(event)=> validEmail(event)}> LOGIN </button>
+        <button onClick={(e)=>{validEmail(e)}} className="danger"> CANCEL </button>
         </div>
         <a href="/login"> already have an account ?</a>
       
