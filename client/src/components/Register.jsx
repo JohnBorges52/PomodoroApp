@@ -9,45 +9,55 @@ export const Register = (props) => {
   const [email, setEmail] = useState("")
   const [psw, setPsw] = useState("")
   const [pswConfirmation, setPswConfirmation] = useState("")
+  const [emailExist, setEmailExist] = useState(false)
+  const [usernameExist, setUsernameExist] = useState(false)
 
   const validEmail=(e)=> {
     e.preventDefault(); 
-    axios.get('/users/alreadyExist', { params: {email}})
+    axios.get('/users/alreadyExist', { params: {email, username}})
     .then(res => {
-     checkEmail(res.data)
+      console.log(res.data)
+      if(emailValidation(res.data) === true && usernameValidation(res.data) === true ) {
+        postEmail(res.data)
+      } else{
+        console.log("NAO POOSTOU")
+      }
       
     })
   }
 
-
-  const checkEmail=(data) => {
-    let result = [] 
-      data.map(item => {
-        result.push(item.email)
-      })
-    if (result.includes(email)) {
-        console.log("EMAIL ALREDY EXIST")
+  const emailValidation= (data) =>{
+    let emailList = []
+    data.map(item => {
+      emailList.push(item.email)
+    })
+    if(emailList.length === 0){
+      return true
+    } else {
+      return false
     }
-       else {
-        axios.post('/users/new', {
+  }
 
+  const usernameValidation= (data) =>{ 
+    let usernameList = []
+    data.map(item => {
+      usernameList.push(item.username)
+      })
+    if(usernameList.length === 0){
+      return true
+    } else {
+      return false
+      }
+  }
+
+
+
+  const postEmail=() => {
+        axios.post('/users/new', {
           username, email, psw
-        }
-        )
-        .then(res => console.log(res))
-      } 
+        }).then(res => console.log(res))
+      }     
     
-      
-      
-    
-    //  else {
-    //   axios.post('users/new', 
-    //   username, email, psw 
-    //   ).then(res=>{
-    //     console.log(res)
-    //   })
-    // }
-   } 
 
       
  

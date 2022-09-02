@@ -29,9 +29,11 @@ module.exports = (db) => {
   });
 
   router.get("/alreadyExist", (req, res) => {
-    const command = `SELECT * FROM users WHERE email = $1`;
+    const command = `SELECT * FROM users WHERE email = $1 OR username = $2`;
     db.query(command, [
-      req.query.email
+      req.query.email,
+      req.query.username
+
     ])
       .then(data => {
         res.json(data.rows)
