@@ -1,6 +1,7 @@
 import "../styles/register.scss"
 import axios from "axios";
 import { useState } from "react";
+import { useEffect } from "react";
 
 
 export const Register = (props) => {
@@ -9,16 +10,20 @@ export const Register = (props) => {
   const [email, setEmail] = useState("")
   const [psw, setPsw] = useState("")
   const [pswConfirmation, setPswConfirmation] = useState("")
+
+
+ 
   const [emailExist, setEmailExist] = useState(false)
   const [usernameExist, setUsernameExist] = useState(false)
+  const [pswMatches, setPswMatches] = useState(true)
 
   const onSubmit=(e)=> {
     e.preventDefault(); 
     axios.get('/users/alreadyExist', { params: {email, username}})
     .then(res => {
       console.log(res.data)
-      if(usernameValidation(res.data) === true && emailValidation(res.data) === true) {
-        postEmail(res.data)
+      if( usernameValidation(res.data) === true && emailValidation(res.data) === true) {
+        registerUser(res.data)
       } else{
         console.log("NAO POOSTOU")
       }
@@ -26,16 +31,17 @@ export const Register = (props) => {
     })
   }
 
-  const emailValidation= (data) =>{
+  const emailValidation= (data) => {
     let emailList = []
     data.map(item => {
       emailList.push(item.email)
     })
-    if(emailList.length === 0){
-      return true
-    } else {
+    if(emailList.includes(email)) {
       setEmailExist(true)
       return false
+    } else {
+      setEmailExist(false)
+      return true
     }
   }
 
@@ -44,23 +50,33 @@ export const Register = (props) => {
     data.map(item => {
       usernameList.push(item.username)
       })
-    if(usernameList.length === 0){
-      return true
-    } else {
+    if(usernameList.includes(username)) {
       setUsernameExist(true)
       return false
+    } else {
+      setUsernameExist(false)
+      return true
       }
   }
 
 
 
-  const postEmail=() => {
+  const registerUser=() => {
         axios.post('/users/new', {
           username, email, psw
         }).then(res => console.log(res), console.log('reactPASSWORD', psw))
   }   
   
-  
+  const validatePswMatch = (psw, pswConfirmation) => {
+    if (psw !== pswConfirmation) {
+      setPswMatches(false)
+      return false
+    } else {
+      setPswMatches(true)
+      return true
+    }
+  }
+
  
 
   return (
@@ -90,12 +106,12 @@ export const Register = (props) => {
         
         <input onChange={(e) => setPsw(e.target.value)} value={psw} type="password" placeholder="Enter your Password" name="psw" required />
         <input onChange={(e) => setPswConfirmation(e.target.value)} value={pswConfirmation} type="password" placeholder="Confirm your Password" name="psw-confirm" required />
-        
-        
-        
+        {!pswMatches && <span className="error-message"> Password did not match</span> }
+      
+
         <div className="login-form-btns">
 
-        <button onClick={(event) => (onSubmit(event))}> LOGIN </button>
+        <button onClick={(event) => (onSubmit(event), validatePswMatch(psw,pswConfirmation))}> LOGIN </button>
         <button className="danger" > CANCEL </button>
         </div>
         <a href="/login"> already have an account ?</a>
