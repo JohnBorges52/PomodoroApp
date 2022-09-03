@@ -21,11 +21,11 @@ export const Register = (props) => {
     e.preventDefault(); 
     axios.get('/users/alreadyExist', { params: {email, username}})
     .then(res => {
-      console.log(res.data)
-      if( usernameValidation(res.data) === true && emailValidation(res.data) === true) {
+      if( usernameValidation(res.data) === true && emailValidation(res.data) === true && validatePswMatch(psw, pswConfirmation) === true) {
         registerUser(res.data)
       } else{
         console.log("NAO POOSTOU")
+       
       }
       
     })
@@ -58,8 +58,6 @@ export const Register = (props) => {
       return true
       }
   }
-
-
 
   const registerUser=() => {
         axios.post('/users/new', {
@@ -111,7 +109,7 @@ export const Register = (props) => {
 
         <div className="login-form-btns">
 
-        <button onClick={(event) => (onSubmit(event), validatePswMatch(psw,pswConfirmation))}> LOGIN </button>
+        <button onClick={(event) => (onSubmit(event), validatePswMatch(psw,pswConfirmation), console.log(psw, pswConfirmation))}> LOGIN </button>
         <button className="danger" > CANCEL </button>
         </div>
         <a href="/login"> already have an account ?</a>
