@@ -17,39 +17,41 @@ export const Register = (props) => {
   const [usernameExist, setUsernameExist] = useState(false)
   const [pswMatches, setPswMatches] = useState(true)
 
+
   const onSubmit=(e)=> {
     e.preventDefault(); 
     axios.get('/users/alreadyExist', { params: {email, username}})
     .then(res => {
-      if( usernameValidation(res.data) === true && emailValidation(res.data) === true && validatePswMatch(psw, pswConfirmation) === true) {
+      if( usernameValidation(res.data) === true && emailValidation(res.data) === true && pswValidation(psw, pswConfirmation) === true) {
         registerUser(res.data)
       } else{
         console.log("NAO POOSTOU")
-       
-      }
+      } 
       
     })
   }
 
-  const emailValidation= (data) => {
+  const emailValidation = (data) => {
     let emailList = []
     data.map(item => {
       emailList.push(item.email)
     })
+
     if(emailList.includes(email)) {
       setEmailExist(true)
       return false
     } else {
       setEmailExist(false)
       return true
+    
     }
   }
 
-  const usernameValidation= (data) =>{ 
+  const usernameValidation = (data) =>{ 
     let usernameList = []
     data.map(item => {
       usernameList.push(item.username)
-      })
+    })
     if(usernameList.includes(username)) {
       setUsernameExist(true)
       return false
@@ -59,13 +61,8 @@ export const Register = (props) => {
       }
   }
 
-  const registerUser=() => {
-        axios.post('/users/new', {
-          username, email, psw
-        }).then(res => console.log(res), console.log('reactPASSWORD', psw))
-  }   
   
-  const validatePswMatch = (psw, pswConfirmation) => {
+  const pswValidation = (psw, pswConfirmation) => {
     if (psw !== pswConfirmation) {
       setPswMatches(false)
       return false
@@ -74,7 +71,12 @@ export const Register = (props) => {
       return true
     }
   }
-
+  
+  const registerUser=() => {
+        axios.post('/users/new', {
+          username, email, psw
+        }).then(res => console.log(res), console.log('reactPASSWORD', psw))
+  }   
  
 
   return (
@@ -109,7 +111,7 @@ export const Register = (props) => {
 
         <div className="login-form-btns">
 
-        <button onClick={(event) => (onSubmit(event), validatePswMatch(psw,pswConfirmation), console.log(psw, pswConfirmation))}> LOGIN </button>
+        <button onClick={(event) => (onSubmit(event), pswValidation(psw,pswConfirmation))}> LOGIN </button>
         <button className="danger" > CANCEL </button>
         </div>
         <a href="/login"> already have an account ?</a>
