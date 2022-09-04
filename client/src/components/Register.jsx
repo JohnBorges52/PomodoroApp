@@ -31,7 +31,7 @@ export const Register = (props) => {
       
     })
   }
-  const isEmailValid = (email) => {
+  const isEmailValid = (email) => {     // <pass to a helperFunction folder
 
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
       setMsg("")
@@ -39,14 +39,7 @@ export const Register = (props) => {
     }
     setMsg("InvalidEmail")
     return false
-    }
-  
-    
-
-
-
-
-
+  }
 
   const emailValidation = (data) => {
     let emailList = []
@@ -79,13 +72,18 @@ export const Register = (props) => {
       usernameList.push(item.username)
     })
 
+    if(username.length < 3){
+      setMsg("InvalidUsername")
+      return false
+    }
     if(usernameList.includes(username)) {
       setUsernameExist(true)
       return false
-    } else {
+    } 
+    if (!usernameList.includes(username)) {
       setUsernameExist(false)
       return true
-      }
+    }
   }
 
   
@@ -120,6 +118,7 @@ export const Register = (props) => {
         <input onChange={(e) => (setUsername(e.target.value),setUsernameExist(false))  } value={username} type="text" placeholder="john45" name="username" required />
 
         {usernameExist && <span className="error-message">Username alredy exists!</span> }
+        {msg ==="InvalidUsername" && <span className="error-message">Username needs to be longer</span> }
         
         <label className="register-form-label">Email</label>
         <input onChange={(e) => (setEmail(e.target.value), setEmailExist(false))} value={email} type="email" placeholder="john@gmail.com" name="email" required />
