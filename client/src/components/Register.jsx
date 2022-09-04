@@ -16,6 +16,7 @@ export const Register = (props) => {
   const [emailExist, setEmailExist] = useState(false)
   const [usernameExist, setUsernameExist] = useState(false)
   const [pswMatches, setPswMatches] = useState(true)
+  const [msg, setMsg] = useState('')
 
 
   const onSubmit=(e)=> {
@@ -30,6 +31,22 @@ export const Register = (props) => {
       
     })
   }
+  const isEmailValid = (email) => {
+
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
+      setMsg("")
+      return true
+    }
+    setMsg("InvalidEmail")
+    return false
+    }
+  
+    
+
+
+
+
+
 
   const emailValidation = (data) => {
     let emailList = []
@@ -37,11 +54,20 @@ export const Register = (props) => {
       emailList.push(item.email)
     })
 
+    if(isEmailValid(email) === false ) {
+    
+      return false
+    }
+
     if(emailList.includes(email)) {
       setEmailExist(true)
+      setMsg("")
       return false
-    } else {
+    } 
+    
+    if(!emailList.includes(email)) {
       setEmailExist(false)
+      setMsg("")
       return true
     
     }
@@ -52,6 +78,7 @@ export const Register = (props) => {
     data.map(item => {
       usernameList.push(item.username)
     })
+
     if(usernameList.includes(username)) {
       setUsernameExist(true)
       return false
@@ -97,7 +124,8 @@ export const Register = (props) => {
         <label className="register-form-label">Email</label>
         <input onChange={(e) => (setEmail(e.target.value), setEmailExist(false))} value={email} type="email" placeholder="john@gmail.com" name="email" required />
 
-        {emailExist && <span className="error-message">Email alredy exists!</span> }
+        {emailExist && <span className="error-message">Email alredy exists</span> }
+        {msg === 'InvalidEmail' && <span className="error-message"> E-mail Invalid</span> }
         
         <div className="label-and-gif-container">
         <label className="psw-label">Password</label>
