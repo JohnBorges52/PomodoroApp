@@ -16,7 +16,7 @@ export const Register = (props) => {
   const [emailExist, setEmailExist] = useState(false)
   const [usernameExist, setUsernameExist] = useState(false)
   const [pswMatches, setPswMatches] = useState(true)
-  const [msg, setMsg] = useState('')
+  const [alertMsg, setAlertMsg] = useState('')
 
 
   const onSubmit=(e)=> {
@@ -34,10 +34,10 @@ export const Register = (props) => {
   const isEmailValid = (email) => {     // <pass to a helperFunction folder
 
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
-      setMsg("")
+      setAlertMsg("")
       return true
     }
-    setMsg("InvalidEmail")
+    setAlertMsg("InvalidEmail")
     return false
   }
 
@@ -54,13 +54,13 @@ export const Register = (props) => {
 
     if(emailList.includes(email)) {
       setEmailExist(true)
-      setMsg("")
+      setAlertMsg("")
       return false
     } 
     
     if(!emailList.includes(email)) {
       setEmailExist(false)
-      setMsg("")
+      setAlertMsg("")
       return true
     
     }
@@ -73,15 +73,17 @@ export const Register = (props) => {
     })
 
     if(username.length < 3){
-      setMsg("InvalidUsername")
+      setAlertMsg("InvalidUsername")
       return false
     }
     if(usernameList.includes(username)) {
       setUsernameExist(true)
+      setAlertMsg("")
       return false
     } 
     if (!usernameList.includes(username)) {
       setUsernameExist(false)
+      setAlertMsg("")
       return true
     }
   }
@@ -118,13 +120,13 @@ export const Register = (props) => {
         <input onChange={(e) => (setUsername(e.target.value),setUsernameExist(false))  } value={username} type="text" placeholder="john45" name="username" required />
 
         {usernameExist && <span className="error-message">Username alredy exists!</span> }
-        {msg ==="InvalidUsername" && <span className="error-message">Username needs to be longer</span> }
+        {alertMsg ==="InvalidUsername" && <span className="error-message">Username needs to be longer</span> }
         
         <label className="register-form-label">Email</label>
         <input onChange={(e) => (setEmail(e.target.value), setEmailExist(false))} value={email} type="email" placeholder="john@gmail.com" name="email" required />
 
         {emailExist && <span className="error-message">Email alredy exists</span> }
-        {msg === 'InvalidEmail' && <span className="error-message"> E-mail Invalid</span> }
+        {alertMsg === 'InvalidEmail' && <span className="error-message"> E-mail Invalid</span> }
         
         <div className="label-and-gif-container">
         <label className="psw-label">Password</label>

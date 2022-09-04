@@ -1,8 +1,26 @@
+import axios from "axios"
+import { useState } from "react"
 import "../styles/login.scss"
 
 
+
+
+
 export const Login = () => {
-  
+    
+  const [email, setEmail] = useState("")
+  const [ psw, setPsw] = useState('')
+  const [userId, setUserID] = useState(null)
+
+
+  const onLogin = (e) => {
+    e.preventDefault()
+    axios.post("/users/loginSuccess", {email}
+    ).then(data => console.log(data)
+      
+    )
+  }
+
 
   return (
 
@@ -23,15 +41,16 @@ export const Login = () => {
      
 
       <form className="login-form-inputs" action="" method="">
-        <label className="login-form-label" >Username</label>
-        <input type="email" placeholder="john@gmail.com" name="email" required />
+        <label className="login-form-label" >E-mail</label>
+        <input onChange={(e) => setEmail(e.target.value)} value={email} type="email" placeholder="youremail@email.com" name="email" required />
+        
         <label>Password</label>
-        <input type="password" placeholder="Enter your Password" name="password" required />
+        <input onChange={(e) => setPsw(e.target.value)} value={psw} type="password" placeholder="Enter your Password" name="psw" required />
         
         
         <div className="login-form-btns">
 
-        <button> LOGIN </button>
+        <button onClick={(e)=> {onLogin(e)}}  > LOGIN </button>
         <button className="danger"> CANCEL </button>
         </div>
         <a href="/users/register"> or create an account</a>

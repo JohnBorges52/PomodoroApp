@@ -12,6 +12,33 @@ module.exports = (db) => {
   });
 
 
+
+  router.post("/loginSuccess", async (req, res) => {
+
+    try {
+      const email = req.body.email
+      const psw = req.body.psw
+      const user = await db.query(`SELECT * from USERS WHERE email = $1`, [req.body.email])
+      if (user) {
+        const validPass = await bcrypt.compare(psw, "ARRUMAR AQUI")
+        if (validPass) {
+          console.log("YEY")
+        } else {
+          console.log(" NOOO")
+        }
+      } else {
+        console.log("NO EMAIL FOUND")
+      }
+
+
+    } catch (e) {
+      console.log("EEE:", e)
+    }
+
+
+  });
+
+
   router.get("/alreadyExist", (req, res) => {
     const command = `SELECT * FROM users WHERE email = $1 OR username = $2`;
     db.query(command, [
