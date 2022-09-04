@@ -18,13 +18,14 @@ module.exports = (db) => {
     try {
       const email = req.body.email
       const psw = req.body.psw
-      const user = await db.query(`SELECT * from USERS WHERE email = $1`, [req.body.email])
+      const user = await db.query(`SELECT * from USERS WHERE email = $1`, [email])
+      //  console.log("USER:", user.rows[0].password, "EMAIL:", email, "PSW:", psw)
       if (user) {
-        const validPass = await bcrypt.compare(psw, "ARRUMAR AQUI")
+        const validPass = await bcrypt.compare(psw, user.rows[0].password)
         if (validPass) {
-          console.log("YEY")
+          res.status(200).json('Login Succefully')
         } else {
-          console.log(" NOOO")
+          res.json("Wrong Password")
         }
       } else {
         console.log("NO EMAIL FOUND")
@@ -32,7 +33,8 @@ module.exports = (db) => {
 
 
     } catch (e) {
-      console.log("EEE:", e)
+      console.log(e);
+      res.status(500).send("user not found")
     }
 
 

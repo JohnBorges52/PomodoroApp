@@ -15,7 +15,7 @@ export const Login = () => {
 
   const onLogin = (e) => {
     e.preventDefault()
-    axios.post("/users/loginSuccess", {email}
+    axios.post("/users/loginSuccess", {email, psw}
     ).then(data => console.log(data)
       
     )
