@@ -1,4 +1,5 @@
 import axios from "axios"
+import { useEffect } from "react"
 import { useState } from "react"
 import "../styles/login.scss"
 
@@ -7,18 +8,30 @@ import "../styles/login.scss"
 
 
 export const Login = () => {
+
+
+useEffect(() => {
+  const loggedInUser = localStorage.getItem("user");
+  console.log("loggedinuser:", JSON.parse(loggedInUser))
+  // if(loggedInUser) {
+  //   const foundUser = JSON.parse(loggedInUser)
+  //   setUser(foundUser);
+  //   console.log("USER LOGGEDIN AS: ", user)
+  // }
+}, [])
+
     
   const [email, setEmail] = useState("")
   const [ psw, setPsw] = useState('')
-  const [userId, setUserID] = useState(null)
+  const [user, setUser] = useState("")
 
-
-  const onLogin = (e) => {
+  const onLogin =  async (e) => {
     e.preventDefault()
-    axios.post("/users/loginSuccess", {email, psw}
-    ).then(data => console.log(data)
-      
-    )
+    const user = {email, psw};
+    const response = await axios.post("/users/loginSuccess", {email, psw});
+    console.log("RESPONSE:",response)
+    setUser(response.data)
+    localStorage.setItem('user', JSON.stringify(response.data))
   }
 
 

@@ -11,11 +11,25 @@ import { BottomNavBar } from './components/BottomNavBar';
 import { Timer } from './components/Timer';
 import { Login } from './components/Login';
 import { Register } from './components/Register';
+import axios from 'axios';
+import { useState } from 'react';
 
 
 function App() {
 
+  // const [username,setUsername] = useState("")
+  // const [ psw, setPsw] = useState("")
+  // const [user, setUser] = useState("")
 
+  // const handleSubmit = async e => {
+  //   e.preventDefault()
+  //   const user = {username, psw};
+  //   const response = await axios.post("/users/login", user
+  //   );
+  //   setUser(response.data)
+  //   localStorage.setItem('user', response.data)
+  //   console.log(response.data)
+  // };
 
   return (
     <>

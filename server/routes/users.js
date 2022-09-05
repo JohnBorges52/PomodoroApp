@@ -23,8 +23,12 @@ module.exports = (db) => {
       if (user) {
         const validPass = await bcrypt.compare(psw, user.rows[0].password)
         if (validPass) {
-          res.status(200).json('Login Succefully')
-        } else {
+          res.json(user.rows[0])
+        }
+
+
+
+        else {
           res.json("Wrong Password")
         }
       } else {
