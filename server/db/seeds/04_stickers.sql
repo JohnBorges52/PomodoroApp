@@ -1,0 +1,1 @@
+INSERT INTO stickers (stickerPic) VALUES ('../public/images/stickers/chibi-charizard-512x512.png');
