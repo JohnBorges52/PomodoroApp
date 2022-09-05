@@ -13,23 +13,31 @@ import { Login } from './components/Login';
 import { Register } from './components/Register';
 import axios from 'axios';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 
 function App() {
 
-  // const [username,setUsername] = useState("")
-  // const [ psw, setPsw] = useState("")
-  // const [user, setUser] = useState("")
+  const [email, setEmail] = useState("")
+  const [psw, setPsw] = useState('')
+  const [user, setUser] = useState("")
 
-  // const handleSubmit = async e => {
-  //   e.preventDefault()
-  //   const user = {username, psw};
-  //   const response = await axios.post("/users/login", user
-  //   );
-  //   setUser(response.data)
-  //   localStorage.setItem('user', response.data)
-  //   console.log(response.data)
-  // };
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser)
+      setUser(foundUser);
+      console.log("USER LOGGEDIN AS: ", foundUser)
+    }
+  }, [])
+
+  const onLogin = async (e) => {
+    e.preventDefault()
+    const response = await axios.post("/users/loginSuccess", { email, psw });
+    console.log("RESPONSE:", response)
+    setUser(response.data)
+    localStorage.setItem('user', JSON.stringify(response.data))
+  }
 
   return (
     <>
@@ -40,7 +48,13 @@ function App() {
           <div className='main--container'>
             <Routes>
               <Route path="/" element={<Timer />} />
-              <Route path="/login" element={<Login />} />
+              <Route path="/login" element={<Login
+                onChangePsw={(e) => setPsw(e.target.value)}
+                onChangeEmail={(e) => setEmail(e.target.value)}
+                email={email}
+                psw={psw}
+                onLogin={(e) => { onLogin(e) }}
+              />} />
               <Route path="/users/register" element={<Register />} />
 
 

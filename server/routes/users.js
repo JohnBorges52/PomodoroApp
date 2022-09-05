@@ -26,8 +26,6 @@ module.exports = (db) => {
           res.json(user.rows[0])
         }
 
-
-
         else {
           res.json("Wrong Password")
         }
