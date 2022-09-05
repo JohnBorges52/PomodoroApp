@@ -1,7 +1,7 @@
 import '../styles/top-nav-bar.scss'
 
 
-export const TopNavBar = () => {
+export const TopNavBar = (props) => {
 
   return (
     <div className="top--nav">
@@ -12,7 +12,7 @@ export const TopNavBar = () => {
           </a> </li>
         </div>
         <div className='div--right'>
-        <li><a href="/login">LOGIN</a></li>
+        <li><a onClick={props.onClick}>{props.loginMsg}</a></li>
  
         </div>
       </ul>

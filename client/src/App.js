@@ -2,8 +2,8 @@ import './App.css';
 import './styles/style.scss'
 import './styles/popup.scss'
 import classNames from "classnames";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import { Routes, Route, useNavigate } from "react-router-dom";
+import { Blank } from './components/Blank';
 
 // COMPONENTS // 
 import { TopNavBar } from './components/TopNavBar';
@@ -17,10 +17,13 @@ import { useEffect } from 'react';
 
 
 function App() {
+  let navigate = useNavigate();
 
   const [email, setEmail] = useState("")
   const [psw, setPsw] = useState('')
   const [user, setUser] = useState("")
+  const [isLogin, setIsLogin] = useState(true)
+
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user");
@@ -31,45 +34,54 @@ function App() {
     }
   }, [])
 
+
   const onLogin = async (e) => {
     e.preventDefault()
     const response = await axios.post("/users/loginSuccess", { email, psw });
     console.log("RESPONSE:", response)
     setUser(response.data)
     localStorage.setItem('user', JSON.stringify(response.data))
+    navigate("/")
+  }
+
+  const handleLogout = (e) => {
+    e.preventDefault()
+    setUser({})
+    setEmail("")
+    setPsw("")
+    localStorage.clear();
+    navigate("/login")
+    window.location.reload(false)
+
+
   }
 
   return (
     <>
-      <Router>
+      <div className="App">
+        {user ? <TopNavBar loginMsg={"LOGOUT"} onClick={(e) => handleLogout(e)} /> : <TopNavBar loginMsg={"LOGIN"} onClick={() => navigate("/login")} />}
 
-        <div className="App">
-          <TopNavBar />
-          <div className='main--container'>
-            <Routes>
-              <Route path="/" element={<Timer />} />
-              <Route path="/login" element={<Login
-                onChangePsw={(e) => setPsw(e.target.value)}
-                onChangeEmail={(e) => setEmail(e.target.value)}
-                email={email}
-                psw={psw}
-                onLogin={(e) => { onLogin(e) }}
-              />} />
-              <Route path="/users/register" element={<Register />} />
+        <div className='main--container'>
+          <Routes>
+            <Route path="/" element={<Timer />} />
+            <Route path="/login" element={<Login
+              onChangePsw={(e) => setPsw(e.target.value)}
+              onChangeEmail={(e) => setEmail(e.target.value)}
+              email={email}
+              psw={psw}
+              onLogin={(e) => { onLogin(e) }}
+              onLogout={(e) => { handleLogout(e) }}
+            />} />
+            <Route path="/users/register" element={<Register />} />
+            <Route path="/blank" element={<Blank />} />
 
 
-            </Routes>
-          </div>
-          <BottomNavBar />
+          </Routes>
         </div>
-        {/* ROUTES */}
+        <BottomNavBar />
+      </div>
+      {/* ROUTES */}
 
-
-
-
-
-
-      </Router>
     </>
 
   );
