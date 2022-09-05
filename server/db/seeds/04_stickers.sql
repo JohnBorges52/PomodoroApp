@@ -1,1 +1,1 @@
-INSERT INTO stickers (stickerPic) VALUES ('../public/images/stickers/chibi-charizard-512x512.png');
+INSERT INTO stickers (stickerPic) VALUES ('https://imagizer.imageshack.com/img924/916/nxuDNu.png');
