@@ -80,9 +80,6 @@ module.exports = (db) => {
   });
 
 
-
-
-
   router.get("/success", (req, res) => {
     const command = "SELECT * FROM users WHERE email = $1";
 

@@ -14,6 +14,7 @@ import { Register } from './components/Register';
 import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { MyProfile } from './components/MyProfile';
 
 
 function App() {
@@ -74,6 +75,7 @@ function App() {
             />} />
             <Route path="/users/register" element={<Register />} />
             <Route path="/blank" element={<Blank />} />
+            <Route path="/myprofile" element={<MyProfile />} />
 
 
           </Routes>
