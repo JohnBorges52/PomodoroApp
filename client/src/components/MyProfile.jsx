@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import { useState } from "react"
 
 import "../styles/myprofile.scss"
+import { BigSticker } from "./BigSticker"
 
 
 
@@ -10,6 +11,8 @@ import "../styles/myprofile.scss"
 export const MyProfile = (props) => {
   const [numberOfPomodoros, setNumberOfPomodoros] = useState()
   const [sticker, setSticker] = useState([])
+  const [stickerId, setStickerId] = useState(0)
+  const [openDiv, setOpenDiv] = useState(false)
 
   const loggedinUser = localStorage.getItem("user")
   const data = JSON.parse(loggedinUser)
@@ -35,9 +38,22 @@ export const MyProfile = (props) => {
     .then(res => setSticker(res.data) )
   }
 
+  const mapstickers = (stickerNumber) => {
+    let result = ''
+    sticker.map((element) => {
+      if (element.id === stickerNumber) {
+        result = element.stickerpic
+      }
+    })
+    return result
+  }
+
 
   return (
+    <>
     <div className="my-profile-main-container">
+      {openDiv && <BigSticker img={mapstickers(stickerId)} />}
+
       <div className="myprofile-span">
         <span > Welcome to your page <span className="myprofile-span-bolder">{data.username}</span>. </span>
       </div>
@@ -58,14 +74,16 @@ export const MyProfile = (props) => {
 
         {(sticker.map((element) =>
          <div key={element.id} className="mytrophies" >
-          <img className="sticker-img"  src={`${element.stickerpic}`} />
+          <img className="sticker-img" onClick={()=> (setStickerId(element.id), setOpenDiv(true), console.log(sticker) ) }  src={`${element.stickerpic}`} />
          </div>
-          
-          ))}
-   
-          </div>
+        ))}
+
+
+      </div>
+
 
     </div>
     
+    </>
   )
 }
