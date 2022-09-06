@@ -1,14 +1,14 @@
 .my-profile-main-container{
-
+margin-bottom: 50px;
 }
 
 
 .my-stickers-container{
   width: 100%;
  
-  border: 1px solid red;
+  // border: 1px solid red;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   margin-bottom: 50px ;
@@ -22,7 +22,7 @@
 
   width: 120px;
   height: 120px;
-  border: 1px solid green;
+  border: 1px solid rgb(158, 158, 158);
   margin:1px
 }
 .sticker-img{
@@ -41,7 +41,17 @@
   .span--little {
     font-size: 0.8em;
   }
+  .span--bold{
+    font-weight: 600;
+  }
   .myprofile-span-bolder{
     font-weight: 600;
   }
+}
+.my-stickers-tittle{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 1em;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }

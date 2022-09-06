@@ -47,11 +47,13 @@ export const MyProfile = (props) => {
       </div>
 
       <div className="myprofile-span">
-        <span>You have done: {numberOfPomodoros} pomodoros so far. </span>
+        <span>You have done <span className="span--bold"> {numberOfPomodoros}</span> pomodoros so far. </span>
       </div>
-<br />
+        <div className="my-stickers-tittle">
+
         <span>MY STICKERS</span>
-        <br />
+        </div>
+        
       <div className="my-stickers-container">
 
         {(sticker.map((element) =>
