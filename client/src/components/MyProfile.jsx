@@ -38,11 +38,17 @@ export const MyProfile = (props) => {
 
   return (
     <div className="my-profile-main-container">
+      <div className="myprofile-span">
+        <span > Welcome to your page <span className="myprofile-span-bolder">{data.username}</span>. </span>
+      </div>
+     
+      <div className="myprofile-span">
+        <span className="span--little" > You have this account since {data.created_at.substring(5,10)}-{data.created_at.substring(0,4)}.</span>
+      </div>
 
-        <span className="myprofile-span"> Welcome <span className="myprofile-span-bolder">{data.username}</span> </span>
-        <span className="myprofile-span"> You have this account since - {data.created_at.substring(5,10)}-{data.created_at.substring(0,4)}</span>
-        
-        <span>You have done: {numberOfPomodoros} pomodoros so far </span>
+      <div className="myprofile-span">
+        <span>You have done: {numberOfPomodoros} pomodoros so far. </span>
+      </div>
 <br />
         <span>MY STICKERS</span>
         <br />
