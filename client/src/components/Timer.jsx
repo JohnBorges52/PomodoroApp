@@ -70,7 +70,7 @@ export const Timer = () => {
     
 
     return (
-      <>
+      <div className='timer-component-container'>
 
       
       {confirmation && 
@@ -154,7 +154,7 @@ export const Timer = () => {
         
        
       </div>
-      </>
+      </div>
       
       );
     }

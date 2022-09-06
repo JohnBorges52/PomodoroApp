@@ -37,29 +37,27 @@ export const MyProfile = (props) => {
 
 
   return (
-    <div className='main--container'>
-        <span> Welcome {data.username} </span>
-        <span> You have this account since - {data.created_at.substring(5,10)}-{data.created_at.substring(0,4)}</span>
+    <div className="my-profile-main-container">
+
+        <span className="myprofile-span"> Welcome <span className="myprofile-span-bolder">{data.username}</span> </span>
+        <span className="myprofile-span"> You have this account since - {data.created_at.substring(5,10)}-{data.created_at.substring(0,4)}</span>
         
         <span>You have done: {numberOfPomodoros} pomodoros so far </span>
-        <span> here: {(sticker.map((element) =>
+<br />
+        <span>MY STICKERS</span>
+        <br />
+      <div className="my-stickers-container">
+
+        {(sticker.map((element) =>
          <div key={element.id} className="mytrophies" >
-
-          <img className="sticker-img"  src={`${element.stickerpic}`} /> 
-          
-
+          <img className="sticker-img"  src={`${element.stickerpic}`} />
          </div>
           
-        ))}</span>
+          ))}
    
+          </div>
 
-        
-
-        {/* <div className="mytrophies">
-
-          
-
-        </div> */}
     </div>
+    
   )
 }

@@ -1,9 +1,10 @@
 .main--container{
-  height: 84vh;
   width: 90%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  z-index: 1;
+  // margin-bottom: 50px;
 
 
 }

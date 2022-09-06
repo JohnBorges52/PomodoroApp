@@ -1,11 +1,9 @@
-import './App.css';
+import './App.css'
 import './styles/style.scss'
 import './styles/popup.scss'
-import classNames from "classnames";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { Blank } from './components/Blank';
 
-// COMPONENTS // 
+//COMPONENTS  
 import { TopNavBar } from './components/TopNavBar';
 import { BottomNavBar } from './components/BottomNavBar';
 import { Timer } from './components/Timer';
@@ -15,6 +13,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { MyProfile } from './components/MyProfile';
+import { TEST } from './components/TEST';
 
 
 function App() {
@@ -58,34 +57,26 @@ function App() {
   }
 
   return (
-    <>
-      <div className="App">
-        {user ? <TopNavBar loginMsg={"LOGOUT"} onClick={(e) => handleLogout(e)} /> : <TopNavBar loginMsg={"LOGIN"} onClick={() => navigate("/login")} />}
+    <div className="App">
+      {user ? <TopNavBar loginMsg={"LOGOUT"} onClick={(e) => handleLogout(e)} /> : <TopNavBar loginMsg={"LOGIN"} onClick={() => navigate("/login")} />}
 
-        <div className='main--container'>
-          <Routes>
-            <Route path="/" element={<Timer />} />
-            <Route path="/login" element={<Login
-              onChangePsw={(e) => setPsw(e.target.value)}
-              onChangeEmail={(e) => setEmail(e.target.value)}
-              email={email}
-              psw={psw}
-              onLogin={(e) => { onLogin(e) }}
-              onLogout={(e) => { handleLogout(e) }}
-            />} />
-            <Route path="/users/register" element={<Register />} />
-            <Route path="/blank" element={<Blank />} />
-            <Route path="/myprofile" element={<MyProfile />} />
-
-
-          </Routes>
-        </div>
-        <BottomNavBar />
+      <div className='main--container'>
+        <Routes>
+          <Route path="/" element={<Timer />} />
+          <Route path="/login" element={<Login
+            onChangePsw={(e) => setPsw(e.target.value)}
+            onChangeEmail={(e) => setEmail(e.target.value)}
+            email={email}
+            psw={psw}
+            onLogin={(e) => { onLogin(e) }}
+            onLogout={(e) => { handleLogout(e) }}
+          />} />
+          <Route path="/users/register" element={<Register />} />
+          <Route path="/myprofile" element={<MyProfile />} />
+        </Routes>
       </div>
-      {/* ROUTES */}
-
-    </>
-
+      <BottomNavBar />
+    </div>
   );
 }
 

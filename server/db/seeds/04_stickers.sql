@@ -16,9 +16,11 @@ INSERT INTO stickers (title, stickerPic) VALUES ('sailor-moon-luna-cat', 'https:
 INSERT INTO stickers (title, stickerPic) VALUES ('mha-all-might-smile', 'https://imagizer.imageshack.com/img923/9595/7AefN2.png');
 INSERT INTO stickers (title, stickerPic) VALUES ('spy-family-anya-smirk' , 'https://imagizer.imageshack.com/img923/7935/pBf5m2.png');
 INSERT INTO stickers (title, stickerPic) VALUES ('rick-pizza', 'https://imagizer.imageshack.com/img922/6177/ylEX8t.png');
-INSERT INTO stickers (title, stickerPic) VALUES ('anime', 'https://imagizer.imageshack.com/img924/7057/oHmQ9U.png');
+INSERT INTO stickers (title, stickerPic) VALUES ('
+Hunter-x-Hunter-Smiling-Gon', 'https://imagizer.imageshack.com/img924/7057/oHmQ9U.png');
 INSERT INTO stickers (title, stickerPic) VALUES ('one piece', 'https://imagizer.imageshack.com/img922/7513/t4Bdcq.png');
 INSERT INTO stickers (title, stickerPic) VALUES ('frog-my-hero', 'https://imagizer.imageshack.com/img923/4868/NGgyZE.png');
 INSERT INTO stickers (title, stickerPic) VALUES ('totoro-and-mei-kusakabe', 'https://imagizer.imageshack.com/img923/4148/aa3apn.png');
 INSERT INTO stickers (title, stickerPic) VALUES ('toradora-taiga-aisaka' , 'https://imagizer.imageshack.com/img924/4424/Azze0j.png');
 INSERT INTO stickers (title, stickerPic) VALUES ('umaru-doma-chibi', 'https://imagizer.imageshack.com/img922/9882/iWg88x.png');
+INSERT INTO stickers (title, stickerPic) VALUES ('death-note-chibi', 'https://imagizer.imageshack.com/img922/9108/UoKzNM.png');

@@ -2,12 +2,11 @@
   width: 100%;
   bottom: 0;
   position:  fixed;
-  z-index: 1;
   border-top: 1px solid grey;
-
-
+  z-index: 3;
+  background-color: rgb(202, 202, 202);
  
- 
+
 
   ul{
  
@@ -30,6 +29,6 @@
   }
   a{
     text-decoration:none; 
-    color: gray;
+    color: white;
   }
 }

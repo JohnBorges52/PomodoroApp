@@ -1,7 +1,29 @@
+.my-profile-main-container{
+
+}
+
+
+.my-stickers-container{
+  width: 100%;
+ 
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 50px ;
+
+ 
+  
+}
+
+
 .mytrophies{
+
   width: 100px;
   height: 100px;
-  
+  border: 1px solid green;
+  margin:1px
 }
 .sticker-img{
 
@@ -9,4 +31,13 @@
   height: 100%;
   object-fit: contain;
 
+}
+
+.myprofile-span{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 1em;
+  .myprofile-span-bolder{
+    font-weight: 600;
+  }
 }
