@@ -64,7 +64,7 @@ export const MyProfile = (props) => {
   return (
     <>
     <div className="my-profile-main-container">
-      {openDiv && <BigSticker img={mapStickersId(stickerId)} title={mapStickersTitle(stickerId)} msg={`You can win this sticker after ${stickerId} completed pomodoros. `} />}
+      {openDiv && <BigSticker img={mapStickersId(stickerId)} title={mapStickersTitle(stickerId)} msg={`You can win this sticker after ${stickerId} completed pomodoros. `} close={()=> setOpenDiv(false)}/>}
 
       <div className="myprofile-span">
         <span > Welcome to your page <span className="myprofile-span-bolder">{data.username}</span>. </span>

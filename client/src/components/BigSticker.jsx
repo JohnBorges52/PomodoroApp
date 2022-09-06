@@ -7,6 +7,7 @@ export const BigSticker = (props) => {
 
   return (
     <div className="big-img-div">
+      <div className="close-button" onClick={props.close}>X</div>
 
     <img className="big-sticker-img"  src={`${props.img}`} />
    
