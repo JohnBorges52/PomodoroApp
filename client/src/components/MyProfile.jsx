@@ -38,7 +38,7 @@ export const MyProfile = (props) => {
     .then(res => setSticker(res.data) )
   }
 
-  const mapstickers = (stickerNumber) => {
+  const mapStickersId = (stickerNumber) => {
     let result = ''
     sticker.map((element) => {
       if (element.id === stickerNumber) {
@@ -48,11 +48,23 @@ export const MyProfile = (props) => {
     return result
   }
 
+  
+  const mapStickersTitle = (stickerNumber) => {
+    let result = ''
+    sticker.map((element) => {
+      if (element.id === stickerNumber) {
+        result = element.title
+      }
+    })
+    return result
+  }
+
+
 
   return (
     <>
     <div className="my-profile-main-container">
-      {openDiv && <BigSticker img={mapstickers(stickerId)} />}
+      {openDiv && <BigSticker img={mapStickersId(stickerId)} title={mapStickersTitle(stickerId)} msg={`You can win this sticker after ${stickerId} completed pomodoros. `} />}
 
       <div className="myprofile-span">
         <span > Welcome to your page <span className="myprofile-span-bolder">{data.username}</span>. </span>

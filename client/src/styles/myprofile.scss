@@ -60,9 +60,29 @@ margin-bottom: 50px;
   background-color: rgba(190, 192, 187, 0.853);
   position: fixed;
   z-index: 2;
+  text-align: center;
 }
 .big-sticker-img{
   width: 400px;
   height: 400px;
-  text-align: center;
+  margin-top: 50px;
+ 
+}
+.big-sticker-title{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase ;
+  font-size: 1.2em;
+  margin-bottom: 30px;
+
+}
+.big-sticker-msg{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  width: 60%;
+  margin: 0 auto;
+  
+  font-size: 1em;
+  color: rgb(0, 0, 0);
+
 }
