@@ -22,7 +22,9 @@ function App() {
   const [email, setEmail] = useState("")
   const [psw, setPsw] = useState('')
   const [user, setUser] = useState("")
-  const [isLogin, setIsLogin] = useState(true)
+  const [userId, setUserId] = useState(0)
+
+
 
 
   useEffect(() => {
@@ -30,22 +32,31 @@ function App() {
     if (loggedInUser) {
       const foundUser = JSON.parse(loggedInUser)
       setUser(foundUser);
-
-      console.log("USER LOGGEDIN AS: ", foundUser)
+      console.log("user:", user)
+      setUserId(foundUser.id)
+      console.log("UserId: ", userId)
     } else {
       console.log("not loggedin ")
     }
   }, [])
 
+  useEffect(() => {
+    findUserId()
+  }, [])
 
-  const onLogin = async (e) => {
+
+
+
+  const onLogin = (e) => {
     e.preventDefault()
-    const response = await axios.post("/users/loginSuccess", { email, psw });
-    console.log("RESPONSE:", response)
-    setUser(response.data)
-    setIsLogin(true)
-    localStorage.setItem('user', JSON.stringify(response.data))
-    navigate("/")
+    axios.post("/users/loginSuccess", { email, psw })
+      .then(res => {
+        console.log("RESPONSE:", res)
+        setUser(res.data)
+        localStorage.setItem('user', JSON.stringify(res.data))
+        navigate("/")
+        window.location.reload(false)
+      })
   }
 
   const handleLogout = (e) => {
@@ -53,7 +64,6 @@ function App() {
     setUser({})
     setEmail("")
     setPsw("")
-    setIsLogin(false)
     localStorage.clear();
     navigate("/login")
     window.location.reload(false)
@@ -61,10 +71,25 @@ function App() {
 
   }
 
+  const findUserId = () => {
+
+    const loggedInUser = localStorage.getItem("user");
+    const parseUser = JSON.parse(loggedInUser)
+    if (parseUser) {
+      setUserId(parseUser.id)
+    } else {
+      setUserId(0)
+    }
+
+    return
+
+
+  }
+
   return (
     <div className="App">
       {user ? <TopNavBar loginMsg={"LOGOUT"} onClick={(e) => handleLogout(e)} /> : <TopNavBar loginMsg={"LOGIN"} onClick={() => navigate("/login")} />}
-
+      {/* <button onClick={() => findUserId()}> TEST</button> */}
       <div className='main--container'>
         <Routes>
           <Route path="/" element={<Timer />} />
@@ -73,14 +98,14 @@ function App() {
             onChangeEmail={(e) => setEmail(e.target.value)}
             email={email}
             psw={psw}
-            onLogin={(e) => { onLogin(e) }}
+            onLogin={(e) => (onLogin(e), findUserId())}
             onLogout={(e) => { handleLogout(e) }}
           />} />
           <Route path="/users/register" element={<Register />} />
           <Route path="/myprofile" element={<MyProfile />} />
         </Routes>
       </div>
-      <BottomNavBar href={"myprofile"} />
+      {userId !== 0 ? <BottomNavBar href={"/myprofile"} /> : <BottomNavBar href={"/login"} />}
     </div>
   );
 }
