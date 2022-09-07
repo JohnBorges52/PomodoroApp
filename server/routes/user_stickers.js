@@ -10,9 +10,9 @@ module.exports = (db) => {
       })
   });
 
-  router.get('/mystickers', (req, res) => {
-    const command = "SELECT * FROM stickers JOIN user_stickers ON sticker_id = stickers.id WHERE user_id = 1";
-    db.query(command)
+  router.post('/mystickers', (req, res) => {
+    const command = "SELECT * FROM stickers JOIN user_stickers ON sticker_id = stickers.id WHERE user_id = $1";
+    db.query(command, [req.body.userID])
       .then(data => {
         res.json(data.rows);
       })

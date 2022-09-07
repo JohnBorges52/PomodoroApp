@@ -17,7 +17,7 @@ export const MyProfile = (props) => {
 
   const loggedinUser = localStorage.getItem("user")
   const data = JSON.parse(loggedinUser)
-  const id = data.id
+  const userID = data.id
 
  
 
@@ -27,7 +27,7 @@ export const MyProfile = (props) => {
   
   
   const fetchInfo = () => {
-    axios.post("/pomodoros/mypomodoros", {id})
+    axios.post("/pomodoros/mypomodoros", {userID})
     .then(res => {setNumberOfPomodoros(res.data[0].exact_count)})
 
   }
@@ -37,7 +37,7 @@ export const MyProfile = (props) => {
   },[])
 
   const fecthStickers = () => {
-    axios.get("/user_stickers/mystickers")
+    axios.post("/user_stickers/mystickers", {userID})
     .then(res => setSticker(res.data) )
   }
 
@@ -85,7 +85,7 @@ export const MyProfile = (props) => {
         <div className="my-stickers-tittle">
 
         <span>MY STICKERS</span>
-        <button onClick={()=>{console.log("HERE::", id)}}>TEST</button>
+        <button onClick={()=>{console.log("HERE::", userID)}}>TEST</button>
         </div>
         
       <div className="my-stickers-container">
