@@ -30,7 +30,10 @@ function App() {
     if (loggedInUser) {
       const foundUser = JSON.parse(loggedInUser)
       setUser(foundUser);
+
       console.log("USER LOGGEDIN AS: ", foundUser)
+    } else {
+      console.log("not loggedin ")
     }
   }, [])
 
@@ -40,6 +43,7 @@ function App() {
     const response = await axios.post("/users/loginSuccess", { email, psw });
     console.log("RESPONSE:", response)
     setUser(response.data)
+    setIsLogin(true)
     localStorage.setItem('user', JSON.stringify(response.data))
     navigate("/")
   }
@@ -49,6 +53,7 @@ function App() {
     setUser({})
     setEmail("")
     setPsw("")
+    setIsLogin(false)
     localStorage.clear();
     navigate("/login")
     window.location.reload(false)
@@ -75,7 +80,7 @@ function App() {
           <Route path="/myprofile" element={<MyProfile />} />
         </Routes>
       </div>
-      <BottomNavBar />
+      <BottomNavBar href={"myprofile"} />
     </div>
   );
 }
