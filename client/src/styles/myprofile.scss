@@ -65,8 +65,10 @@ margin-bottom: 50px;
   text-align: center;
 }
 .big-sticker-img{
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  min-width: 245px;
+  max-width: 393px;
+
   margin-top: 50px;
  
 }
