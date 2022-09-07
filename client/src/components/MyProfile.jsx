@@ -14,9 +14,12 @@ export const MyProfile = (props) => {
   const [stickerId, setStickerId] = useState(0)
   const [openDiv, setOpenDiv] = useState(false)
 
+
   const loggedinUser = localStorage.getItem("user")
   const data = JSON.parse(loggedinUser)
   const id = data.id
+
+ 
 
   useEffect(()=>{
     fetchInfo()
@@ -30,11 +33,11 @@ export const MyProfile = (props) => {
   }
 
   useEffect(()=>{
-    fecthStickers()
+    fecthStickers();
   },[])
 
   const fecthStickers = () => {
-    axios.get("/stickers/")
+    axios.get("/user_stickers/mystickers")
     .then(res => setSticker(res.data) )
   }
 
@@ -61,6 +64,8 @@ export const MyProfile = (props) => {
 
 
 
+
+
   return (
     <>
     <div className="my-profile-main-container">
@@ -80,6 +85,7 @@ export const MyProfile = (props) => {
         <div className="my-stickers-tittle">
 
         <span>MY STICKERS</span>
+        <button onClick={()=>{console.log("HERE::", id)}}>TEST</button>
         </div>
         
       <div className="my-stickers-container">
