@@ -52,8 +52,6 @@ function App() {
     localStorage.clear();
     navigate("/login")
     window.location.reload(false)
-
-
   }
 
   return (
