@@ -30,11 +30,6 @@ export const Timer = () => {
   },[])
 
 
-  const timeNow = () => {
-    const time =  new Date().getTime()
-    return time
-  }
-
   const findUserId = () => {
     const loggedInUser = localStorage.getItem("user");
     const parseUser = JSON.parse(loggedInUser)
@@ -48,7 +43,7 @@ export const Timer = () => {
 
   const postNewPomodoro = () => {
     if(userId !== 0){
-      axios.post("/pomodoros/newpomodoro", )
+      axios.post("/pomodoros/newpomodoro", {userId, duration} )
       .then(res => console.log(res)
       )}
    else {
@@ -86,7 +81,8 @@ export const Timer = () => {
         setSecond(0)
         setStart(false)
         postNewPomodoro()
-        setTimeout(()=>{setType('break')},1000)
+        setType('break')
+
         
         
       
@@ -114,14 +110,14 @@ export const Timer = () => {
       />} 
       <div className={variableClass}>
         <>
-        <button onClick={() => {console.log(userId, "startTime:",  "EndTIME:", )}}> TEST</button>
+        <button onClick={() => {console.log(userId, "duration:",  duration )}}> TEST</button>
 
         {type === "startPage" && 
         <>
         <ShowPomodoro 
         minutes={minute}
         seconds={second}
-        onClick={() => {setStart(true); setIsHappening(true); setType("pomodoro") }} 
+        onClick={() => {setDuration(minute); setStart(true); setIsHappening(true); setType("pomodoro") }} 
         onClose={()=> (alert('You did not start!'))}
         message={"LET'S FOCUS!"}
         class={'div-start-gif'}
