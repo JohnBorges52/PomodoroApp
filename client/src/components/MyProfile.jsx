@@ -4,6 +4,7 @@ import { useState } from "react"
 
 import "../styles/myprofile.scss"
 import { BigSticker } from "./BigSticker"
+import { BigStickerLocked } from "./BigStickerLocked"
 
 
 
@@ -16,6 +17,7 @@ export const MyProfile = (props) => {
   
   const [stickerId, setStickerId] = useState(0)
   const [openDiv, setOpenDiv] = useState(false)
+  const [openLockedDiv, setOpenLockedDiv] = useState(false)
 
 
   const loggedinUser = localStorage.getItem("user")
@@ -38,7 +40,6 @@ export const MyProfile = (props) => {
   useEffect(() => {
     fecthAllStickers();
     fecthStickers();
-    // showAllStickers(allStickers,sticker);
 
   },[])
 
@@ -61,6 +62,16 @@ export const MyProfile = (props) => {
     return result
   }
 
+  const mapLockedStickersId = (stickerNumber) => {
+    let result = ''
+    allStickers.map((element) => {
+      if (element.id === stickerNumber) {
+        result = element.stickerpic
+      }
+    })
+    return result
+  }
+
   
   const mapStickersTitle = (stickerNumber) => {
     let result = ''
@@ -71,6 +82,16 @@ export const MyProfile = (props) => {
     })
     return result
   }
+  const mapLockedStickersTitle = (stickerNumber) => {
+    let result = ''
+    allStickers.map((element) => {
+      if (element.id === stickerNumber) {
+        result = element.title
+      }
+    })
+    return result
+  }
+
 
   const showAllStickers = (state, myStickerArray) => {
     let idArray = []
@@ -99,7 +120,9 @@ const allStickersPossible = showAllStickers(allStickers, sticker)
     <>
     <div className="my-profile-main-container">
       {openDiv && <BigSticker img={mapStickersId(stickerId)} title={mapStickersTitle(stickerId)} msg={`You can win this sticker after ${stickerId} completed pomodoros. `} close={()=> setOpenDiv(false)}/>}
-
+      
+      {openLockedDiv && <BigStickerLocked img={mapLockedStickersId(stickerId)} title={mapLockedStickersTitle(stickerId)} msg={`You can win this sticker after ${stickerId} completed pomodoros. `} close={()=> setOpenLockedDiv(false)}/>}
+      
       <div className="myprofile-span">
         <span > Welcome to your page <span className="myprofile-span-bolder">{data.username}</span>. </span>
       </div>
@@ -114,7 +137,7 @@ const allStickersPossible = showAllStickers(allStickers, sticker)
         <div className="my-stickers-tittle">
 
         <span>MY STICKERS</span>
-        <button onClick={()=>{console.log("HERE::", showAllStickers(allStickers,sticker))}}>TEST</button>
+        {/* <button onClick={()=>{console.log("HERE::", showAllStickers(allStickers,sticker))}}>TEST</button> */}
         </div>
         
       <div className="my-stickers-container">
@@ -128,7 +151,7 @@ const allStickersPossible = showAllStickers(allStickers, sticker)
 
         {allStickersPossible.map(e=>{
           return <div key={e.id} className="mytrophies" >
-          <img className="sticker-img locked" alt={`${e.title}`} onClick={()=> {setStickerId(e.id); setOpenDiv(true); console.log(sticker)}}  src={`${e.stickerpic}`} />
+          <img className="sticker-img locked" alt={`${e.title}`} onClick={()=> {setStickerId(e.id); setOpenLockedDiv(true)}}  src={`${e.stickerpic}`} />
          </div>
         })}
         
