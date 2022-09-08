@@ -8,19 +8,53 @@ import classNames from 'classnames'
 import { useEffect } from 'react'
 import sound_one from "../assets/sound-2.mp3";
 import { ShowStoped } from './ShowStoped'
+import axios from 'axios'
 
 
 
 export const Timer = () => {
-
+  
   const [second, setSecond] = useState(0)
-  const [minute, setMinute] = useState(25)
+  const [minute, setMinute] = useState(1)
   const [start, setStart] = useState(false)
   const [type, setType] = useState("startPage")
   const [isHappening, setIsHappening] = useState(false)
   const [confirmation, setConfirmation] = useState(false)
-  
-  
+
+  const [duration, setDuration] = useState(0)
+
+  const [userId, setUserId] = useState(0)
+
+  useEffect(()=>{
+    findUserId()
+  },[])
+
+
+  const timeNow = () => {
+    const time =  new Date().getTime()
+    return time
+  }
+
+  const findUserId = () => {
+    const loggedInUser = localStorage.getItem("user");
+    const parseUser = JSON.parse(loggedInUser)
+    if (parseUser) {
+      setUserId(parseUser.id)
+    } else {
+      setUserId(0)
+    }
+    return
+  }
+
+  const postNewPomodoro = () => {
+    if(userId !== 0){
+      axios.post("/pomodoros/newpomodoro", )
+      .then(res => console.log(res)
+      )}
+   else {
+    console.log("No logged in to count pomodoro")
+    }
+  }
 
   const playFunc = (music) => {
     new Audio(music).play()
@@ -51,7 +85,11 @@ export const Timer = () => {
         setMinute(25)
         setSecond(0)
         setStart(false)
-        setType('break')
+        postNewPomodoro()
+        setTimeout(()=>{setType('break')},1000)
+        
+        
+      
       }
     }
 
@@ -62,33 +100,28 @@ export const Timer = () => {
     const variableStyle = classNames('time-style', {
       "time-style-orange": minute <= 5 && minute >= 1,
       "time-style-red": minute < 1
-    })
-
- 
-  
-
-    
+    })    
 
     return (
       <div className='timer-component-container'>
-
       
       {confirmation && 
       <Popup
       title={"Do you really wanna stop?"}
       message={"Your progress will not be counted if you don't stay at least for 90% of the time."}
       onCancel={()=> (setConfirmation(false), setStart(true))}
-      onConfirm={()=> ( setConfirmation(false), setType("stoped"),setIsHappening(false), setStart(false), setMinute(25), setSecond(0) )}
+      onConfirm={()=> { setConfirmation(false); setType("stoped"); setIsHappening(false); setStart(false); setMinute(25); setSecond(0) }}
       />} 
       <div className={variableClass}>
         <>
+        <button onClick={() => {console.log(userId, "startTime:",  "EndTIME:", )}}> TEST</button>
 
         {type === "startPage" && 
         <>
         <ShowPomodoro 
         minutes={minute}
         seconds={second}
-        onClick={() => (setStart(true), setIsHappening(true), setType("pomodoro"))} 
+        onClick={() => {setStart(true); setIsHappening(true); setType("pomodoro") }} 
         onClose={()=> (alert('You did not start!'))}
         message={"LET'S FOCUS!"}
         class={'div-start-gif'}
@@ -120,12 +153,12 @@ export const Timer = () => {
      
         {!isHappening &&
         <Slide 
-        value={minute} 
-        onChange={(e) => {
-          handleChange(e.target.value)}}
-          time={minute}
-          /> 
-        }
+          value={minute} 
+          onChange={(e) => {
+            handleChange(e.target.value)}}
+            time={minute}
+            /> 
+          }
         </>  
         
       }
@@ -133,7 +166,7 @@ export const Timer = () => {
         <ShowBreak 
         minutes={minute}
         seconds={second}
-        onClick={()=> (setType("startPage"), setIsHappening(false))}
+        onClick={()=> {setType("startPage"); setIsHappening(false); }}
         class={'div-break-gif'}
         
         />

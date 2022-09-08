@@ -20,6 +20,20 @@ module.exports = (db) => {
 
   })
 
+  router.post('/newpomodoro', (req, res) => {
+
+    console.log("ST TOTAL:", req.body.startTime)
+    console.log("ET TOTAL:", req.body.endTime)
+
+
+    const command = `INSERT INTO pomodoros (user_id, start_at, ended_at) VALUES (${req.body.userId}, "${req.body.startTime.hour}:${req.body.startTime.minutes}:${req.body.startTime.seconds}", "${req.body.endTime.hour}:${req.body.endTime.minutes}:${req.body.endTime.seconds}")`;
+
+    db.query(command)
+      .then(data => {
+        res.json(data.rows)
+      })
+  })
+
 
 
 
