@@ -12,7 +12,7 @@ module.exports = (db) => {
 
   router.post('/mypomodoros', (req, res) => {
     const command = "SELECT count(*) AS exact_count FROM pomodoros WHERE user_id = $1";
-    db.query(command, [req.body.id])
+    db.query(command, [req.body.userID])
       .then(data => {
         res.json(data.rows)
       })
