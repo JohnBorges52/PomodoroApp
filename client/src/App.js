@@ -87,7 +87,7 @@ function App() {
   return (
     <div className="App">
       {user ? <TopNavBar loginMsg={"LOGOUT"} onClick={(e) => handleLogout(e)} /> : <TopNavBar loginMsg={"LOGIN"} onClick={() => navigate("/login")} />}
-      {/* <button onClick={() => findUserId()}> TEST</button> */}
+
       <div className='main--container'>
         <Routes>
           <Route path="/" element={<Timer />} />

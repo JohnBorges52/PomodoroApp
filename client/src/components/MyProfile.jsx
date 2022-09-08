@@ -11,6 +11,9 @@ import { BigSticker } from "./BigSticker"
 export const MyProfile = (props) => {
   const [numberOfPomodoros, setNumberOfPomodoros] = useState()
   const [sticker, setSticker] = useState([])
+ 
+  const [allStickers, setAllStickers] = useState([])
+  
   const [stickerId, setStickerId] = useState(0)
   const [openDiv, setOpenDiv] = useState(false)
 
@@ -32,13 +35,20 @@ export const MyProfile = (props) => {
 
   }
 
-  useEffect(()=>{
+  useEffect(() => {
+    fecthAllStickers();
     fecthStickers();
+    // showAllStickers(allStickers,sticker);
+
   },[])
 
   const fecthStickers = () => {
     axios.post("/user_stickers/mystickers", {userID})
     .then(res => setSticker(res.data) )
+  }
+  const fecthAllStickers = () => {
+    axios.get("/stickers")
+    .then(res => setAllStickers(res.data) )
   }
 
   const mapStickersId = (stickerNumber) => {
@@ -61,6 +71,25 @@ export const MyProfile = (props) => {
     })
     return result
   }
+
+  const showAllStickers = (state, myStickerArray) => {
+    let idArray = []
+    let result = []
+    myStickerArray.map(e => {
+      return idArray.push(e.id)
+    })
+
+    state.map((element) => {
+      if(!idArray.includes(element.id)){
+        return result.push(element)
+             
+    } 
+})
+  return result
+}
+
+const allStickersPossible = showAllStickers(allStickers, sticker)
+
 
 
 
@@ -85,16 +114,25 @@ export const MyProfile = (props) => {
         <div className="my-stickers-tittle">
 
         <span>MY STICKERS</span>
-        <button onClick={()=>{console.log("HERE::", userID)}}>TEST</button>
+        <button onClick={()=>{console.log("HERE::", showAllStickers(allStickers,sticker))}}>TEST</button>
         </div>
         
       <div className="my-stickers-container">
 
-        {(sticker.map((element) =>
-         <div key={element.id} className="mytrophies" >
-          <img className="sticker-img" onClick={()=> (setStickerId(element.id), setOpenDiv(true), console.log(sticker) ) }  src={`${element.stickerpic}`} />
+        {(sticker.map((element) => {
+         
+         return <div key={element.id} className="mytrophies" >
+          <img className="sticker-img" alt={`${element.title}`} onClick={()=> {setStickerId(element.id); setOpenDiv(true); console.log(sticker)}}  src={`${element.stickerpic}`} />
          </div>
-        ))}
+        }))}
+
+        {allStickersPossible.map(e=>{
+          return <div key={e.id} className="mytrophies" >
+          <img className="sticker-img" alt={`${e.title}`} onClick={()=> {setStickerId(e.id); setOpenDiv(true); console.log(sticker)}}  src={`${e.stickerpic}`} />
+         </div>
+        })}
+        
+
 
 
       </div>
