@@ -128,7 +128,7 @@ const allStickersPossible = showAllStickers(allStickers, sticker)
 
         {allStickersPossible.map(e=>{
           return <div key={e.id} className="mytrophies" >
-          <img className="sticker-img" alt={`${e.title}`} onClick={()=> {setStickerId(e.id); setOpenDiv(true); console.log(sticker)}}  src={`${e.stickerpic}`} />
+          <img className="sticker-img locked" alt={`${e.title}`} onClick={()=> {setStickerId(e.id); setOpenDiv(true); console.log(sticker)}}  src={`${e.stickerpic}`} />
          </div>
         })}
         

@@ -30,6 +30,11 @@ margin-bottom: 50px;
   object-fit: contain;
 
 }
+.locked{
+  filter: brightness(20%);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5))
+
+}
 
 .myprofile-span{
   font-family: 'Montserrat', sans-serif;
