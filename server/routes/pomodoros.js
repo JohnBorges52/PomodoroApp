@@ -20,14 +20,13 @@ module.exports = (db) => {
 
   })
 
-
-
-
-
-
-
-
-
+  router.post('/newpomodoro', (req, res) => {
+    const command = `INSERT INTO pomodoros (user_id, duration) VALUES ($1, $2)`;
+    db.query(command, [req.body.userId, req.body.duration])
+      .then(data => {
+        res.json(data.rows)
+      })
+  })
 
   return router;
 }
