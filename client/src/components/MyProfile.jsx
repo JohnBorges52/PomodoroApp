@@ -11,11 +11,13 @@ import { BigStickerLocked } from "./BigStickerLocked"
 
 export const MyProfile = (props) => {
   const [numberOfPomodoros, setNumberOfPomodoros] = useState()
-  const [sticker, setSticker] = useState([])
- 
+  
   const [allStickers, setAllStickers] = useState([])
   const [myStickers, setMyStickers] = useState([])
+  const [currentSticker, setCurrentSticker] = useState()
   
+
+
   const [stickerId, setStickerId] = useState(0)
   const [openDiv, setOpenDiv] = useState(false)
   const [openLockedDiv, setOpenLockedDiv] = useState(false)
@@ -46,8 +48,7 @@ export const MyProfile = (props) => {
     axios.get("/stickers")
     .then(res => { setAllStickers(res.data) ; console.log("allStickers:", res.data) })
   }
-  
-  
+   
   const myStickersId = (myStickers) => {
     let result = []
     myStickers.map((e)=>{
@@ -56,73 +57,22 @@ export const MyProfile = (props) => {
     return result
   }
 
-
-
-
-
-  const mapStickersId = (stickerNumber) => {
-    let result = []
-    sticker.map((element) => {
-      if (element.id === stickerNumber) {
-        result = element.stickerpic
+  const mapStickersInformation = (allStickers, currentStickerId) => {
+    let result = 0
+    allStickers.map((e)=>{
+      if(currentStickerId === e.id){
+        result =  [e.stickerpic, e.title, e.id]
       }
     })
     return result
   }
-
-  const mapLockedStickersId = (stickerNumber) => {
-    let result = ''
-    allStickers.map((element) => {
-      if (element.id === stickerNumber) {
-        result = element.stickerpic
-      }
-    })
-    return result
-  }
-
-  const mapStickersTitle = (stickerNumber) => {
-    let result = ''
-    sticker.map((element) => {
-      if (element.id === stickerNumber) {
-        result = element.title
-      }
-    })
-    return result
-  }
-  const mapLockedStickersTitle = (stickerNumber) => {
-    let result = ''
-    allStickers.map((element) => {
-      if (element.id === stickerNumber) {
-        result = element.title
-      }
-    })
-    return result
-  }
-
-  const showAllStickers = (state, myStickerArray) => {
-    let idArray = []
-    let result = []
-    myStickerArray.map(e => {
-      return idArray.push(e.id)
-    })
-
-    state.map((element) => {
-      if(!idArray.includes(element.id)){
-        return result.push(element)
-             
-    } 
-})
-  return result
-}
-
-const allStickersPossible = showAllStickers(allStickers, sticker)
 
   return (
     <>
     <div className="my-profile-main-container">
-      {openDiv && <BigSticker img={mapStickersId(stickerId)} title={mapStickersTitle(stickerId)} msg={`You can win this sticker after ${stickerId} completed pomodoros. `} close={()=> setOpenDiv(false)}/>}
+      {openDiv && <BigSticker img={mapStickersInformation(allStickers, currentSticker)[0]} title={mapStickersInformation(allStickers, currentSticker)[1]} msg={`You have won Sticker after ${mapStickersInformation(allStickers, currentSticker)[2]} completed pomodoros. `} close={()=> setOpenDiv(false)}/>}
       
-      {openLockedDiv && <BigStickerLocked img={mapLockedStickersId(stickerId)} title={mapLockedStickersTitle(stickerId)} msg={`You can win this sticker after ${stickerId} completed pomodoros. `} close={()=> setOpenLockedDiv(false)}/>}
+      {openLockedDiv && <BigStickerLocked img={mapStickersInformation(allStickers, currentSticker)[0]} title={mapStickersInformation(allStickers, currentSticker)[1]} msg={`You can win this sticker after ${mapStickersInformation(allStickers, currentSticker)[2]} completed pomodoros. `} close={()=> setOpenLockedDiv(false)}/>}
       
       <div className="myprofile-span">
         <span > Welcome to your page <span className="myprofile-span-bolder">{data.username}</span>. </span>
@@ -137,8 +87,8 @@ const allStickersPossible = showAllStickers(allStickers, sticker)
       </div>
         <div className="my-stickers-tittle">
 
-        <span>MY STICKERS</span>
-        {/* <button onClick={()=>{console.log("HERE::", showAllStickers(allStickers,sticker))}}>TEST</button> */}
+        {/* <span>MY STICKERS</span>
+        <button onClick={()=>{console.log("HERE::", mapStickersInformation(allStickers, currentSticker)}}>TEST</button> */}
         </div>
         
       <div className="my-stickers-container">
@@ -148,21 +98,19 @@ const allStickersPossible = showAllStickers(allStickers, sticker)
           if (myIds.includes(element.id)) {
               return ( 
               <div key={element.id} className="mytrophies" >
-                <img className="sticker-img" alt={`${element.title}`} onClick={()=> {setStickerId(element.id); setOpenDiv(true); console.log(sticker)}}  src={`${element.stickerpic}`} />
+                <img className="sticker-img" alt={`${element.title}`} onClick={()=> {setCurrentSticker(element.id); setOpenDiv(true)}} src={`${element.stickerpic}`} />
               </div>
               )
           } else {
             return ( 
             <div key={element.id} className="mytrophies" >
-              <img className="sticker-img locked" alt={`${element.title}`} onClick={()=> {setStickerId(element.id); setOpenLockedDiv(true)}}  src={`${element.stickerpic}`} />
+              <img className="sticker-img locked" alt={`${element.title}`} onClick={()=> {setCurrentSticker(element.id); setOpenLockedDiv(true)}}  src={`${element.stickerpic}`} />
             </div>
             )
           }
         }))}
          
       </div>
-
-
     </div>
     
     </>
