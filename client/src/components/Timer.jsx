@@ -22,14 +22,11 @@ export const Timer = () => {
   const [confirmation, setConfirmation] = useState(false)
 
   const [duration, setDuration] = useState(0)
-
   const [userId, setUserId] = useState(0)
 
   useEffect(()=> {
     findUserId()
   },[])
-
-
 
   const findUserId = () => {
     const loggedInUser = localStorage.getItem("user");
@@ -45,11 +42,9 @@ export const Timer = () => {
   const sendNewPomodoro = () => {
     if (userId !== 0) {
       axios.post("/pomodoros/newpomodoro", {userId, duration})
-      .then(res => console.log(res.data))
+      .then(res => res.data)
     }
   }
-  
-  
 
   const playFunc = (music) => {
     new Audio(music).play()
@@ -63,13 +58,13 @@ export const Timer = () => {
       
   const interval = setTimeout(() => {
         
-        if (second > 0 )  {
-          setSecond(second - 1)
-        }
-        if (second === 0 && isHappening === true ) {
-          setMinute(minute - 1)
-          setSecond(59)
-        }
+    if (second > 0 )  {
+      setSecond(second - 1)
+    }
+    if (second === 0 && isHappening === true ) {
+      setMinute(minute - 1)
+      setSecond(59)
+    }
         
   }, 10)
       
@@ -80,12 +75,14 @@ export const Timer = () => {
         setMinute(25)
         setSecond(0)
         setStart(false)
-        sendNewPomodoro()
         setType('break')
 
       }
+      // SEND POMODORO AFTER COMPLETED AT LEAST 17 MINUTES OF IT
+      if (minute === 2 && second === 59) {
+        sendNewPomodoro()
+      }
     }
-
 
     const variableClass = classNames("timer--container", {
      "opacity-bg": confirmation
@@ -104,7 +101,7 @@ export const Timer = () => {
       title={"Do you really wanna stop?"}
       message={"Your progress will not be counted if you don't stay at least for 90% of the time."}
       onCancel={()=> {setConfirmation(false); setStart(true)}}
-      onConfirm={()=> {setConfirmation(false); setType("stoped"); setIsHappening(false); setStart(false); setMinute(25); setSecond(0) }}
+      onConfirm={()=> {setDuration(0); setConfirmation(false); setType("stoped"); setIsHappening(false); setStart(false); setMinute(25); setSecond(0) }}
       />} 
       <div className={variableClass}>
         <>

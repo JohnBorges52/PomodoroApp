@@ -25,11 +25,6 @@ export const MyProfile = (props) => {
   const userID = data.id
 
  
-
-  useEffect(()=>{
-    fetchInfo()
-  },[])
-  
   
   const fetchInfo = () => {
     axios.post("/pomodoros/mypomodoros", {userID})
@@ -38,15 +33,21 @@ export const MyProfile = (props) => {
   }
 
   useEffect(() => {
-    fecthAllStickers();
+    fetchInfo();
     fecthStickers();
-
+    fecthAllStickers();
   },[])
 
   const fecthStickers = () => {
     axios.post("/user_stickers/mystickers", {userID})
-    .then(res => setSticker(res.data) )
+    .then((res) => (setSticker(res.data), console.log("stickers", res.data)))
   }
+  
+  // const fecthPomodoros = () =>{
+  //   axios.get("/pomodoros/countpomodoros")
+  //   .then (res => res.data)
+  // }
+
   const fecthAllStickers = () => {
     axios.get("/stickers")
     .then(res => setAllStickers(res.data) )
@@ -72,7 +73,6 @@ export const MyProfile = (props) => {
     return result
   }
 
-  
   const mapStickersTitle = (stickerNumber) => {
     let result = ''
     sticker.map((element) => {
@@ -92,7 +92,6 @@ export const MyProfile = (props) => {
     return result
   }
 
-
   const showAllStickers = (state, myStickerArray) => {
     let idArray = []
     let result = []
@@ -110,11 +109,6 @@ export const MyProfile = (props) => {
 }
 
 const allStickersPossible = showAllStickers(allStickers, sticker)
-
-
-
-
-
 
   return (
     <>
