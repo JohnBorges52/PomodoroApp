@@ -25,9 +25,10 @@ export const Timer = () => {
 
   const [userId, setUserId] = useState(0)
 
-  useEffect(()=>{
+  useEffect(()=> {
     findUserId()
   },[])
+
 
 
   const findUserId = () => {
@@ -41,15 +42,14 @@ export const Timer = () => {
     return
   }
 
-  const postNewPomodoro = () => {
-    if(userId !== 0){
-      axios.post("/pomodoros/newpomodoro", {userId, duration} )
-      .then(res => console.log(res)
-      )}
-   else {
-    console.log("No logged in to count pomodoro")
+  const sendNewPomodoro = () => {
+    if (userId !== 0) {
+      axios.post("/pomodoros/newpomodoro", {userId, duration})
+      .then(res => console.log(res.data))
     }
   }
+  
+  
 
   const playFunc = (music) => {
     new Audio(music).play()
@@ -59,9 +59,9 @@ export const Timer = () => {
     setMinute(e)
   }
 
-      if(start === true ) {
+  if(start) {
       
-      const interval = setTimeout(()=>{
+  const interval = setTimeout(() => {
         
         if (second > 0 )  {
           setSecond(second - 1)
@@ -71,7 +71,7 @@ export const Timer = () => {
           setSecond(59)
         }
         
-      }, 10)
+  }, 10)
       
       if (minute === 0 && second === 0 ) {
         console.log('ACABOU TUDO')
@@ -80,14 +80,12 @@ export const Timer = () => {
         setMinute(25)
         setSecond(0)
         setStart(false)
-        postNewPomodoro()
+        sendNewPomodoro()
         setType('break')
 
-        
-        
-      
       }
     }
+
 
     const variableClass = classNames("timer--container", {
      "opacity-bg": confirmation
@@ -105,8 +103,8 @@ export const Timer = () => {
       <Popup
       title={"Do you really wanna stop?"}
       message={"Your progress will not be counted if you don't stay at least for 90% of the time."}
-      onCancel={()=> (setConfirmation(false), setStart(true))}
-      onConfirm={()=> { setConfirmation(false); setType("stoped"); setIsHappening(false); setStart(false); setMinute(25); setSecond(0) }}
+      onCancel={()=> {setConfirmation(false); setStart(true)}}
+      onConfirm={()=> {setConfirmation(false); setType("stoped"); setIsHappening(false); setStart(false); setMinute(25); setSecond(0) }}
       />} 
       <div className={variableClass}>
         <>
@@ -117,7 +115,7 @@ export const Timer = () => {
         <ShowPomodoro 
         minutes={minute}
         seconds={second}
-        onClick={() => {setDuration(minute); setStart(true); setIsHappening(true); setType("pomodoro") }} 
+        onClick={() => {setDuration(minute); console.log("clicked on the start", "minutes:", minute);  setStart(true); setIsHappening(true); setType("pomodoro") }} 
         onClose={()=> (alert('You did not start!'))}
         message={"LET'S FOCUS!"}
         class={'div-start-gif'}
