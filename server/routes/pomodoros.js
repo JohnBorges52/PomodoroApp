@@ -10,15 +10,6 @@ module.exports = (db) => {
       })
   });
 
-  router.post('/mypomodoros', (req, res) => {
-    const command = "SELECT count(*) AS exact_count FROM pomodoros WHERE user_id = $1";
-    db.query(command, [req.body.userID])
-      .then(data => {
-        res.json(data.rows)
-      })
-
-
-  })
 
   router.post('/newpomodoro', (req, res) => {
     const command = `INSERT INTO pomodoros (user_id, duration) VALUES ($1, $2)`;
@@ -27,6 +18,16 @@ module.exports = (db) => {
         res.json(data.rows)
       })
   })
+
+  router.post('/mypomodoros', (req, res) => {
+    const command = "SELECT count(*) AS exact_count FROM pomodoros WHERE user_id = $1";
+    db.query(command, [req.body.userID])
+      .then(data => {
+        res.json(data.rows)
+      })
+
+  })
+
 
   return router;
 }

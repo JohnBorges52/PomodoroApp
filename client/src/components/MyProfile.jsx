@@ -7,8 +7,6 @@ import { BigSticker } from "./BigSticker"
 import { BigStickerLocked } from "./BigStickerLocked"
 
 
-
-
 export const MyProfile = (props) => {
   const [numberOfPomodoros, setNumberOfPomodoros] = useState()
   
@@ -16,9 +14,6 @@ export const MyProfile = (props) => {
   const [myStickers, setMyStickers] = useState([])
   const [currentSticker, setCurrentSticker] = useState()
   
-
-
-  const [stickerId, setStickerId] = useState(0)
   const [openDiv, setOpenDiv] = useState(false)
   const [openLockedDiv, setOpenLockedDiv] = useState(false)
 
@@ -35,15 +30,15 @@ export const MyProfile = (props) => {
   }
 
   useEffect(() => {
-    fetchNumOfPomodoros();
-    fecthMyStickers();
+   // fecthMyStickers();
     fecthAllStickers();
+    fetchNumOfPomodoros();
   },[])
 
-  const fecthMyStickers = () => {
-    axios.post("/user_stickers/mystickers", {userID})
-    .then((res) => (setMyStickers(res.data), console.log("myStickers", res.data)))
-  }
+  // const fecthMyStickers = () => {
+  //   axios.post("/user_stickers/mystickers", {userID})
+  //   .then((res) => (setMyStickers(res.data), console.log("myStickers", res.data)))
+  // }
   const fecthAllStickers = () => {
     axios.get("/stickers")
     .then(res => { setAllStickers(res.data) ; console.log("allStickers:", res.data) })
@@ -61,7 +56,7 @@ export const MyProfile = (props) => {
     let result = 0
     allStickers.map((e)=>{
       if(currentStickerId === e.id){
-        result =  [e.stickerpic, e.title, e.id]
+        result = [e.stickerpic, e.title, e.id]
       }
     })
     return result
@@ -94,22 +89,18 @@ export const MyProfile = (props) => {
       <div className="my-stickers-container">
 
         {(allStickers.map((element) => {
-          const myIds = myStickersId(myStickers)
-          if (myIds.includes(element.id)) {
+         // const myIds = myStickersId(myStickers)
+          if (element.id <= numberOfPomodoros) {
               return ( 
               <div key={element.id} className="mytrophies" >
                 <img className="sticker-img" alt={`${element.title}`} onClick={()=> {setCurrentSticker(element.id); setOpenDiv(true)}} src={`${element.stickerpic}`} />
-              </div>
-              )
-          } else {
+              </div>)} 
+          else {
             return ( 
             <div key={element.id} className="mytrophies" >
               <img className="sticker-img locked" alt={`${element.title}`} onClick={()=> {setCurrentSticker(element.id); setOpenLockedDiv(true)}}  src={`${element.stickerpic}`} />
-            </div>
-            )
-          }
+            </div>)}
         }))}
-         
       </div>
     </div>
     

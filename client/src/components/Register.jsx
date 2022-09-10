@@ -2,9 +2,11 @@ import "../styles/register.scss"
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 export const Register = (props) => {
+  let navigate = useNavigate();
 
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
@@ -25,6 +27,9 @@ export const Register = (props) => {
     .then(res => {
       if( usernameValidation(res.data) === true && emailValidation(res.data) === true && pswValidation(psw, pswConfirmation) === true) {
         registerUser(res.data)
+        navigate("/login")
+        window.location.reload(false)
+
       } else{
         console.log("NAO POOSTOU")
       } 
@@ -140,7 +145,7 @@ export const Register = (props) => {
 
         <div className="login-form-btns">
 
-        <button onClick={(event) => (onSubmit(event), pswValidation(psw,pswConfirmation))}> LOGIN </button>
+        <button onClick={(event) => (onSubmit(event), pswValidation(psw,pswConfirmation))}> REGISTER </button>
         <button className="danger" > CANCEL </button>
         </div>
         <a href="/login"> already have an account ?</a>

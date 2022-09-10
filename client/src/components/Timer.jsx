@@ -12,10 +12,12 @@ import axios from 'axios'
 
 
 
+
 export const Timer = () => {
+
   
   const [second, setSecond] = useState(0)
-  const [minute, setMinute] = useState(1)
+  const [minute, setMinute] = useState(25)
   const [start, setStart] = useState(false)
   const [type, setType] = useState("startPage")
   const [isHappening, setIsHappening] = useState(false)
@@ -66,7 +68,7 @@ export const Timer = () => {
       setSecond(59)
     }
         
-  }, 10)
+  }, 1000)
       
       if (minute === 0 && second === 0 ) {
         console.log('ACABOU TUDO')
@@ -128,7 +130,6 @@ export const Timer = () => {
           /> 
         }
         </>
-        
       }
         {type === "pomodoro" && 
         <>
