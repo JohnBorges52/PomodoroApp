@@ -148,7 +148,9 @@ export const Timer = () => {
             handleChange(e.target.value)}}
             time={minute}
             /> 
+            
           }
+
         </>  
         
       }

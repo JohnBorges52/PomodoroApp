@@ -191,3 +191,16 @@
   opacity: 0.2;
 
 }
+.change-here{
+  
+  width: 100%;
+  color: grey;
+  font-style: italic;
+  font-size: 14px;
+  text-align: center;
+}
+.slider-container{
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}

@@ -77,8 +77,6 @@ function App() {
           window.location.reload(false)
         }
 
-
-
       })
   }
 
