@@ -12,6 +12,7 @@ export const TopNavBar = (props) => {
           </a> </li>
         </div>
         <div className='div--right'>
+          <span> Hello,  <span className='strong'>{props.user}</span></span>
         <li><a onClick={props.onClick}>{props.loginMsg}</a></li>
  
         </div>

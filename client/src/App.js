@@ -27,17 +27,6 @@ function App() {
   const [errorMessage, setErrorMessage] = useState("")
 
 
-  const validateLogin = (login, password) => {
-    if (login && password) {
-      return "success"
-    } else if (login && !password) {
-      return "wrongPass"
-    } else if (!login) {
-      return "emailnotfound"
-    }
-  }
-
-
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user");
     if (loggedInUser) {
@@ -101,13 +90,19 @@ function App() {
     }
 
     return
+  }
 
-
+  const usernameLength = (username) => {
+    if (username.length > 20) {
+      return username.substring(0, 20)
+    } else {
+      return username
+    }
   }
 
   return (
     <div className="App">
-      {user ? <TopNavBar loginMsg={"LOGOUT"} onClick={(e) => handleLogout(e)} /> : <TopNavBar loginMsg={"LOGIN"} onClick={() => navigate("/login")} />}
+      {user ? <TopNavBar user={usernameLength(user.username)} loginMsg={"LOGOUT"} onClick={(e) => handleLogout(e)} /> : <TopNavBar loginMsg={"LOGIN"} onClick={() => navigate("/login")} />}
 
       <div className='main--container'>
         <Routes>

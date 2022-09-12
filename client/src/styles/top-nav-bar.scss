@@ -36,8 +36,9 @@
 
   .div--right{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-right: 25px;
+    text-align: center;
     
     li{
     padding: 0 5px;
@@ -50,6 +51,16 @@
     a{
       text-decoration: none;
       color: rgb(143, 143, 143);
+    }
+    span{
+      text-decoration: none;
+      color: rgb(143, 143, 143);
+      .strong{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        color: black
+      }
     }
   }
 
