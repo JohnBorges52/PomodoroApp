@@ -66,7 +66,7 @@ export const Timer = () => {
       setSecond(59)
     }
         
-  }, 1000)
+  }, 10)
       
       if (minute === 0 && second === 0 ) {
         console.log('ACABOU TUDO')
@@ -105,7 +105,7 @@ export const Timer = () => {
       />} 
       <div className={variableClass}>
         <>
-        <button onClick={() => {console.log(userId, "duration:",  duration )}}> TEST</button>
+        {/* <button onClick={() => {console.log(userId, "duration:",  duration )}}> TEST</button> */}
 
         {type === "startPage" && 
         <>

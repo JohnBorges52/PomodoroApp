@@ -22,7 +22,7 @@ return (
         
 
       <div className="login-message">
-        <span> Login so you can count how many times you have focused! </span>
+        <span className="title"> Login so you can count how many times you have focused! </span>
       </div>
      
      
@@ -30,9 +30,11 @@ return (
       <form className="login-form-inputs" action="" method="">
         <label className="login-form-label" >E-mail</label>
         <input onChange={props.onChangeEmail} value={props.email} type="email" placeholder="youremail@email.com" name="email" required />
+        {props.loginStatus === "WrongEmail" && <span className="error-message">{props.message}</span>}
         
         <label>Password</label>
         <input onChange={props.onChangePsw} value={props.psw} type="password" placeholder="Enter your Password" name="psw" required />
+        {props.loginStatus === "WrongPassword" && <span className="error-message">{props.message}</span>}
         
         
         <div className="login-form-btns">

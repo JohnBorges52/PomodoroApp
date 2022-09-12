@@ -14,15 +14,22 @@
     margin-bottom: 50px;
   }
 
-  span{
+  .title{
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 1.5em;
     text-align: center;
     color: rgb(66, 66, 66);
-  
-
   }
+  .error-message{
+    font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      color: red;
+      text-align: right;
+      margin-right: 10px;
+  }
+
 
 
   form {

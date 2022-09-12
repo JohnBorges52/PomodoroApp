@@ -23,8 +23,19 @@ function App() {
   const [psw, setPsw] = useState('')
   const [user, setUser] = useState("")
   const [userId, setUserId] = useState(0)
+  const [loginStatus, setLoginStatus] = useState("")
+  const [errorMessage, setErrorMessage] = useState("")
 
 
+  const validateLogin = (login, password) => {
+    if (login && password) {
+      return "success"
+    } else if (login && !password) {
+      return "wrongPass"
+    } else if (!login) {
+      return "emailnotfound"
+    }
+  }
 
 
   useEffect(() => {
@@ -47,13 +58,27 @@ function App() {
 
   const onLogin = (e) => {
     e.preventDefault()
+
+
     axios.post("/users/loginSuccess", { email, psw })
       .then(res => {
-        console.log("RESPONSE:", res)
-        setUser(res.data)
-        localStorage.setItem('user', JSON.stringify(res.data))
-        navigate("/")
-        window.location.reload(false)
+        if (res.data === "Wrong Password") {
+          setLoginStatus("WrongPassword")
+          setErrorMessage("Wrong Password")
+        } else if (res.data === "NO EMAIL FOUND") {
+          setLoginStatus("WrongEmail")
+          setErrorMessage("Email Not Found")
+        } else {
+          setLoginStatus("")
+          setErrorMessage("")
+          setUser(res.data)
+          localStorage.setItem('user', JSON.stringify(res.data))
+          navigate("/")
+          window.location.reload(false)
+        }
+
+
+
       })
   }
 
@@ -96,6 +121,8 @@ function App() {
             psw={psw}
             onLogin={(e) => (onLogin(e), findUserId())}
             onLogout={(e) => { handleLogout(e) }}
+            loginStatus={loginStatus}
+            message={errorMessage}
           />} />
           <Route path="/users/register" element={<Register />} />
           <Route path="/myprofile" element={<MyProfile />} />
