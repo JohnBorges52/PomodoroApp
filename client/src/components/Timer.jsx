@@ -12,10 +12,8 @@ import axios from 'axios'
 
 
 
-
 export const Timer = () => {
-
-  
+   
   const [second, setSecond] = useState(0)
   const [minute, setMinute] = useState(25)
   const [start, setStart] = useState(false)
@@ -114,7 +112,7 @@ export const Timer = () => {
         <ShowPomodoro 
         minutes={minute}
         seconds={second}
-        onClick={() => {setDuration(minute); console.log("clicked on the start", "minutes:", minute);  setStart(true); setIsHappening(true); setType("pomodoro") }} 
+        onClick={() => {setDuration(minute);  setStart(true); setIsHappening(true); setType("pomodoro")}} 
         onClose={()=> (alert('You did not start!'))}
         message={"LET'S FOCUS!"}
         class={'div-start-gif'}
