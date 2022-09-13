@@ -20,14 +20,7 @@ export const ShowPomodoro = (props) => {
       <div className={props.class}>
 
       </div>
-      <div className='div--timer--btns'>
-        <div className='div-btns'>
-        <button className='primary' onClick={props.onClick}>
-          START
-        </button>
-        <button className='secondary' onClick={props.onClose}>STOP</button>
-      </div>
-        </div>
+      
 
       </>
   

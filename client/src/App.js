@@ -102,7 +102,7 @@ function App() {
 
   return (
     <div className="App">
-      {user ? <TopNavBar user={usernameLength(user.username)} loginMsg={"LOGOUT"} onClick={(e) => handleLogout(e)} /> : <TopNavBar loginMsg={"LOGIN"} onClick={() => navigate("/login")} />}
+      {user ? <TopNavBar logedin={true} user={usernameLength(user.username)} loginMsg={"LOGOUT"} onClick={(e) => handleLogout(e)} /> : <TopNavBar loginMsg={"LOGIN"} onClick={() => navigate("/login")} />}
 
       <div className='main--container'>
         <Routes>

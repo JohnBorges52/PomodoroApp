@@ -9,6 +9,7 @@ import { useEffect } from 'react'
 import sound_one from "../assets/sound-2.mp3";
 import { ShowStoped } from './ShowStoped'
 import axios from 'axios'
+import { PomodoroButtons } from './PomodoroButtons'
 
 
 
@@ -109,14 +110,14 @@ export const Timer = () => {
 
         {type === "startPage" && 
         <>
+        
         <ShowPomodoro 
         minutes={minute}
         seconds={second}
-        onClick={() => {setDuration(minute);  setStart(true); setIsHappening(true); setType("pomodoro")}} 
-        onClose={()=> (alert('You did not start!'))}
         message={"LET'S FOCUS!"}
         class={'div-start-gif'}
         timeStyle={variableStyle}
+        
         />
 
         {!isHappening &&
@@ -127,6 +128,8 @@ export const Timer = () => {
           time={minute}
           /> 
         }
+        <PomodoroButtons onClick={() => {setDuration(minute);  setStart(true); setIsHappening(true); setType("pomodoro")}} 
+        onClose={()=> (alert('You did not start!'))} show={true} />
         </>
       }
         {type === "pomodoro" && 
@@ -134,23 +137,13 @@ export const Timer = () => {
         <ShowPomodoro 
         minutes={minute}
         seconds={second}
-        onClick={() => (setStart(true), setIsHappening(true))} 
-        onClose={()=> (setConfirmation(true), setStart(false))}
         class={'div-pomodoro-gif'}
         message={"ITS GOING TO END IN"}
         timeStyle={variableStyle}
         />
-     
-        {!isHappening &&
-        <Slide 
-          value={minute} 
-          onChange={(e) => {
-            handleChange(e.target.value)}}
-            time={minute}
-            /> 
-            
-          }
-
+        <PomodoroButtons onClick={() => (setStart(true), setIsHappening(true))} 
+        onClose={()=> (setConfirmation(true), setStart(false))} message={true}/>
+        
         </>  
         
       }

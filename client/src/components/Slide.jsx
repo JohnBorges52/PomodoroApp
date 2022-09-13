@@ -5,7 +5,9 @@ export const Slide = (props) => {
 
   return (
     <div className='slider-container'>
-
+    <div className='change-here'>
+      <span>Slide here to change the time.</span>
+  </div>
     <div className="selector-bar">
       <input 
       id="input-slide" 
@@ -23,9 +25,7 @@ export const Slide = (props) => {
 
 
     </div>
-    <div className='change-here'>
-      <span>Slide here to change the time.</span>
-  </div>
+
       </div>
 );
 
