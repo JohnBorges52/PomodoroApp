@@ -69,6 +69,7 @@ export const MyProfile = (props) => {
       
       {openLockedDiv && <BigStickerLocked img={mapStickersInformation(allStickers, currentSticker)[0]} title={mapStickersInformation(allStickers, currentSticker)[1]} msg={`You can win this sticker after ${mapStickersInformation(allStickers, currentSticker)[2]} completed pomodoros. `} close={()=> setOpenLockedDiv(false)}/>}
       
+      <div className="my-profile-span-wrapper">
       <div className="myprofile-span">
         <span > Welcome to your page <span className="myprofile-span-bolder">{data.username}</span>. </span>
       </div>
@@ -79,6 +80,8 @@ export const MyProfile = (props) => {
 
       <div className="myprofile-span">
         <span>You have done <span className="span--bold"> {numberOfPomodoros}</span> pomodoros so far. </span>
+      </div>
+
       </div>
         <div className="my-stickers-tittle">
 

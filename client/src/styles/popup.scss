@@ -67,3 +67,20 @@
   margin: 0 auto;
   padding: 5px;
 }
+
+.confirmation-box-wrapper{
+  width: 100vw;
+}
+
+@media (min-width: 700px) {
+  .confirmation-box{
+    left: 50%;
+    transform: translate(-50%, 0);
+    max-width: 460px;
+
+
+  }
+
+
+
+}

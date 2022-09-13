@@ -160,7 +160,7 @@ export const Timer = () => {
       {type === "stoped" && 
       <ShowStoped 
       onClick={()=> (setType("startPage"), setIsHappening(false))} 
-      title={'ITS OK!'}
+      title={"IT'S OK"}
       message={'Next Time you got this!'}
       class={'div-stoped-gif'}
       />

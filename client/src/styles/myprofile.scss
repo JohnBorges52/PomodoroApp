@@ -111,3 +111,47 @@ margin-bottom: 50px;
   font-weight: 600;
   cursor: pointer;
 }
+.big-sticker-information{
+ height: 100%; 
+
+}
+
+@media (min-width: 900px) {
+  .my-stickers-container{
+    max-width: 810px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 50px ;
+    
+  }
+  .my-profile-span-wrapper{
+    margin: 0 auto;
+    max-width: 790px;
+  }
+  .big-img-div{
+    max-width: 810px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  
+  }
+}
+@media (max-height: 750px) {
+  .big-img-div{
+
+   border: red 1px solid;
+   margin-top: 0px;
+
+  }
+  .big-sticker-img{
+    height: 318px;
+    width: 318px;
+   
+    
+  }
+
+
+
+}
