@@ -73,11 +73,18 @@
       border: 1px solid rgb(101, 190, 49);
       color: white;
     }
+    .primary:hover {
+      background-color: rgb(86, 165, 40);
+    }
+
     .secondary {
       background-color: rgb(231, 47, 47);
       border: 1px solid rgb(231, 47, 47);
       color: white;
-      
+    }
+    .secondary:hover {
+      background-color: rgb(207, 39, 39);
+
     }
     
   
@@ -154,12 +161,12 @@
   }
   
 
-  #input-slide::-webkit-slider-runnable-track{
-    width: 25px;
-    height: 25px;
-    color: #13bba4;
-    margin-top: -1px;
-  }
+  // #input-slide::-webkit-slider-runnable-track{
+  //   width: 25px;
+  //   height: 25px;
+  //   color: #13bba4;
+  //   margin-top: -1px;
+  // }
 
   #input-slide::-webkit-slider-thumb{
     -webkit-appearance: none;
@@ -169,8 +176,14 @@
     background: #2843db;
     border-radius: 50px ; 
     cursor: pointer;
- 
+
   }
+  #input-slide::-webkit-slider-thumb:hover {
+  
+    background: #1b32b3;
+  
+  }
+
   
 
   .input-value{

@@ -7,14 +7,14 @@ export const About = () => {
 <div className="about-wrapper">
 
   <div className="about-title">
-    Welcome to the Pomodoro App. 
+    Welcome to the Pomodoro App
   </div>
   <div className="about-about"> This is a personal project made to help people focus on their tasks with some anime touch.</div>
   
   <div className='howtouse-wrapper'>
 
   <div className="about-subtitle">
-    How to use it. 
+    How to use it
   </div>
 
 <div className="about-list">
