@@ -129,7 +129,7 @@ export const Timer = () => {
           /> 
         }
         <PomodoroButtons onClick={() => {setDuration(minute);  setStart(true); setIsHappening(true); setType("pomodoro")}} 
-        onClose={()=> (alert('You did not start!'))} show={true} />
+        onClose={()=> (alert('You need to start first before stoping!'))} show={true} />
         </>
       }
         {type === "pomodoro" && 

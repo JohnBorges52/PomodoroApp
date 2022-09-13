@@ -28,6 +28,19 @@ module.exports = (db) => {
 
   })
 
+  router.get("/ranking", (req, res) => {
+    const command = "SELECT username, SUM(duration) as total_time FROM (SELECT users.username, users.id, pomodoros.user_id, duration  FROM pomodoros JOIN users ON user_id = users.id) AS x GROUP BY username ORDER BY total_time DESC LIMIT 5  ";
+
+    db.query(command
+    )
+      .then((data) => {
+        res.json(data.rows)
+      })
+
+
+
+  })
+
 
   return router;
 }
