@@ -13,7 +13,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { MyProfile } from './components/MyProfile';
-import { TEST } from './components/TEST';
+import { About } from './components/About';
 
 
 function App() {
@@ -119,6 +119,7 @@ function App() {
           />} />
           <Route path="/users/register" element={<Register />} />
           <Route path="/myprofile" element={<MyProfile />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </div>
       {userId !== 0 ? <BottomNavBar href={"/myprofile"} /> : <BottomNavBar href={"/login"} />}
