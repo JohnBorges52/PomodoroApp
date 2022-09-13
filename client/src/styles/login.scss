@@ -57,6 +57,11 @@
     border-radius: 7px;
 
   }
+  input:focus {
+    outline: none;
+    border: 2px solid rgb(116, 116, 116);
+
+  }
 
   .login-form-btns{
     display: flex;
@@ -69,16 +74,28 @@
     margin-left: 5px;
     width: 90px ;
     height: 25px;
-    background-color: rgb(14, 197, 14);
-    border: 1px solid rgb(207, 207, 207);
+    background-color: rgb(101, 190, 49);
+    border: 1px solid rgb(101, 190, 49);
+
     color: white;
     border-radius: 7px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 0.8em;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: rgb(58, 158, 0);
+
+
   }
   .danger{
-     background-color: rgb(241, 49, 49) ;
+     background-color: rgb(231, 47, 47) ;
+     border: 1px solid rgb(231, 47, 47);
+  }
+  .danger:hover {
+    background-color: rgb(201, 32, 32) ;
+
   }
   a{
     margin-top:5px;
@@ -89,6 +106,10 @@
     font-size: 0.8em;
     text-align: end;
     text-decoration: none;
+  }
+  a:hover {
+    color: rgb(107, 107, 245);
+
   }
 
 }
