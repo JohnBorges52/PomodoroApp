@@ -39,8 +39,8 @@ return (
         
         <div className="login-form-btns">
 
-        <button onClick={props.onLogin}  > LOGIN </button>
-        <button className="danger" onClick={props.onLogout}> CANCEL </button>
+        <button onClick={props.onLogin} > LOGIN </button>
+        <button className="danger" onClick={props.onCancel}> CANCEL </button>
         </div>
         <a href="/users/register"> or create an account</a>
       

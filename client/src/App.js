@@ -114,9 +114,9 @@ function App() {
             email={email}
             psw={psw}
             onLogin={(e) => (onLogin(e), findUserId())}
-            onLogout={(e) => { handleLogout(e) }}
             loginStatus={loginStatus}
             message={errorMessage}
+            onCancel={() => { navigate("/") }}
           />} />
           <Route path="/users/register" element={<Register />} />
           <Route path="/myprofile" element={<MyProfile />} />

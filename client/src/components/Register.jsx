@@ -146,7 +146,7 @@ export const Register = (props) => {
         <div className="login-form-btns">
 
         <button onClick={(event) => (onSubmit(event), pswValidation(psw,pswConfirmation))}> REGISTER </button>
-        <button className="danger" > CANCEL </button>
+        <button className="danger" onClick={()=>{navigate("/")}}> CANCEL </button>
         </div>
         <a href="/login"> already have an account ?</a>
       
