@@ -10,7 +10,7 @@ import sound_one from "../assets/sound-2.mp3";
 import { ShowStoped } from './ShowStoped'
 import axios from 'axios'
 import { PomodoroButtons } from './PomodoroButtons'
-
+import { Slider } from './Slider'
 
 
 export const Timer = () => {
@@ -24,6 +24,7 @@ export const Timer = () => {
 
   const [duration, setDuration] = useState(0)
   const [userId, setUserId] = useState(0)
+  
 
   useEffect(()=> {
     findUserId()
@@ -121,7 +122,7 @@ export const Timer = () => {
         />
 
         {!isHappening &&
-        <Slide 
+        <Slider
         value={minute} 
         onChange={(e) => {
           handleChange(e.target.value)}}

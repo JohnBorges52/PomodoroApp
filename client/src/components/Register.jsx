@@ -20,6 +20,11 @@ export const Register = (props) => {
   const [pswMatches, setPswMatches] = useState(true)
   const [alertMsg, setAlertMsg] = useState('')
 
+useEffect(()=>{
+  
+},[username])
+
+
 
   const onSubmit=(e)=> {
     e.preventDefault(); 
@@ -71,7 +76,7 @@ export const Register = (props) => {
     }
   }
 
-  const usernameValidation = (data) =>{ 
+  const usernameValidation = (data) => { 
     let usernameList = []
     data.map(item => {
       usernameList.push(item.username)
@@ -79,6 +84,14 @@ export const Register = (props) => {
 
     if(username.length < 3){
       setAlertMsg("InvalidUsername")
+      return false
+    }
+    if(username.length > 14 || username.length < 3) {
+      setAlertMsg("")
+    }
+
+    if(username.length > 14){
+      setAlertMsg("UsernameTooLong")
       return false
     }
     if(usernameList.includes(username)) {
@@ -122,13 +135,14 @@ export const Register = (props) => {
       <div className="register-form-inputs">
 
         <label className="register-form-label">Username</label>
-        <input onChange={(e) => (setUsername(e.target.value),setUsernameExist(false))  } value={username} type="text" placeholder="john45" name="username" required />
+        <input onChange={(e) => {setUsername(e.target.value); setUsernameExist(false)}} value={username} type="text" placeholder="ex: john45" name="username" required />
 
         {usernameExist && <span className="error-message">Username alredy exists!</span> }
         {alertMsg ==="InvalidUsername" && <span className="error-message">Username needs to be longer</span> }
+        {alertMsg ==="UsernameTooLong" && <span className="error-message">Username must have 14 characters or less</span>}
         
         <label className="register-form-label">Email</label>
-        <input onChange={(e) => (setEmail(e.target.value), setEmailExist(false))} value={email} type="email" placeholder="john@gmail.com" name="email" required />
+        <input onChange={(e) => (setEmail(e.target.value.toLocaleLowerCase()), setEmailExist(false))} value={email} type="email" placeholder="ex: john@gmail.com" name="email" required />
 
         {emailExist && <span className="error-message">Email alredy exists</span> }
         {alertMsg === 'InvalidEmail' && <span className="error-message"> E-mail Invalid</span> }

@@ -140,7 +140,6 @@
 
 
   .selector-bar{
-    
     width:95%;
     height: 40px;
     position: relative;
@@ -155,13 +154,20 @@
   #input-slide{
     -webkit-appearance: none;
     width: 80%;
-    cursor:pointer;
     height: 15px;
-    background-color: rgb(255, 61, 61);
+    background: linear-gradient(90deg, rgb(255, 61, 61) 60%, rgb(214,214,214) 60% );
+    background-color: grey;
+
     border-radius: 30px;
-  
+    outline: none;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+    cursor: pointer;
   }
-  
+
+ #input-slide:hover {
+  opacity: 1;
+  }  
 
   // #input-slide::-webkit-slider-runnable-track{
   //   width: 25px;
