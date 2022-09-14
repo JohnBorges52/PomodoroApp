@@ -1,16 +1,20 @@
 import styled from "styled-components";
 
+const min = 20;
+const max = 50;
 
-export const Slider = styled.input.attrs({ type: 'range', min: "10", max: "50", defaultValue: "25", step: "5" })
+export const Slider = styled.input.attrs({ type: 'range', min: "20", max: "50", defaultValue: "25", step: "5" })
   `-webkit-appearance: none;
   -moz-appearance: none;
   outline: 0;
   width: 80%;
+  max-width: 441px;
   height: 15px;
   border-radius: 40px;
   background: ${(props) =>
-    `linear-gradient(90deg, rgb(255, 61, 61) 0%, rgb(255, 61, 61) ${props.value * 1.5}%, #fff ${props.value * 2}%, #fff 100%);`};
+    `linear-gradient(90deg, rgb(255, 61, 61) 0%, rgb(255, 61, 61) ${(props.value - min) / (max - min) * 100}%, #fff ${(props.value - min) / (max - min) * 100}%, #fff 100%);`};
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+
 
   ::-webkit-slider-thumb {
     -webkit-appearance: none;
