@@ -17,7 +17,6 @@ module.exports = (db) => {
       const email = req.body.email
       const psw = req.body.psw
       const user = await db.query(`SELECT * from USERS WHERE email = $1`, [email]);
-      console.log(user.rows.length);
       if (user.rows.length !== 0) {
         const validPass = await bcrypt.compare(psw, user.rows[0].password);
         if (validPass) {

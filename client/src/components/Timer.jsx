@@ -73,7 +73,6 @@ export const Timer = () => {
   }, 1000)
       
     if (minute === 0 && second === 0 ) {
-      console.log('ACABOU TUDO')
       clearTimeout(interval)
       playFunc(sound_one)
       setMinute(25)

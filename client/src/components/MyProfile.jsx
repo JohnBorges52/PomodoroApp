@@ -32,7 +32,7 @@ export const MyProfile = (props) => {
   
   const fecthAllStickers = () => {
     axios.get("/stickers")
-    .then(res => { setAllStickers(res.data) ; console.log("allStickers:", res.data) })
+    .then(res => { setAllStickers(res.data)})
   }
   
   const mapStickersInformation = (allStickers, currentStickerId) => {
