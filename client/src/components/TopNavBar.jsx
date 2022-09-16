@@ -1,6 +1,5 @@
 import '../styles/top-nav-bar.scss'
 
-
 export const TopNavBar = (props) => {
 
   return (
@@ -12,9 +11,8 @@ export const TopNavBar = (props) => {
           </a> </li>
         </div>
         <div className='div--right'>
-         {props.logedin && <span> Hello,  <span className='strong'>{props.user}</span></span> }
-        <li><a onClick={props.onClick}>{props.loginMsg}</a></li>
- 
+          {props.logedin && <span> Hello,  <span className='strong'>{props.user}</span></span> }
+          <li><a onClick={props.onClick}>{props.loginMsg}</a></li>
         </div>
       </ul>
     </div>

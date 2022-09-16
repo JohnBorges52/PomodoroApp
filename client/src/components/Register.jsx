@@ -4,45 +4,39 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 export const Register = (props) => {
   let navigate = useNavigate();
 
-  const [username, setUsername] = useState("")
-  const [email, setEmail] = useState("")
-  const [psw, setPsw] = useState("")
-  const [pswConfirmation, setPswConfirmation] = useState("")
+  /// set the user information  ///
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [psw, setPsw] = useState("");
+  const [pswConfirmation, setPswConfirmation] = useState("");
+  /// -----------------------  ///
 
+ ///// Information validation ////
+  const [emailExist, setEmailExist] = useState(false);
+  const [usernameExist, setUsernameExist] = useState(false);
+  const [pswMatches, setPswMatches] = useState(true);
+  const [alertMsg, setAlertMsg] = useState('');
+ ////// -------------------- /////
 
- 
-  const [emailExist, setEmailExist] = useState(false)
-  const [usernameExist, setUsernameExist] = useState(false)
-  const [pswMatches, setPswMatches] = useState(true)
-  const [alertMsg, setAlertMsg] = useState('')
-
-useEffect(()=>{
-  
-},[username])
-
-
+  useEffect(()=>{},[username]);
 
   const onSubmit=(e)=> {
     e.preventDefault(); 
     axios.get('/users/alreadyExist', { params: {email, username}})
     .then(res => {
       if( usernameValidation(res.data) === true && emailValidation(res.data) === true && pswValidation(psw, pswConfirmation) === true) {
-        registerUser(res.data)
-        navigate("/login")
-        window.location.reload(false)
-
+        registerUser(res.data);
+        navigate("/login");
+        window.location.reload(false);
       } else{
-        console.log("NAO POOSTOU")
+        console.log("")
       } 
-      
     })
   }
-  const isEmailValid = (email) => {     // <pass to a helperFunction folder
-
+  const isEmailValid = (email) => {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
       setAlertMsg("")
       return true
@@ -58,7 +52,6 @@ useEffect(()=>{
     })
 
     if(isEmailValid(email) === false ) {
-    
       return false
     }
 
@@ -72,7 +65,6 @@ useEffect(()=>{
       setEmailExist(false)
       setAlertMsg("")
       return true
-    
     }
   }
 
@@ -120,20 +112,16 @@ useEffect(()=>{
   const registerUser=() => {
         axios.post('/users/new', {
           username, email, psw
-        }).then(res => console.log(res), console.log('reactPASSWORD', psw))
+        }).then(res => console.log(""))
   }   
  
-
   return (
-
     <div className="register-form">
-
       <div className="register-message">
         <span> Create an account so you can follow your progress and earn trophies  </span>
       </div>
 
       <div className="register-form-inputs">
-
         <label className="register-form-label">Username</label>
         <input onChange={(e) => {setUsername(e.target.value); setUsernameExist(false)}} value={username} type="text" placeholder="ex: john45" name="username" required />
 
@@ -156,20 +144,12 @@ useEffect(()=>{
         <input onChange={(e) => setPswConfirmation(e.target.value)} value={pswConfirmation} type="password" placeholder="Confirm your Password" name="psw-confirm" required />
         {!pswMatches && <span className="error-message"> Password did not match</span> }
       
-
         <div className="login-form-btns">
-
         <button onClick={(event) => (onSubmit(event), pswValidation(psw,pswConfirmation))}> REGISTER </button>
         <button className="danger" onClick={()=>{navigate("/")}}> CANCEL </button>
         </div>
         <a href="/login"> already have an account ?</a>
-      
       </div>
-
     </div>
-
-
   )
-
-
 }

@@ -1,8 +1,6 @@
 import '../styles/popup.scss'
 export const Popup = (props) => {
 
-
-
   return(
     <>  
       <div className="confirmation-box">
@@ -12,10 +10,8 @@ export const Popup = (props) => {
         <span className='confirmation-message'>{props.message} </span>
         <button className='popup-confirmation-btn' onClick={props.onConfirm}>YES</button>
         </div>
-     
       </div>
     </>
-
   );
 
 

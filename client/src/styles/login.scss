@@ -1,5 +1,4 @@
 .login-form{
-
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -22,17 +21,14 @@
   }
   .error-message{
     font-family: 'Montserrat', sans-serif;
-      font-weight: 400;
-      font-size: 14px;
-      color: red;
-      text-align: right;
-      margin-right: 10px;
+    font-weight: 400;
+    font-size: 14px;
+    color: red;
+    text-align: right;
+    margin-right: 10px;
   }
 
-
-
   form {
- 
     display: flex;
     flex-direction: column;
     width: 75%;
@@ -59,14 +55,12 @@
   input:focus {
     outline: none;
     border: 2px solid rgb(116, 116, 116);
-
   }
 
   .login-form-btns{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-
   }
   button{
     margin-top: 25px;
@@ -75,7 +69,6 @@
     height: 25px;
     background-color: rgb(101, 190, 49);
     border: 1px solid rgb(101, 190, 49);
-
     color: white;
     border-radius: 7px;
     font-family: 'Montserrat', sans-serif;
@@ -85,8 +78,6 @@
   }
   button:hover {
     background-color: rgb(58, 158, 0);
-
-
   }
   .danger{
      background-color: rgb(231, 47, 47) ;
@@ -94,7 +85,6 @@
   }
   .danger:hover {
     background-color: rgb(201, 32, 32) ;
-
   }
   a{
     margin-top:5px;
@@ -108,7 +98,6 @@
   }
   a:hover {
     color: rgb(107, 107, 245);
-
   }
 
 }
@@ -124,14 +113,10 @@
   background-image: url('../assets/1621344026_300155_gif-url.gif');
   background-size: contain;
   background-repeat: no-repeat;
-  
 }
 
 @media (min-width: 700px) {
   .login-form{ 
-
     max-width: 628px ;
-
   }
-
 }

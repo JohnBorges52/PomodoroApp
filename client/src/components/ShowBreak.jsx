@@ -6,35 +6,30 @@ import classNames from 'classnames'
 
 export const ShowBreak = (props) => {
 
-  const [second, setSecond] = useState(0)
-  const [minute, setMinute] = useState(7)  
+  const [second, setSecond] = useState(0);
+  const [minute, setMinute] = useState(5);
 
   const playFunc = (music) => {
     new Audio(music).play()
   }
 
-
   useEffect(()=> {
 
     const interval = setTimeout(() => {
-      
       if (second > 0) {
         setSecond(second -1)
-
       }
       if (second === 0 ) {
         setMinute(minute - 1)
         setSecond(59)
       }
-    }, 65)
+    }, 1000)
 
-    
     if (minute === 0 && second === 0) {
       console.log("ACABOU BREAK")
       clearTimeout(interval)
       playFunc(sound_two)
     }
-    
   }, [{second, minute}])
 
   const formatTime = (time) => {
@@ -47,26 +42,20 @@ export const ShowBreak = (props) => {
   
   return (
     <>
-    
       <span className="span-type">YOU DESERVE A BREAK!</span>
       <div className='div--timer'>
-      <span className={variableStyle}>{formatTime(minute)} </span>
-      <span className={variableStyle}>:</span>
-      <span className={variableStyle}>{formatTime(second)} </span>
+        <span className={variableStyle}>{formatTime(minute)} </span>
+        <span className={variableStyle}>:</span>
+        <span className={variableStyle}>{formatTime(second)} </span>
       </div>
       <Gif 
       class={"div-break-gif"}
-       
        />
       <div className='div--timer--btns'>
         <button className="primary" onClick={props.onClick}>
           ONE MORE
         </button>
-
       </div>
-    
     </>
-
-
   )
 }

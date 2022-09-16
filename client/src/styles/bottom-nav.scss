@@ -6,10 +6,7 @@
   z-index: 3;
   background-color: rgb(202, 202, 202);
  
-
-
   ul{
- 
     margin: 0;
     display: flex;
     flex-direction: row;
@@ -17,7 +14,6 @@
     height: 8vh;
     padding: 0;
     align-items: center;
-
   }
   
   li{
@@ -25,7 +21,6 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 1em;
-    
   }
   a{
     text-decoration:none; 
@@ -34,6 +29,5 @@
   a:hover{
     color: rgb(44, 44, 44);
     font-weight: 500;
-
   }
 }

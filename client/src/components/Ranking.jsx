@@ -3,36 +3,26 @@ import { useEffect } from "react"
 import { useState } from "react"
 import '../styles/ranking.scss'
 
-
 export const Ranking = () => {
+ 
+  const [topUsers, setTopUsers] = useState([]); // get the 5 top users;
   
-  const [topUsers, setTopUsers] = useState([])
-
-
-
-
+  useEffect(()=>{
+    fecthTopUsers();
+  },[])
 
   const fecthTopUsers =  () => {
     axios.get('pomodoros/ranking')
     .then(res=>{setTopUsers(res.data)
     })
-
   }
-  useEffect(()=>{
-    fecthTopUsers();
-  },[])
   
-
-
   return (
     <div className="ranking-component">
       <div className="ranking-title">Here is the list of the top users!</div>
-      
       <div className="ranking-wrapper">
       <div className="ranking-subtitle"> 
-
       <div className="no-place"> </div>
-
       <div className="general-username">
         Username
       </div>

@@ -8,50 +8,33 @@ import { BigStickerLocked } from "./BigStickerLocked"
 
 
 export const MyProfile = (props) => {
-  const [numberOfPomodoros, setNumberOfPomodoros] = useState()
   
-  const [allStickers, setAllStickers] = useState([])
-  const [myStickers, setMyStickers] = useState([])
-  const [currentSticker, setCurrentSticker] = useState()
-  
-  const [openDiv, setOpenDiv] = useState(false)
-  const [openLockedDiv, setOpenLockedDiv] = useState(false)
-
+  // STATES //
+  const [numberOfPomodoros, setNumberOfPomodoros] = useState(); // show the number of pomodoros Done //
+  const [allStickers, setAllStickers] = useState([]); // get all the stickers from the db //
+  const [currentSticker, setCurrentSticker] = useState(); // set the sticker selected in my profile page // 
+  const [openDiv, setOpenDiv] = useState(false); // set to true to open a pop up div with the sticker information //
+  const [openLockedDiv, setOpenLockedDiv] = useState(false); //set to true to open the div with the locked sticker //
 
   const loggedinUser = localStorage.getItem("user")
   const data = JSON.parse(loggedinUser)
   const userID = data.id
-
- 
   
-  const fetchNumOfPomodoros = () => {
-    axios.post("/pomodoros/mypomodoros", {userID})
-    .then(res => {setNumberOfPomodoros(res.data[0].exact_count)})
-  }
-
   useEffect(() => {
-   // fecthMyStickers();
     fecthAllStickers();
     fetchNumOfPomodoros();
   },[])
 
-  // const fecthMyStickers = () => {
-  //   axios.post("/user_stickers/mystickers", {userID})
-  //   .then((res) => (setMyStickers(res.data), console.log("myStickers", res.data)))
-  // }
+  const fetchNumOfPomodoros = () => {
+    axios.post("/pomodoros/mypomodoros", {userID})
+    .then(res => {setNumberOfPomodoros(res.data[0].exact_count)})
+  }
+  
   const fecthAllStickers = () => {
     axios.get("/stickers")
     .then(res => { setAllStickers(res.data) ; console.log("allStickers:", res.data) })
   }
-   
-  const myStickersId = (myStickers) => {
-    let result = []
-    myStickers.map((e)=>{
-      result.push(e.id)
-    })
-    return result
-  }
-
+  
   const mapStickersInformation = (allStickers, currentStickerId) => {
     let result = 0
     allStickers.map((e)=>{
@@ -83,16 +66,9 @@ export const MyProfile = (props) => {
       </div>
 
       </div>
-        <div className="my-stickers-tittle">
-
-        {/* <span>MY STICKERS</span>
-        <button onClick={()=>{console.log("HERE::", mapStickersInformation(allStickers, currentSticker)}}>TEST</button> */}
-        </div>
-        
+        <div className="my-stickers-tittle"> My Stickers</div>
       <div className="my-stickers-container">
-
         {(allStickers.map((element) => {
-         // const myIds = myStickersId(myStickers)
           if (element.id <= numberOfPomodoros) {
               return ( 
               <div key={element.id} className="mytrophies" >
@@ -106,7 +82,6 @@ export const MyProfile = (props) => {
         }))}
       </div>
     </div>
-    
     </>
   )
 }

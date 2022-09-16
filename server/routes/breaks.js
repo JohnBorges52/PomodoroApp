@@ -9,15 +9,5 @@ module.exports = (db) => {
         res.json(data.rows);
       })
   });
-
-
-
-
-
-
-
-
-
-
   return router;
 }

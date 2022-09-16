@@ -11,8 +11,8 @@
     color: grey;
     text-align: center;
     margin-left: 50px;
-
   }
+
   .ranking-wrapper{
     width: 90%;
     margin: 50px auto 0;
@@ -38,7 +38,7 @@
     background-repeat: no-repeat;
     background-position: center;
   }
-.top-username-1{
+  .top-username-1{
     border: grey 1px solid;
     border-right: none;
     font-family: 'Montserrat', sans-serif;
@@ -48,7 +48,7 @@
     display: flex;
     align-items: center;
     text-transform: capitalize;
-}
+  }
 .second-place{
   width:20%;
   background-image: url("../assets/vecteezy_3d-icon-business-silver-medal_9848279_449.png");
@@ -89,7 +89,6 @@
 .no-place{
   width:20%;
 }
-
   .top-totaltime{
     width: 20%;
     border: grey 1px solid;
@@ -105,13 +104,11 @@
     display: flex;
     flex-direction: row;
     margin-top: 5px;
-
   }
   .ranking-subtitle{
     display: flex;
     flex-direction: row;
     margin-top: 5px;
-
   }
   .general-username{
     border-right: none;
@@ -135,9 +132,6 @@
     justify-content: center;
     align-items: center;
   }
-
-
-
 }
 
 @media (min-width:500px) {

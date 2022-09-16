@@ -1,5 +1,4 @@
 .register-form{
-
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -15,14 +14,12 @@
 }
 
   .register-message{
-
     width: 80%;
     display: flex;
     margin: 0 auto;
     margin-bottom: 50px;
     display: flex;
     align-items: center;
-    
   }
 
   span{
@@ -31,12 +28,9 @@
     font-size: 1.5em;
     text-align: center;
     color: rgb(66, 66, 66);
-
   }
 
-
   form {
- 
     display: flex;
     flex-direction: column;
     width: 75%;
@@ -64,15 +58,14 @@
   input:focus {
     outline: none;
     border: 2px solid rgb(116, 116, 116);
-
   }
 
   .login-form-btns{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-
   }
+
   button{
     margin-top: 25px;
     margin-left: 5px;
@@ -87,10 +80,9 @@
     font-size: 0.8em;
     cursor: pointer;
   }
+
   button:hover {
     background-color: rgb(58, 158, 0);
-
-
   }
   .danger{
     background-color: rgb(231, 47, 47) ;
@@ -115,29 +107,26 @@
 
   }
 
-.label-and-gif-container{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center;
-  
- 
-  margin-top: 20px;
-  
-  .psw-label{
-    margin: 0;
-  }
-
+  .label-and-gif-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    margin-top: 20px;
+    .psw-label{
+      margin: 0;
+    }
 }
+
 .gif-container {
   width: 20%;
   height:40px;
   background-image: url('../assets/99dbac9235ee5529c016f116c4128696.gif');
   background-repeat: no-repeat;
   background-size: contain;
-  
 }
+
 .error-message{
   color:red;
   font-family: 'Montserrat', sans-serif;
@@ -146,13 +135,10 @@
   text-align: right;
   margin-right: 5px;
 }
-
 }
+
 @media (min-width: 700px) {
   .register-form{
     max-width: 628px 
-
-
   }
-
 }

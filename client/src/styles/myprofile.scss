@@ -5,14 +5,11 @@ margin-bottom: 50px;
 
 .my-stickers-container{
   width: 100%;
- 
-  // border: 1px solid red;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-  margin-bottom: 50px ;
-  
+  margin-bottom: 50px;
 }
 
 
@@ -43,7 +40,6 @@ margin-bottom: 50px;
 }
 .locked:hover {
   filter: brightness(17%);
-
 }
 
 .myprofile-span{
@@ -69,7 +65,6 @@ margin-bottom: 50px;
   margin-bottom: 10px;
 }
 
-
 .big-img-div{
   width: 90%;
   height: 80vh;
@@ -84,7 +79,6 @@ margin-bottom: 50px;
   min-width: 245px;
   max-width: 393px;
   margin-top: 50px;
- 
 }
 .big-sticker-title{
   font-family: 'Montserrat', sans-serif;
@@ -93,17 +87,14 @@ margin-bottom: 50px;
   font-size: 1.2em;
   margin-bottom: 30px;
   margin-top: 20px;
-
 }
 .big-sticker-msg{
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   width: 60%;
   margin: 0 auto;
-  
   font-size: 1em;
   color: rgb(0, 0, 0);
-
 }
 
 .close-button{
@@ -123,7 +114,6 @@ margin-bottom: 50px;
 }
 .big-sticker-information{
  height: 100%; 
-
 }
 
 @media (min-width: 900px) {
@@ -135,7 +125,6 @@ margin-bottom: 50px;
     align-items: center;
     flex-wrap: wrap;
     margin-bottom: 50px ;
-    
   }
   .my-profile-span-wrapper{
     margin: 0 auto;
@@ -145,23 +134,15 @@ margin-bottom: 50px;
     max-width: 810px;
     left: 50%;
     transform: translate(-50%, 0);
-  
   }
 }
 @media (max-height: 750px) {
   .big-img-div{
-
    border: red 1px solid;
    margin-top: 0px;
-
   }
   .big-sticker-img{
     height: 318px;
-    width: 318px;
-   
-    
+    width: 318px;   
   }
-
-
-
 }

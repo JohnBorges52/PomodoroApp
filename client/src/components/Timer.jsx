@@ -15,13 +15,19 @@ import { Slider } from './Slider'
 
 export const Timer = () => {
    
+  //// define the amount of time the user chooses //
   const [second, setSecond] = useState(0)
   const [minute, setMinute] = useState(25)
+
+  /// set the state to true in order to start the countdown ///
   const [start, setStart] = useState(false)
+
+  /// set the type to change the gif and the slider in the page ///
   const [type, setType] = useState("startPage")
   const [isHappening, setIsHappening] = useState(false)
   const [confirmation, setConfirmation] = useState(false)
 
+  /// set the information to be sent to the db ///
   const [duration, setDuration] = useState(0)
   const [userId, setUserId] = useState(0)
   
@@ -55,31 +61,26 @@ export const Timer = () => {
   const handleChange = (e) => {
     setMinute(e)
   }
-
-  if(start) {
-      
-  const interval = setTimeout(() => {
-        
+  if (start) {
+    const interval = setTimeout(() => {   
     if (second > 0 )  {
       setSecond(second - 1)
     }
     if (second === 0 && isHappening === true ) {
       setMinute(minute - 1)
       setSecond(59)
-    }
-        
-  }, 10)
+    }  
+  }, 1000)
       
-      if (minute === 0 && second === 0 ) {
-        console.log('ACABOU TUDO')
-        clearTimeout(interval)
-        playFunc(sound_one)
-        setMinute(25)
-        setSecond(0)
-        setStart(false)
-        setType('break')
-
-      }
+    if (minute === 0 && second === 0 ) {
+      console.log('ACABOU TUDO')
+      clearTimeout(interval)
+      playFunc(sound_one)
+      setMinute(25)
+      setSecond(0)
+      setStart(false)
+      setType('break')
+    }
       // SEND POMODORO AFTER COMPLETED AT LEAST 17 MINUTES OF IT
       if (minute === 2 && second === 59) {
         sendNewPomodoro()
@@ -97,83 +98,70 @@ export const Timer = () => {
 
     return (
       <div className='timer-component-container'>
-      
-      {confirmation && 
-      <Popup
-      title={"Do you really wanna stop?"}
-      message={"Your progress will not be counted if you don't stay at least for 90% of the time."}
-      onCancel={()=> {setConfirmation(false); setStart(true)}}
-      onConfirm={()=> {setDuration(0); setConfirmation(false); setType("stoped"); setIsHappening(false); setStart(false); setMinute(25); setSecond(0) }}
-      />} 
-      <div className={variableClass}>
+        {confirmation && 
+        <Popup
+          title={"Do you really wanna stop?"}
+          message={"Your progress will not be counted if you don't stay at least for 90% of the time."}
+          onCancel={()=> {setConfirmation(false); setStart(true)}}
+          onConfirm={()=> {setDuration(0); setConfirmation(false); setType("stoped"); setIsHappening(false); setStart(false); setMinute(25); setSecond(0) }}
+        />} 
+        <div className={variableClass}>
         <>
-        {/* <button onClick={() => {console.log(userId, "duration:",  duration )}}> TEST</button> */}
+          {type === "startPage" && 
+            <>
+              <ShowPomodoro 
+                minutes={minute}
+                seconds={second}
+                message={"LET'S FOCUS!"}
+                class={'div-start-gif'}
+                timeStyle={variableStyle}
+              />
 
-        {type === "startPage" && 
-        <>
-        
-        <ShowPomodoro 
-        minutes={minute}
-        seconds={second}
-        message={"LET'S FOCUS!"}
-        class={'div-start-gif'}
-        timeStyle={variableStyle}
-        
-        />
+              {!isHappening &&
+                <Slide
+                  value={minute} 
+                  onChange={(e) => {
+                  handleChange(e.target.value)}}
+                  time={minute}
+                /> }
 
-        {!isHappening &&
-        <Slider
-        value={minute} 
-        onChange={(e) => {
-          handleChange(e.target.value)}}
-          time={minute}
-          /> 
-        }
-        <PomodoroButtons onClick={() => {setDuration(minute);  setStart(true); setIsHappening(true); setType("pomodoro")}} 
-        onClose={()=> (alert('You need to start first before stoping!'))} show={true} />
+              <PomodoroButtons onClick={() => {setDuration(minute);  setStart(true); setIsHappening(true); setType("pomodoro")}} 
+                onClose={()=> (alert('You need to start first before stoping!'))} show={true} />
+            </>
+          }
+          {type === "pomodoro" && 
+            <>
+              <ShowPomodoro 
+                minutes={minute}
+                seconds={second}
+                class={'div-pomodoro-gif'}
+                message={"ITS GOING TO END IN"}
+                timeStyle={variableStyle}
+              />
+              <PomodoroButtons onClick={() => (setStart(true), setIsHappening(true))} 
+              onClose={()=> (setConfirmation(true), setStart(false))} message={true}/>
+            </>  
+          }
+
+          {type === "break" &&
+            <ShowBreak 
+              minutes={minute}
+              seconds={second}
+              onClick={()=> {setType("startPage"); setIsHappening(false); }}
+              class={'div-break-gif'}
+            />
+          }
+
+          {type === "stoped" && 
+          <ShowStoped 
+            onClick={()=> (setType("startPage"), setIsHappening(false))} 
+            title={"IT'S OK"}
+            message={'Next Time you got this!'}
+            class={'div-stoped-gif'}
+          />
+          }
         </>
-      }
-        {type === "pomodoro" && 
-        <>
-        <ShowPomodoro 
-        minutes={minute}
-        seconds={second}
-        class={'div-pomodoro-gif'}
-        message={"ITS GOING TO END IN"}
-        timeStyle={variableStyle}
-        />
-        <PomodoroButtons onClick={() => (setStart(true), setIsHappening(true))} 
-        onClose={()=> (setConfirmation(true), setStart(false))} message={true}/>
-        
-        </>  
-        
-      }
-      {type === "break" &&
-        <ShowBreak 
-        minutes={minute}
-        seconds={second}
-        onClick={()=> {setType("startPage"); setIsHappening(false); }}
-        class={'div-break-gif'}
-        
-        />
-      }
-
-      {type === "stoped" && 
-      <ShowStoped 
-      onClick={()=> (setType("startPage"), setIsHappening(false))} 
-      title={"IT'S OK"}
-      message={'Next Time you got this!'}
-      class={'div-stoped-gif'}
-      />
-
-      }
-        
-        </>
-        
-        
-       
       </div>
-      </div>
-      
-      );
-    }
+    </div>
+  );
+}

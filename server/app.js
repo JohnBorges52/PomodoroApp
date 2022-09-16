@@ -12,8 +12,6 @@ var breaksRouter = require('./routes/breaks');
 var stickersRouter = require('./routes/stickers');
 var user_stickersRouter = require('./routes/user_stickers');
 
-
-
 var app = express();
 
 app.use(logger('dev'));

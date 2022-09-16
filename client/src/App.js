@@ -2,6 +2,9 @@ import './App.css'
 import './styles/style.scss'
 import './styles/popup.scss'
 import { Routes, Route, useNavigate } from "react-router-dom";
+import axios from 'axios';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 //COMPONENTS  
 import { TopNavBar } from './components/TopNavBar';
@@ -9,13 +12,9 @@ import { BottomNavBar } from './components/BottomNavBar';
 import { Timer } from './components/Timer';
 import { Login } from './components/Login';
 import { Register } from './components/Register';
-import axios from 'axios';
-import { useState } from 'react';
-import { useEffect } from 'react';
 import { MyProfile } from './components/MyProfile';
 import { About } from './components/About';
 import { Ranking } from './components/Ranking'
-
 
 function App() {
   let navigate = useNavigate();
@@ -49,7 +48,6 @@ function App() {
   const onLogin = (e) => {
     e.preventDefault()
 
-
     axios.post("/users/loginSuccess", { email, psw })
       .then(res => {
         if (res.data === "Wrong Password") {
@@ -66,7 +64,6 @@ function App() {
           navigate("/")
           window.location.reload(false)
         }
-
       })
   }
 
@@ -81,7 +78,6 @@ function App() {
   }
 
   const findUserId = () => {
-
     const loggedInUser = localStorage.getItem("user");
     const parseUser = JSON.parse(loggedInUser)
     if (parseUser) {
@@ -89,7 +85,6 @@ function App() {
     } else {
       setUserId(0)
     }
-
     return
   }
 
@@ -122,7 +117,6 @@ function App() {
           <Route path="/myprofile" element={<MyProfile />} />
           <Route path="/about" element={<About />} />
           <Route path="/ranking" element={<Ranking />} />
-
         </Routes>
       </div>
       {userId !== 0 ? <BottomNavBar href={"/myprofile"} /> : <BottomNavBar href={"/login"} />}

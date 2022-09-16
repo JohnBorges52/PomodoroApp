@@ -1,7 +1,8 @@
 const router = require('express').Router();
 
 module.exports = (db) => {
-  // all routes will go here 
+
+  /// get information of all stickers
   router.get('/', (req, res) => {
     const command = "SELECT * FROM stickers";
     db.query(command)
@@ -9,16 +10,6 @@ module.exports = (db) => {
         res.json(data.rows);
       })
   });
-
-
-
-
-
-
-
-
-
-
 
   return router;
 }

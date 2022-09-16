@@ -1,9 +1,7 @@
 import React from 'react';
 
-const DateTimeDisplay = ({ value }) => {
+export const DateTimeDisplay = ({ value }) => {
   return (
-      <p>{value} </p>
+    <p>{value} </p>
   );
 };
-
-export default DateTimeDisplay;
