@@ -2,8 +2,6 @@ import '../styles/bottom-nav.scss'
 
 export const BottomNavBar = (props) => {
 
-
-
   return (
     <div className='bottom--nav'>
       <ul>
