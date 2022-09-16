@@ -1,6 +1,8 @@
 # ANIMEPOMO
 
 Full stack Project that uses the method Pomodoro to help users to focus on their tasks with a taste of anime.
+<br/>
+** You can access the app by visiting here *https://animepomo.netlify.app/* **
 
 ## DEPENDECIES
 
@@ -20,8 +22,6 @@ Full stack Project that uses the method Pomodoro to help users to focus on their
 - PSQL
 
 ## HOW TO USE
-
-** You can access the app by visiting here *https://animepomo.netlify.app/* **
 
 1. Clone this repo.
 2. Go to the server folder in the terminal and npm install the dependencies.
