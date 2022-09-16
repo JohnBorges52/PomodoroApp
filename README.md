@@ -1,6 +1,6 @@
 # ANIMEPOMO
 
-Full stack Project that use the method Pomodoro to help users to focus on their tasks.
+Full stack Project that uses the method Pomodoro to help users to focus on their tasks with a taste of anime.
 
 ## DEPENDECIES
 
@@ -33,16 +33,16 @@ Full stack Project that use the method Pomodoro to help users to focus on their 
 
 - The main function is a countdown clock that can be chosen by the user by sliding the time bar above the buttons and goes from 20 minutes to 50. The user does not need to be logged in, however, their progress will not be saved.
 
-[gif here]
+!["img showing the main page"](https://github.com/JohnBorges52/PomodoroApp/blob/master/server/public/images/main%20page%20animepomo.jpg)
+</br>
+!["gif showing the main functionality"](https://github.com/JohnBorges52/PomodoroApp/blob/master/server/public/images/ezgif.com-gif-maker%20(7).gif)
 
 - If the user register and log in, they will be rewarded with stickers after the completion of a Pomodoro.
-
-[pic here]
-
+  !["img showing the login page"](https://github.com/JohnBorges52/PomodoroApp/blob/master/server/public/images/Screenshot%202022-09-16%20112730.jpg)
+  </br>
+  
 - The user can see and select all stickers, but only the unlocked ones will be shown as full. The locked ones will be shown as dark.
-
-[pic here]
+  !["gif showing the stickers"](https://github.com/JohnBorges52/PomodoroApp/blob/master/server/public/images/ezgif.com-gif-maker%20(8).gif)
 
 - The user can also see the ranking of who has used more the app.
-
-[]pic
+  !["img showing the rankling page"](https://github.com/JohnBorges52/PomodoroApp/blob/master/server/public/images/Screenshot%202022-09-16%20113615.jpg)
