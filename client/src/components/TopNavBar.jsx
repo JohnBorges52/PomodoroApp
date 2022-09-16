@@ -7,7 +7,7 @@ export const TopNavBar = (props) => {
       <ul>
         <div className='div--logo'>
           <li><a href="/">
-          POMODORO
+          ANIMEPOMO
           </a> </li>
         </div>
         <div className='div--right'>

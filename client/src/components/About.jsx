@@ -5,7 +5,7 @@ export const About = () => {
   return (
     <div className="about-wrapper">
       <div className="about-title">
-        Welcome to the Pomodoro App
+        Welcome to the AnimePomo App
       </div>
       <div className="about-about"> This is a personal project made to help people focus on their tasks with some anime touch.</div>
         <div className='howtouse-wrapper'>
