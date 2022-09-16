@@ -35,7 +35,7 @@ Full stack Project that uses the method Pomodoro to help users to focus on their
 
 !["img showing the main page"](https://github.com/JohnBorges52/PomodoroApp/blob/master/server/public/images/main%20page%20animepomo.jpg)
 </br>
-!["gif showing the main functionality"](https://github.com/JohnBorges52/PomodoroApp/blob/master/server/public/images/ezgif.com-gif-maker%20(7).gif)
+!["gif showing the main functionality"](https://github.com/JohnBorges52/PomodoroApp/blob/master/server/public/images/ezgif.com-gif-maker%20(9).gif)
 
 - If the user register and log in, they will be rewarded with stickers after the completion of a Pomodoro.
   !["img showing the login page"](https://github.com/JohnBorges52/PomodoroApp/blob/master/server/public/images/Screenshot%202022-09-16%20112730.jpg)
