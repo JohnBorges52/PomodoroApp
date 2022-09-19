@@ -4,7 +4,7 @@ Full stack Project that uses the method Pomodoro to help users to focus on their
 <br/>
 ** You can access the app by visiting here *https://animepomo.netlify.app/* **
 
-## DEPENDECIES
+## DEPENDENCIES
 
 1. FRONT-END
 
