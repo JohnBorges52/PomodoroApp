@@ -1,8 +1,10 @@
 # ANIMEPOMO
 
 Full stack Project that uses the method Pomodoro to help users to focus on their tasks with a taste of anime.
+<br/>
+** You can access the app by visiting here *https://animepomo.netlify.app/* **
 
-## DEPENDECIES
+## DEPENDENCIES
 
 1. FRONT-END
 
@@ -21,8 +23,6 @@ Full stack Project that uses the method Pomodoro to help users to focus on their
 
 ## HOW TO USE
 
-** You can access the app by visiting here *https://animepomo.netlify.app/* **
-
 1. Clone this repo.
 2. Go to the server folder in the terminal and npm install the dependencies.
 3. Go to the client folder in the terminal and npm install the dependencies.
@@ -33,17 +33,21 @@ Full stack Project that uses the method Pomodoro to help users to focus on their
 
 ## FEATURES
 
-- The main function is a countdown clock that can be chosen by the user by sliding the time bar above the buttons and goes from 20 minutes to 50. The user does not need to be logged in, however, their progress will not be saved.
+#### The main function is a countdown clock that can be chosen by the user by sliding the time bar above the buttons and goes from 20 minutes to 50. The user does not need to be logged in, however, their progress will not be saved.
 
 !["img showing the main page"](https://github.com/JohnBorges52/PomodoroApp/blob/master/server/public/images/main%20page%20animepomo.jpg)
 </br>
 !["gif showing the main functionality"](<https://github.com/JohnBorges52/PomodoroApp/blob/master/server/public/images/ezgif.com-gif-maker%20(7).gif>)
 
-- If the user register and log in, they will be rewarded with stickers after the completion of a Pomodoro.
-  !["img showing the login page"](https://github.com/JohnBorges52/PomodoroApp/blob/master/server/public/images/Screenshot%202022-09-16%20112730.jpg)
+#### If the user register and log in, they will be rewarded with stickers after the completion of a Pomodoro.
+ 
+!["img showing the login page"](https://github.com/JohnBorges52/PomodoroApp/blob/master/server/public/images/Screenshot%202022-09-16%20112730.jpg)
   </br>
-- The user can see and select all stickers, but only the unlocked ones will be shown as full. The locked ones will be shown as dark.
-  !["gif showing the stickers"](<https://github.com/JohnBorges52/PomodoroApp/blob/master/server/public/images/ezgif.com-gif-maker%20(8).gif>)
 
-- The user can also see the ranking of who has used more the app.
-  !["img showing the rankling page"](https://github.com/JohnBorges52/PomodoroApp/blob/master/server/public/images/Screenshot%202022-09-16%20113615.jpg)
+#### The user can see and select all stickers, but only the unlocked ones will be shown as full. The locked ones will be shown as dark.
+
+!["gif showing the stickers"](<https://github.com/JohnBorges52/PomodoroApp/blob/master/server/public/images/ezgif.com-gif-maker%20(8).gif>)
+
+#### The user can also see the ranking of who has used more the app.
+
+!["img showing the rankling page"](https://github.com/JohnBorges52/PomodoroApp/blob/master/server/public/images/Screenshot%202022-09-16%20113615.jpg)
