@@ -16,7 +16,6 @@ export const Ranking = () => {
   const fecthTopUsers = () => {
     setLoading(true)
     setTimeout(()=>{
-
       axios.get('pomodoros/ranking')
       .then(res=>{setTopUsers(res.data);
         setLoading(false)
