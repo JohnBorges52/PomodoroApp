@@ -3,8 +3,10 @@ import { useEffect } from "react"
 import { useState } from "react"
 
 import "../styles/myprofile.scss"
+
 import { BigSticker } from "./BigSticker"
 import { BigStickerLocked } from "./BigStickerLocked"
+
 
 
 export const MyProfile = (props) => {
@@ -15,12 +17,14 @@ export const MyProfile = (props) => {
   const [currentSticker, setCurrentSticker] = useState(); // set the sticker selected in my profile page // 
   const [openDiv, setOpenDiv] = useState(false); // set to true to open a pop up div with the sticker information //
   const [openLockedDiv, setOpenLockedDiv] = useState(false); //set to true to open the div with the locked sticker //
+  const [loading, setLoading] = useState(true)
 
   const loggedinUser = localStorage.getItem("user")
   const data = JSON.parse(loggedinUser)
   const userID = data.id
   
   useEffect(() => {
+
     fecthAllStickers();
     fetchNumOfPomodoros();
   },[])
@@ -31,8 +35,14 @@ export const MyProfile = (props) => {
   }
   
   const fecthAllStickers = () => {
-    axios.get("/stickers")
-    .then(res => { setAllStickers(res.data)})
+    setLoading(true);
+
+    
+      axios.get("/stickers")
+      .then(res => { setAllStickers(res.data)
+        setLoading(false)
+      })
+    
   }
   
   const mapStickersInformation = (allStickers, currentStickerId) => {
@@ -67,6 +77,7 @@ export const MyProfile = (props) => {
 
       </div>
         <div className="my-stickers-tittle"> My Stickers</div>
+        {loading && <div className="loader-container"></div>}
       <div className="my-stickers-container">
         {(allStickers.map((element) => {
           if (element.id <= numberOfPomodoros) {

@@ -119,7 +119,16 @@ margin-bottom: 50px;
 .big-sticker-information{
  height: 100%; 
 }
-
+.loader-container {
+  margin: 90px auto 0;
+  width: 5%;
+  height: 10vh;
+  // position: fixed;
+  background: rgba(0, 0, 0, 0)
+      url("https://media.giphy.com/media/8agqybiK5LW8qrG3vJ/giphy.gif") center
+      no-repeat;
+  z-index: 1;
+}
 @media (min-width: 900px) {
   .my-stickers-container{
     max-width: 810px;

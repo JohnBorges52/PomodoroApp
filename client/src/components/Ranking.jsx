@@ -6,15 +6,23 @@ import '../styles/ranking.scss'
 export const Ranking = () => {
  
   const [topUsers, setTopUsers] = useState([]); // get the 5 top users;
+  const [loading, setLoading] = useState(true);
   
-  useEffect(()=>{
+  useEffect(() => {
     fecthTopUsers();
+
   },[])
 
-  const fecthTopUsers =  () => {
-    axios.get('pomodoros/ranking')
-    .then(res=>{setTopUsers(res.data)
-    })
+  const fecthTopUsers = () => {
+    setLoading(true)
+    setTimeout(()=>{
+
+      axios.get('pomodoros/ranking')
+      .then(res=>{setTopUsers(res.data);
+        setLoading(false)
+      })
+    }, 5000)
+    
   }
   
   return (
@@ -28,6 +36,7 @@ export const Ranking = () => {
         </div>
         <div className="general-totaltime">Minutes</div>
       </div>
+     
         {(topUsers.map((element) => {
           if (topUsers.indexOf(element) === 0 ) {
             return (
@@ -63,6 +72,7 @@ export const Ranking = () => {
             )
         }))}
       </div>
+      {loading && <div className="loader-container"></div>}
     </div>
 
   )
